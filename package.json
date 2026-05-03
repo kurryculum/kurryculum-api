@@ -1,0 +1,12 @@
+{
+  "name": "kurryculum-api",
+  "version": "1.0.0",
+  "description": "Kurryculum Stripe payment backend",
+  "main": "index.js",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
