@@ -1,0 +1,686 @@
+<!--
+KURRYCULUM — COMPLETE HOMEPAGE
+LIGHT THEME inspired by Sylvan Health
+Paste into Webflow Embed on Home page (/)
+Color palette: Cream #FAFAF7 · Forest green #1B4332 · Sage #52796F · Gold #C9951A · White #FFFFFF
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body,html{background:#FAFAF7!important;color:#1A2E1A!important}
+:root{--cream:#FAFAF7;--white:#FFFFFF;--ink:#1A2E1A;--forest:#1B4332;--sage:#52796F;--sage-light:#84A98C;--gold:#C9951A;--gold-light:#E8B84B;--warm:#F5F0E8;--border:#E8E2D9;--muted:#6B7280;--red:#C4521A}
+*{box-sizing:border-box;margin:0;padding:0}
+.lh{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink)}
+/* STICKY MOBILE */
+.lh-mob{position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--forest);padding:14px 20px;display:none;align-items:center;justify-content:space-between;box-shadow:0 -2px 20px rgba(27,67,50,.15)}
+.lh-mob span{color:#fff;font-size:14px;font-weight:500}
+.lh-mob a{background:var(--gold);color:var(--ink);padding:9px 20px;border-radius:6px;font-size:13px;font-weight:700;text-decoration:none}
+@media(max-width:768px){.lh-mob{display:flex}}
+/* HERO */
+.lh-hero{background:var(--white);padding:100px 40px 80px;position:relative;overflow:hidden}
+.lh-hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:linear-gradient(135deg,#F0F7F4,#E8F5EE);z-index:0}
+.lh-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;padding:0 40px}
+.lh-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sage);margin-bottom:20px}
+.lh-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--sage)}
+.lh-h1{font-family:'Lora',serif;font-size:clamp(32px,4vw,56px);font-weight:700;line-height:1.1;color:var(--forest);margin-bottom:12px}
+.lh-h1 em{font-style:italic;color:var(--sage)}
+.lh-sub{font-size:17px;line-height:1.75;color:var(--muted);max-width:480px;margin:16px 0 32px}
+.lh-sub strong{color:var(--ink);font-weight:600}
+.lh-btns{display:flex;gap:12px;flex-wrap:wrap}
+.lh-btn-p{background:var(--forest);color:#fff;padding:15px 28px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;box-shadow:0 4px 16px rgba(27,67,50,.2)}
+.lh-btn-p:hover{background:var(--sage);transform:translateY(-1px)}
+.lh-btn-s{border:1.5px solid var(--border);color:var(--ink);padding:15px 28px;border-radius:8px;font-size:15px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
+.lh-btn-s:hover{border-color:var(--forest);color:var(--forest)}
+.lh-trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:28px;padding-top:28px;border-top:1px solid var(--border)}
+.lh-tc{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-weight:500}
+.lh-tc::before{content:'✓';color:var(--sage);font-weight:700;font-size:13px}
+/* 3D PRODUCT GRID */
+.lh-prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;transform:perspective(800px) rotateY(-6deg) rotateX(2deg);transition:transform .4s}
+.lh-hero-visual:hover .lh-prod-grid{transform:perspective(800px) rotateY(-1deg) rotateX(0)}
+.lh-pc{background:var(--white);border-radius:16px;padding:18px 14px;text-align:center;border:1px solid var(--border);transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.lh-pc:nth-child(1){transform:translateZ(16px);box-shadow:0 8px 32px rgba(27,67,50,.1)}
+.lh-pc:nth-child(2){transform:translateZ(8px) translateY(-6px)}
+.lh-pc:nth-child(3){transform:translateZ(12px) translateY(6px)}
+.lh-pc:hover{box-shadow:0 12px 40px rgba(27,67,50,.12);transform:translateY(-4px)!important}
+.lh-pc img{height:105px;width:100%;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(0,0,0,.1));transition:transform .3s}
+.lh-pc:hover img{transform:scale(1.05) translateY(-3px)}
+.lh-pc-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;margin-bottom:8px;background:var(--sage-light);color:#fff}
+.lh-pc-badge.gold{background:var(--gold);color:#fff}
+.lh-pc-name{font-size:12px;font-weight:600;color:var(--ink);margin-top:8px}
+.lh-pc-price{font-size:14px;font-weight:700;color:var(--forest);margin-top:3px}
+/* TRUST BAR */
+.lh-tbar{background:var(--forest);padding:14px 40px}
+.lh-tbar-inner{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.lh-tbi{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);white-space:nowrap;font-family:'DM Sans',sans-serif}
+/* HOW IT WORKS */
+.lh-how{background:var(--cream);padding:96px 40px}
+.lh-section-inner{max-width:1000px;margin:0 auto}
+.lh-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.lh-h2{font-family:'Lora',serif;font-size:clamp(26px,4vw,44px);font-weight:700;color:var(--forest);margin-bottom:12px;line-height:1.2}
+.lh-h2 em{font-style:italic;color:var(--sage)}
+.lh-desc{font-size:16px;color:var(--muted);line-height:1.7;max-width:560px}
+.lh-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.lh-step{background:var(--white);border-radius:16px;padding:32px 24px;border:1px solid var(--border);text-align:center;transition:all .3s}
+.lh-step:hover{border-color:var(--sage-light);transform:translateY(-4px);box-shadow:0 12px 32px rgba(82,121,111,.08)}
+.lh-step-n{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--forest),var(--sage));color:#fff;font-family:'Lora',serif;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 4px 16px rgba(27,67,50,.2)}
+.lh-step-icon{font-size:28px;margin-bottom:12px;display:block}
+.lh-step-title{font-size:16px;font-weight:700;color:var(--forest);margin-bottom:8px}
+.lh-step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.lh-cta-center{text-align:center;margin-top:44px}
+.lh-cta-note{font-size:12px;color:var(--muted);margin-top:10px}
+/* AI SECTION */
+.lh-ai{background:var(--white);padding:96px 40px}
+.lh-ai-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.lh-ai-window{background:var(--cream);border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 40px rgba(0,0,0,.07);transform:perspective(700px) rotateY(3deg)}
+.lh-ai-window:hover{transform:perspective(700px) rotateY(0)}
+.lh-ai-win-header{background:var(--white);padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.lh-ai-dots{display:flex;gap:5px}
+.lh-ai-dots span{width:10px;height:10px;border-radius:50%}
+.lh-ai-body{padding:20px}
+.lh-msg{margin-bottom:12px;display:flex;gap:8px}
+.lh-msg-av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.lh-msg.user .lh-msg-av{background:var(--warm);color:var(--ink)}
+.lh-msg.ai .lh-msg-av{background:var(--forest);color:#fff}
+.lh-msg-bub{padding:10px 13px;border-radius:10px;font-size:13px;line-height:1.55;max-width:240px}
+.lh-msg.user .lh-msg-bub{background:var(--warm);color:var(--ink);border-radius:10px 10px 3px 10px}
+.lh-msg.ai .lh-msg-bub{background:#fff;border:1px solid var(--border);color:var(--ink);border-radius:3px 10px 10px 10px}
+.lh-ai-result{background:linear-gradient(135deg,#F0F7F4,#E8F5EE);border:1px solid rgba(82,121,111,.2);border-radius:10px;padding:14px;margin-top:8px}
+.lh-air-title{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.lh-air-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink);padding:4px 0}
+.lh-air-item::before{content:'→';color:var(--sage);font-size:11px}
+.lh-ai-feats{display:flex;flex-direction:column;gap:16px;margin:28px 0}
+.lh-ai-feat{display:flex;gap:14px;align-items:flex-start}
+.lh-ai-feat-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#F0F7F4,#E8F5EE);border:1px solid rgba(82,121,111,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.lh-ai-feat-text strong{display:block;font-size:14px;font-weight:700;color:var(--forest);margin-bottom:3px}
+.lh-ai-feat-text span{font-size:13px;color:var(--muted);line-height:1.5}
+/* PRODUCTS */
+.lh-products{background:var(--cream);padding:96px 40px}
+.lh-prod-inner{max-width:1200px;margin:0 auto}
+.lh-prod-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:44px}
+.lh-filter{display:flex;gap:8px;flex-wrap:wrap}
+.lh-fb{padding:8px 18px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.lh-fb.active,.lh-fb:hover{background:var(--forest);border-color:var(--forest);color:#fff}
+.lh-pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:20px}
+.lh-pcard{background:var(--white);border-radius:14px;overflow:hidden;border:1px solid var(--border);display:flex;flex-direction:column;transition:all .3s cubic-bezier(.34,1.56,.64,1)}
+.lh-pcard:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(27,67,50,.1)}
+.lh-pimg{height:220px;background:linear-gradient(135deg,var(--warm),#EDE8DF);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.lh-pimg img{height:190px;width:100%;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(0,0,0,.1));transition:transform .4s}
+.lh-pcard:hover .lh-pimg img{transform:scale(1.06) translateY(-4px)}
+.lh-pbadge{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:4px;color:#fff}
+.lh-pinfo{padding:18px;flex:1;display:flex;flex-direction:column}
+.lh-pbrand{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:2px}
+.lh-pname{font-size:16px;font-weight:700;color:var(--forest);margin-bottom:5px;line-height:1.3}
+.lh-pstars{color:var(--gold);font-size:13px;margin-bottom:8px}
+.lh-pstars span{color:var(--muted);font-size:12px}
+.lh-pbenefits{flex:1;margin-bottom:12px;display:flex;flex-direction:column;gap:4px}
+.lh-pben{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.lh-pben::before{content:'✓';color:var(--sage);font-weight:700;font-size:11px}
+.lh-ptags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.lh-ptag{font-size:10px;font-weight:600;background:var(--warm);color:var(--muted);padding:2px 8px;border-radius:3px}
+.lh-ptag-w{background:#FFF0EB;color:var(--red)}
+.lh-ptag-a{background:#EBF5EC;color:#2A6030}
+.lh-pfoot{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--border);margin-top:auto}
+.lh-pprice{font-size:21px;font-weight:700;color:var(--forest)}
+.lh-btn-web{background:var(--forest);color:#fff;padding:9px 16px;border-radius:7px;font-size:12px;font-weight:700;text-decoration:none;transition:all .2s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.lh-btn-web:hover{background:var(--sage)}
+.lh-btn-amz{background:var(--red);color:#fff;padding:9px 16px;border-radius:7px;font-size:12px;font-weight:700;text-decoration:none;transition:all .2s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.lh-btn-amz:hover{background:#A03D10}
+/* LIFESTYLE IMAGES */
+.lh-lifestyle{background:var(--white);padding:80px 40px}
+.lh-lf-inner{max-width:1200px;margin:0 auto}
+.lh-lf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.lh-lf-card{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:1;background:var(--warm)}
+.lh-lf-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.lh-lf-card:hover img{transform:scale(1.05)}
+.lh-lf-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(27,67,50,.6),transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:16px;opacity:0;transition:opacity .3s}
+.lh-lf-card:hover .lh-lf-overlay{opacity:1}
+.lh-lf-name{font-size:14px;font-weight:700;color:#fff}
+.lh-lf-sub{font-size:11px;color:rgba(255,255,255,.75)}
+.lh-cert-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.lh-cert{display:flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:10px 18px}
+.lh-cert-icon{font-size:16px}
+.lh-cert-text{font-size:12px;font-weight:600;color:var(--ink)}
+/* PHARMACIST TRUST */
+.lh-trust{background:var(--cream);padding:96px 40px}
+.lh-trust-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.lh-cred-list{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.lh-cred{background:var(--white);border-radius:12px;padding:20px;border:1px solid var(--border);border-left:4px solid var(--sage);transition:all .3s}
+.lh-cred:hover{border-left-color:var(--forest);box-shadow:0 4px 20px rgba(27,67,50,.06)}
+.lh-cred-title{font-size:15px;font-weight:700;color:var(--forest);margin-bottom:4px}
+.lh-cred-desc{font-size:13px;color:var(--muted);line-height:1.55}
+.lh-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.lh-stat{background:var(--white);border-radius:12px;padding:20px;text-align:center;border:1px solid var(--border)}
+.lh-stat-n{font-family:'Lora',serif;font-size:36px;font-weight:700;color:var(--forest)}
+.lh-stat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:3px}
+.lh-quiz-prompt{background:linear-gradient(135deg,#F0F7F4,#E8F5EE);border:1px solid rgba(82,121,111,.2);border-radius:12px;padding:24px;margin-top:16px;text-align:center}
+.lh-quiz-prompt p{font-size:13px;color:var(--muted);margin-bottom:14px}
+/* REVIEWS */
+.lh-reviews{background:var(--warm);padding:80px 40px}
+.lh-rev-inner{max-width:1100px;margin:0 auto}
+.lh-rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.lh-rev-card{background:var(--white);border-radius:14px;padding:24px;border:1px solid var(--border);transition:all .3s}
+.lh-rev-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,67,50,.07)}
+.lh-rev-stars{color:var(--gold);font-size:14px;margin-bottom:12px}
+.lh-rev-text{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px;font-style:italic}
+.lh-rev-author{display:flex;align-items:center;gap:10px}
+.lh-rev-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff}
+.lh-rev-name{font-size:13px;font-weight:700;color:var(--forest)}
+.lh-rev-loc{font-size:11px;color:var(--muted)}
+.lh-rev-prod{display:inline-block;margin-top:10px;font-size:11px;font-weight:600;background:var(--warm);color:var(--sage);padding:3px 9px;border-radius:4px}
+/* EMAIL */
+.lh-email{background:var(--forest);padding:80px 40px;text-align:center}
+.lh-email-inner{max-width:540px;margin:0 auto}
+.lh-email h2{font-family:'Lora',serif;font-size:clamp(24px,4vw,40px);font-weight:700;color:#fff;margin-bottom:10px}
+.lh-email p{font-size:15px;color:rgba(255,255,255,.65);margin-bottom:20px;line-height:1.7}
+.lh-email-perks{display:flex;justify-content:center;gap:20px;margin-bottom:24px;flex-wrap:wrap}
+.lh-ep{font-size:12px;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:5px}
+.lh-ep::before{content:'✓';color:var(--gold-light);font-weight:700}
+.lh-email-form{display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.lh-einput{flex:1;min-width:200px;padding:14px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+.lh-einput::placeholder{color:rgba(255,255,255,.4)}
+.lh-einput:focus{border-color:var(--gold-light)}
+.lh-ebtn{background:var(--gold);color:var(--ink);padding:14px 22px;border-radius:8px;border:none;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;white-space:nowrap}
+.lh-ebtn:hover{background:var(--gold-light)}
+.lh-email-ok{color:var(--gold-light);font-size:14px;margin-top:12px;display:none}
+.lh-email-note{font-size:11px;color:rgba(255,255,255,.25);margin-top:10px}
+/* FOOTER */
+.lh-footer{background:var(--ink);padding:52px 40px 24px}
+.lh-fg{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.lh-fbrand{font-family:'Lora',serif;font-size:22px;color:var(--gold-light);margin-bottom:10px}
+.lh-ftagline{font-size:13px;color:rgba(255,255,255,.35);line-height:1.7;margin-bottom:12px}
+.lh-fdisc{font-size:11px;color:rgba(255,255,255,.18);line-height:1.6}
+.lh-fcol h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px}
+.lh-fcol ul{list-style:none}
+.lh-fcol ul li{margin-bottom:10px}
+.lh-fcol ul li a{color:rgba(255,255,255,.35);text-decoration:none;font-size:13px;transition:color .2s}
+.lh-fcol ul li a:hover{color:var(--gold-light)}
+.lh-fbot{max-width:1100px;margin:0 auto;border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.lh-fbot p{font-size:12px;color:rgba(255,255,255,.2)}
+.lh-flegal{display:flex;gap:20px}
+.lh-flegal a{font-size:12px;color:rgba(255,255,255,.2);text-decoration:none;transition:color .2s}
+.lh-flegal a:hover{color:var(--gold-light)}
+/* ANIMATIONS */
+.lh-fade{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.lh-fade.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.lh-hero-inner,.lh-ai-inner,.lh-trust-inner{grid-template-columns:1fr}.lh-hero-visual,.lh-ai-window{display:none}.lh-hero{padding:80px 24px 60px}.lh-steps,.lh-rev-grid,.lh-lf-grid{grid-template-columns:1fr}.lh-fg{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.lh-how,.lh-products,.lh-trust,.lh-reviews,.lh-lifestyle,.lh-ai,.lh-email{padding:60px 20px}.lh-stats{grid-template-columns:1fr 1fr}.lh-lf-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+<div class="lh">
+
+<!-- MOBILE STICKY CTA -->
+<div class="lh-mob">
+  <span>🎯 Get your personalised supplement plan</span>
+  <a href="/supplement-quiz">Start Free →</a>
+</div>
+
+<!-- HERO -->
+<section class="lh-hero">
+  <div class="lh-hero-inner">
+    <div class="lh-fade">
+      <div class="lh-eyebrow">Pharmacist Formulated · AI Precision Nutrition</div>
+      <h1 class="lh-h1">Supplements built for<br>your body. <em>Your roots.</em><br>Your goals.</h1>
+      <p class="lh-sub">Built by a <strong>pharmacist</strong>. Powered by <strong>advanced AI</strong>. The only supplement brand that understands Indian-American and multicultural diets — giving you a personalised plan in minutes.</p>
+      <div class="lh-btns">
+        <a href="/supplement-quiz" class="lh-btn-p">🎯 Get My Free Plan</a>
+        <a href="/shop" class="lh-btn-s">Shop Supplements →</a>
+      </div>
+      <div class="lh-trust">
+        <div class="lh-tc">Pharmacist Formulated</div>
+        <div class="lh-tc">Made in USA</div>
+        <div class="lh-tc">FDA Inspected Facility</div>
+        <div class="lh-tc">Non-GMO · Gluten Free</div>
+        <div class="lh-tc">30-Day Guarantee</div>
+      </div>
+    </div>
+    <div class="lh-hero-visual">
+      <div class="lh-prod-grid">
+        <div class="lh-pc">
+          <span class="lh-pc-badge">Website Only</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d8253ee59c1fc22878a_IMG_8467.jpeg" alt="7 Chakra Ayurvedic Complex">
+          <div class="lh-pc-name">7 Chakra</div>
+          <div class="lh-pc-price">$24.99</div>
+        </div>
+        <div class="lh-pc">
+          <span class="lh-pc-badge gold">★ Best Seller</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d7bcc9837f3bf598714_31uV9dzQzML._AC_.jpg" alt="BoneVite+">
+          <div class="lh-pc-name">BoneVite+</div>
+          <div class="lh-pc-price">$22.99</div>
+        </div>
+        <div class="lh-pc">
+          <span class="lh-pc-badge gold">★ Best Seller</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c321ab254b984de6_61E5X-OgXAL._AC_SX679_PIbundle-60%2CTopRight%2C0%2C0_SH20_.jpg" alt="Krill Oil">
+          <div class="lh-pc-name">Krill Oil 500mg</div>
+          <div class="lh-pc-price">$19.99</div>
+        </div>
+        <div class="lh-pc">
+          <span class="lh-pc-badge">Website Only</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d460535627b2b0671a8_sugaverve%20%20with%20certifications.png" alt="Sugaverve">
+          <div class="lh-pc-name">Sugaverve</div>
+          <div class="lh-pc-price">$29.99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="lh-tbar">
+  <div class="lh-tbar-inner">
+    <div class="lh-tbi">🔬 Third-Party Lab Tested</div>
+    <div class="lh-tbi">🌿 Non-GMO · Gluten Free</div>
+    <div class="lh-tbi">🚚 Free Shipping $35+</div>
+    <div class="lh-tbi">⭐ 4.8/5 Amazon Rating</div>
+    <div class="lh-tbi">🔄 30-Day Guarantee</div>
+    <div class="lh-tbi">🏭 FDA Inspected Facility</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="lh-how">
+  <div class="lh-section-inner">
+    <div class="lh-fade" style="text-align:center;margin-bottom:0">
+      <div class="lh-label" style="text-align:center">How It Works</div>
+      <h2 class="lh-h2" style="text-align:center">Your personalised plan<br>in <em>under 2 minutes</em></h2>
+      <p class="lh-desc" style="margin:12px auto 0;text-align:center">Stop guessing which supplements you need. Our AI analyses your cultural diet, body and goals to recommend exactly what works for you.</p>
+    </div>
+    <div class="lh-steps">
+      <div class="lh-step lh-fade">
+        <div class="lh-step-n">1</div>
+        <span class="lh-step-icon">🎯</span>
+        <div class="lh-step-title">Tell Us About You</div>
+        <div class="lh-step-desc">Your age, body, activity level, cultural background and health goals. Takes 90 seconds.</div>
+      </div>
+      <div class="lh-step lh-fade" style="transition-delay:.15s">
+        <div class="lh-step-n">2</div>
+        <span class="lh-step-icon">🤖</span>
+        <div class="lh-step-title">AI Builds Your Plan</div>
+        <div class="lh-step-desc">Advanced AI matched to clinical research maps your profile to specific nutritional gaps and supplements.</div>
+      </div>
+      <div class="lh-step lh-fade" style="transition-delay:.3s">
+        <div class="lh-step-n">3</div>
+        <span class="lh-step-icon">📈</span>
+        <div class="lh-step-title">Follow &amp; Thrive</div>
+        <div class="lh-step-desc">Your personalised supplement stack, calorie target and cultural recipes — all in one place.</div>
+      </div>
+    </div>
+    <div class="lh-cta-center lh-fade">
+      <a href="/supplement-quiz" class="lh-btn-p">Get My Free Personalised Plan →</a>
+      <p class="lh-cta-note">No email required · Free · Instant results</p>
+    </div>
+  </div>
+</section>
+
+<!-- AI DEMO -->
+<section class="lh-ai">
+  <div class="lh-ai-inner">
+    <div class="lh-ai-window lh-fade">
+      <div class="lh-ai-win-header">
+        <div class="lh-ai-dots"><span style="background:#FF5F57"></span><span style="background:#FFBC2E"></span><span style="background:#28C840"></span></div>
+        <span style="font-size:12px;color:var(--muted);margin-left:8px">Kurryculum AI — Personalised Plan</span>
+      </div>
+      <div class="lh-ai-body">
+        <div class="lh-msg user">
+          <div class="lh-msg-av">👤</div>
+          <div class="lh-msg-bub">I follow an Indian vegetarian diet, I'm 38, want to lose weight and have more energy</div>
+        </div>
+        <div class="lh-msg ai">
+          <div class="lh-msg-av">✨</div>
+          <div class="lh-msg-bub">Based on your Indian-American profile, here's your stack:</div>
+        </div>
+        <div class="lh-ai-result">
+          <div class="lh-air-title">Your Recommendation</div>
+          <div class="lh-air-item">Vitamin B-12 — 70% of Indian vegetarians deficient · $8.99</div>
+          <div class="lh-air-item">7 Chakra Complex — Ashwagandha for energy & stress · $24.99</div>
+          <div class="lh-air-item">Krill Oil — Omega-3 critical gap in South Asian diets · $19.99</div>
+          <div class="lh-air-item">Daily target: 1,680 kcal · 3 Indian recipes generated ✓</div>
+        </div>
+      </div>
+    </div>
+    <div class="lh-fade" style="transition-delay:.2s">
+      <div class="lh-label">AI Personalisation</div>
+      <h2 class="lh-h2">Built for Indian-American<br>&amp; <em>every cultural diet</em></h2>
+      <p class="lh-desc" style="margin:12px 0 0">Generic supplement brands ignore your cultural background. Kurryculum was built by a pharmacist specifically for Indian-American, South Asian and multicultural bodies.</p>
+      <div class="lh-ai-feats">
+        <div class="lh-ai-feat">
+          <div class="lh-ai-feat-icon">🌍</div>
+          <div class="lh-ai-feat-text">
+            <strong>12 Cultural Profiles Supported</strong>
+            <span>Indian, Indian-American, Pakistani, West African, Caribbean, Middle Eastern and more — each with unique nutritional gaps</span>
+          </div>
+        </div>
+        <div class="lh-ai-feat">
+          <div class="lh-ai-feat-icon">🧬</div>
+          <div class="lh-ai-feat-text">
+            <strong>Ethnicity-Specific BMR Calculation</strong>
+            <span>South Asian bodies metabolise differently to Western bodies. Our calculator adjusts for your ethnicity — no other brand does this</span>
+          </div>
+        </div>
+        <div class="lh-ai-feat">
+          <div class="lh-ai-feat-icon">🍽️</div>
+          <div class="lh-ai-feat-text">
+            <strong>AI Recipes from Your Own Cuisine</strong>
+            <span>Get 3 cultural recipes matching your calorie target — dal, biryani, idli, jollof, jerk chicken — your food, your goals</span>
+          </div>
+        </div>
+      </div>
+      <a href="/recipes-calculator" class="lh-btn-p" style="display:inline-flex">Try the Calculator Free →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="lh-products">
+  <div class="lh-prod-inner">
+    <div class="lh-prod-header">
+      <div>
+        <div class="lh-label">Shop Kurryculum</div>
+        <h2 class="lh-h2" style="margin-bottom:0">Nine supplements.<br>One wellness journey.</h2>
+      </div>
+      <div class="lh-filter">
+        <button class="lh-fb active" onclick="lhFilter('all',this)">All</button>
+        <button class="lh-fb" onclick="lhFilter('web',this)">Website Only</button>
+        <button class="lh-fb" onclick="lhFilter('amz',this)">Amazon Best Sellers</button>
+      </div>
+    </div>
+    <div class="lh-pgrid">
+
+      <!-- 7 CHAKRA -->
+      <div class="lh-pcard lh-fade" data-cat="web">
+        <div class="lh-pimg">
+          <span class="lh-pbadge" style="background:var(--forest)">Website Only</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d8253ee59c1fc22878a_IMG_8467.jpeg" alt="7 Chakra Ayurvedic Complex">
+        </div>
+        <div class="lh-pinfo">
+          <div class="lh-pbrand">Kurryculum</div>
+          <div class="lh-pname">7 Chakra Ayurvedic Complex</div>
+          <div class="lh-pstars">★★★★★ <span>(312)</span></div>
+          <div class="lh-pbenefits">
+            <div class="lh-pben">Anti-inflammatory with Turmeric &amp; Shilajit</div>
+            <div class="lh-pben">Stress relief via Ashwagandha adaptogen</div>
+            <div class="lh-pben">Digestive health with Triphala</div>
+          </div>
+          <div class="lh-ptags"><span class="lh-ptag">60 Capsules</span><span class="lh-ptag">Ayurvedic</span><span class="lh-ptag lh-ptag-w">Website Exclusive</span></div>
+          <div class="lh-pfoot"><span class="lh-pprice">$24.99</span><a href="/checkout" class="lh-btn-web">Buy on Website</a></div>
+        </div>
+      </div>
+
+      <!-- SUGAVERVE -->
+      <div class="lh-pcard lh-fade" data-cat="web" style="transition-delay:.1s">
+        <div class="lh-pimg">
+          <span class="lh-pbadge" style="background:var(--sage)">Website Only</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d460535627b2b0671a8_sugaverve%20%20with%20certifications.png" alt="Sugaverve Blood Sugar Support">
+        </div>
+        <div class="lh-pinfo">
+          <div class="lh-pbrand">Kurryculum</div>
+          <div class="lh-pname">Sugaverve</div>
+          <div class="lh-pstars">★★★★★ <span>(198)</span></div>
+          <div class="lh-pbenefits">
+            <div class="lh-pben">15+ ingredients for blood sugar support</div>
+            <div class="lh-pben">Chromium, Cinnamon &amp; Bitter Melon</div>
+            <div class="lh-pben">Made in USA, GMP Certified</div>
+          </div>
+          <div class="lh-ptags"><span class="lh-ptag">60 Vegan Caps</span><span class="lh-ptag lh-ptag-w">Website Exclusive</span></div>
+          <div class="lh-pfoot"><span class="lh-pprice">$29.99</span><a href="/checkout" class="lh-btn-web">Buy on Website</a></div>
+        </div>
+      </div>
+
+      <!-- BEET ROOT -->
+      <div class="lh-pcard lh-fade" data-cat="web" style="transition-delay:.2s">
+        <div class="lh-pimg">
+          <span class="lh-pbadge" style="background:var(--red)">Website Only</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d5489116b61c2b4aff4_BeetRoot.jpg" alt="Beet Root Plus Black Pepper">
+        </div>
+        <div class="lh-pinfo">
+          <div class="lh-pbrand">Kurryculum</div>
+          <div class="lh-pname">Beet Root + Black Pepper</div>
+          <div class="lh-pstars">★★★★★ <span>(441)</span></div>
+          <div class="lh-pbenefits">
+            <div class="lh-pben">Athletic performance &amp; circulation</div>
+            <div class="lh-pben">Natural nitric oxide boost</div>
+            <div class="lh-pben">20x absorption with black pepper</div>
+          </div>
+          <div class="lh-ptags"><span class="lh-ptag">60 Tablets</span><span class="lh-ptag">2-Month Supply</span><span class="lh-ptag lh-ptag-w">Website Exclusive</span></div>
+          <div class="lh-pfoot"><span class="lh-pprice">$9.99</span><a href="/checkout" class="lh-btn-web">Buy on Website</a></div>
+        </div>
+      </div>
+
+      <!-- VITAMIN B12 -->
+      <div class="lh-pcard lh-fade" data-cat="web" style="transition-delay:.3s">
+        <div class="lh-pimg">
+          <span class="lh-pbadge" style="background:var(--forest)">Website Only</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c591d0f8777d3a89_VitB12.jpg" alt="Vitamin B12">
+        </div>
+        <div class="lh-pinfo">
+          <div class="lh-pbrand">Kurryculum</div>
+          <div class="lh-pname">Vitamin B-12</div>
+          <div class="lh-pstars">★★★★★ <span>(287)</span></div>
+          <div class="lh-pbenefits">
+            <div class="lh-pben">Cellular energy &amp; metabolism</div>
+            <div class="lh-pben">Essential for vegetarian Indian diets</div>
+            <div class="lh-pben">Fast-dissolve formula</div>
+          </div>
+          <div class="lh-ptags"><span class="lh-ptag">60 Tablets</span><span class="lh-ptag">Vegetarian</span><span class="lh-ptag lh-ptag-w">Website Exclusive</span></div>
+          <div class="lh-pfoot"><span class="lh-pprice">$8.99</span><a href="/checkout" class="lh-btn-web">Buy on Website</a></div>
+        </div>
+      </div>
+
+      <!-- BONEVITE+ -->
+      <div class="lh-pcard lh-fade" data-cat="amz">
+        <div class="lh-pimg">
+          <span class="lh-pbadge" style="background:var(--gold)">★ Amazon #1</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d7bcc9837f3bf598714_31uV9dzQzML._AC_.jpg" alt="BoneVite+">
+        </div>
+        <div class="lh-pinfo">
+          <div class="lh-pbrand">Kurryculum</div>
+          <div class="lh-pname">BoneVite+</div>
+          <div class="lh-pstars">★★★★★ <span>(189)</span></div>
+          <div class="lh-pbenefits">
+            <div class="lh-pben">Glucosamine, Chondroitin &amp; MSM</div>
+            <div class="lh-pben">Elderberry for immune support</div>
+            <div class="lh-pben">Pharmacist recommended</div>
+          </div>
+          <div class="lh-ptags"><span class="lh-ptag">90 Tablets</span><span class="lh-ptag lh-ptag-a">Amazon Best Seller</span></div>
+          <div class="lh-pfoot"><span class="lh-pprice">$22.99</span><a href="https://www.amazon.com/dp/B0DV4385Z1?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="lh-btn-amz">Buy on Amazon</a></div>
+        </div>
+      </div>
+
+      <!-- KRILL OIL -->
+      <div class="lh-pcard lh-fade" data-cat="amz" style="transition-delay:.1s">
+        <div class="lh-pimg">
+          <span class="lh-pbadge" style="background:var(--gold)">★ Amazon #1</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c321ab254b984de6_61E5X-OgXAL._AC_SX679_PIbundle-60%2CTopRight%2C0%2C0_SH20_.jpg" alt="Krill Oil 500mg">
+        </div>
+        <div class="lh-pinfo">
+          <div class="lh-pbrand">Kurryculum</div>
+          <div class="lh-pname">Krill Oil 500mg</div>
+          <div class="lh-pstars">★★★★★ <span>(367)</span></div>
+          <div class="lh-pbenefits">
+            <div class="lh-pben">EPA, DHA &amp; Omega 3,6,9</div>
+            <div class="lh-pben">Astaxanthin antioxidant</div>
+            <div class="lh-pben">Antarctic sourced, burpless</div>
+          </div>
+          <div class="lh-ptags"><span class="lh-ptag">60 Softgels</span><span class="lh-ptag lh-ptag-a">Amazon Best Seller</span></div>
+          <div class="lh-pfoot"><span class="lh-pprice">$19.99</span><a href="https://www.amazon.com/dp/B0DN2RTWVL?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="lh-btn-amz">Buy on Amazon</a></div>
+        </div>
+      </div>
+
+      <!-- COLLAGEN -->
+      <div class="lh-pcard lh-fade" data-cat="amz" style="transition-delay:.2s">
+        <div class="lh-pimg">
+          <span class="lh-pbadge" style="background:var(--gold)">★ Amazon #1</span>
+          <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d5442c8245c27c16f49_61UCAEobscL._AC_UL640_FMwebp_QL65_.webp" alt="Collagen Peptides">
+        </div>
+        <div class="lh-pinfo">
+          <div class="lh-pbrand">Kurryculum</div>
+          <div class="lh-pname">Collagen Peptides</div>
+          <div class="lh-pstars">★★★★★ <span>(203)</span></div>
+          <div class="lh-pbenefits">
+            <div class="lh-pben">Grass-fed Type I &amp; III collagen</div>
+            <div class="lh-pben">Skin, hair, nails &amp; joints</div>
+            <div class="lh-pben">Unflavored, mixes instantly</div>
+          </div>
+          <div class="lh-ptags"><span class="lh-ptag">16oz / 45 Servings</span><span class="lh-ptag lh-ptag-a">Amazon Best Seller</span></div>
+          <div class="lh-pfoot"><span class="lh-pprice">$27.99</span><a href="https://www.amazon.com/dp/B0FPY6ZLYY?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="lh-btn-amz">Buy on Amazon</a></div>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a href="/shop" class="lh-btn-s">View All 9 Products →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE IMAGES -->
+<section class="lh-lifestyle">
+  <div class="lh-lf-inner">
+    <div class="lh-fade" style="text-align:center">
+      <div class="lh-label" style="text-align:center">Science Meets Heritage</div>
+      <h2 class="lh-h2" style="text-align:center">Real products. <em>Real results.</em></h2>
+    </div>
+    <div class="lh-lf-grid">
+      <div class="lh-lf-card lh-fade"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d8253ee59c1fc22878a_IMG_8467.jpeg" alt="7 Chakra Formulated in USA FDA Inspected"><div class="lh-lf-overlay"><div class="lh-lf-name">7 Chakra Complex</div><div class="lh-lf-sub">Formulated in USA · FDA Inspected</div></div></div>
+      <div class="lh-lf-card lh-fade" style="transition-delay:.1s"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d460535627b2b0671a8_sugaverve%20%20with%20certifications.png" alt="Sugaverve Balanced Blood Sugar Made in USA"><div class="lh-lf-overlay"><div class="lh-lf-name">Sugaverve</div><div class="lh-lf-sub">Balanced Blood Sugar · Made in USA</div></div></div>
+      <div class="lh-lf-card lh-fade" style="transition-delay:.2s"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d7bcc9837f3bf598714_31uV9dzQzML._AC_.jpg" alt="BoneVite Plus Amazon Best Seller Bone Joint Health"><div class="lh-lf-overlay"><div class="lh-lf-name">BoneVite+ — Amazon #1</div><div class="lh-lf-sub">Smarter Choice for Bone &amp; Joint</div></div></div>
+      <div class="lh-lf-card lh-fade"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c321ab254b984de6_61E5X-OgXAL._AC_SX679_PIbundle-60%2CTopRight%2C0%2C0_SH20_.jpg" alt="Krill Oil Amazon Best Seller Heart Brain Joint Support"><div class="lh-lf-overlay"><div class="lh-lf-name">Krill Oil — Amazon #1</div><div class="lh-lf-sub">Heart, Brain &amp; Joint Support</div></div></div>
+      <div class="lh-lf-card lh-fade" style="transition-delay:.1s"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d5489116b61c2b4aff4_BeetRoot.jpg" alt="Beet Root Plus Black Pepper Athletic Performance Energy"><div class="lh-lf-overlay"><div class="lh-lf-name">Beet Root + Black Pepper</div><div class="lh-lf-sub">Daily Energy · Athletic Performance</div></div></div>
+      <div class="lh-lf-card lh-fade" style="transition-delay:.2s"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c591d0f8777d3a89_VitB12.jpg" alt="Vitamin B12 Cellular Energy Non-GMO Gluten Free"><div class="lh-lf-overlay"><div class="lh-lf-name">Vitamin B-12</div><div class="lh-lf-sub">Cellular Energy · Non-GMO · Gluten Free</div></div></div>
+    </div>
+    <div class="lh-cert-row">
+      <div class="lh-cert"><span class="lh-cert-icon">🇺🇸</span><span class="lh-cert-text">Formulated in USA</span></div>
+      <div class="lh-cert"><span class="lh-cert-icon">🏭</span><span class="lh-cert-text">FDA Inspected Facility</span></div>
+      <div class="lh-cert"><span class="lh-cert-icon">🌿</span><span class="lh-cert-text">Non-GMO · Gluten Free</span></div>
+      <div class="lh-cert"><span class="lh-cert-icon">✓</span><span class="lh-cert-text">GMP Certified</span></div>
+      <div class="lh-cert"><span class="lh-cert-icon">🔬</span><span class="lh-cert-text">Third-Party Lab Tested</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHARMACIST TRUST -->
+<section class="lh-trust">
+  <div class="lh-trust-inner">
+    <div class="lh-fade">
+      <div class="lh-label">Formulated with Clinical Insight</div>
+      <h2 class="lh-h2">Built by a pharmacist.<br><em>Trusted by thousands.</em></h2>
+      <p class="lh-desc" style="margin:14px 0 0">Kurryculum was founded because the supplement industry ignores your heritage. Different cultures have different nutritional gaps — your supplements should reflect that.</p>
+      <div class="lh-cred-list">
+        <div class="lh-cred"><div class="lh-cred-title">🔬 Every Formula Clinically Reviewed</div><div class="lh-cred-desc">Each supplement reviewed against peer-reviewed research before formulation. No proprietary blends hiding underdosed ingredients.</div></div>
+        <div class="lh-cred"><div class="lh-cred-title">🧪 Third-Party Lab Tested</div><div class="lh-cred-desc">Independent lab testing for purity, potency and contaminants. COAs available on request. FDA-inspected manufacturing.</div></div>
+        <div class="lh-cred"><div class="lh-cred-title">🌍 Culturally Informed Formulas</div><div class="lh-cred-desc">South Asian vegetarian diets lack B12. Indian-Americans face elevated T2D risk. Our formulas address the gaps specific to your background.</div></div>
+      </div>
+    </div>
+    <div class="lh-fade" style="transition-delay:.2s">
+      <div class="lh-stats">
+        <div class="lh-stat"><div class="lh-stat-n">9</div><div class="lh-stat-l">Products</div></div>
+        <div class="lh-stat"><div class="lh-stat-n">4.8★</div><div class="lh-stat-l">Avg Rating</div></div>
+        <div class="lh-stat"><div class="lh-stat-n">2,500+</div><div class="lh-stat-l">Reviews</div></div>
+        <div class="lh-stat"><div class="lh-stat-n">12</div><div class="lh-stat-l">Ethnicities</div></div>
+      </div>
+      <div class="lh-quiz-prompt">
+        <p>Not sure which supplements you need?</p>
+        <a href="/supplement-quiz" class="lh-btn-p" style="display:inline-flex;justify-content:center">Take the Free 5-Question Quiz →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="lh-reviews">
+  <div class="lh-rev-inner">
+    <div class="lh-fade" style="text-align:center">
+      <div class="lh-label" style="text-align:center">Real Reviews</div>
+      <h2 class="lh-h2" style="text-align:center">What our customers say</h2>
+    </div>
+    <div class="lh-rev-grid">
+      <div class="lh-rev-card lh-fade">
+        <div class="lh-rev-stars">★★★★★</div>
+        <p class="lh-rev-text">"As a South Asian vegetarian I always struggled with energy. After 4 weeks on B12 and 7 Chakra the difference is unreal. Finally a brand that understands my diet."</p>
+        <div class="lh-rev-author"><div class="lh-rev-av" style="background:linear-gradient(135deg,var(--forest),var(--sage))">P</div><div><div class="lh-rev-name">Priya M.</div><div class="lh-rev-loc">Kansas City, MO</div></div></div>
+        <span class="lh-rev-prod">Vitamin B-12 + 7 Chakra</span>
+      </div>
+      <div class="lh-rev-card lh-fade" style="transition-delay:.15s">
+        <div class="lh-rev-stars">★★★★★</div>
+        <p class="lh-rev-text">"BoneVite+ is the only joint supplement that has actually worked. 6 weeks in and I can walk down stairs without pain. The 3-month supply is incredible value."</p>
+        <div class="lh-rev-author"><div class="lh-rev-av" style="background:linear-gradient(135deg,#2A6B1F,#1A4A10)">K</div><div><div class="lh-rev-name">Kwame A.</div><div class="lh-rev-loc">Houston, TX</div></div></div>
+        <span class="lh-rev-prod">BoneVite+ — Amazon</span>
+      </div>
+      <div class="lh-rev-card lh-fade" style="transition-delay:.3s">
+        <div class="lh-rev-stars">★★★★★</div>
+        <p class="lh-rev-text">"The calorie calculator gave me recipes for Indian food! I've used every app and none had dal, rajma or biryani. Kurryculum actually gets my diet."</p>
+        <div class="lh-rev-author"><div class="lh-rev-av" style="background:linear-gradient(135deg,var(--gold),#B07010)">A</div><div><div class="lh-rev-name">Ananya S.</div><div class="lh-rev-loc">Chicago, IL</div></div></div>
+        <span class="lh-rev-prod">AI Calorie Calculator + Krill Oil</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<section class="lh-email">
+  <div class="lh-email-inner lh-fade">
+    <h2>Get 10% off your first order</h2>
+    <p>Weekly cultural wellness guides, new product alerts and exclusive subscriber-only codes for Indian-American and multicultural health.</p>
+    <div class="lh-email-perks">
+      <div class="lh-ep">Free Cultural Recipe PDF</div>
+      <div class="lh-ep">10% off first order</div>
+      <div class="lh-ep">Early access to new products</div>
+    </div>
+    <div class="lh-email-form">
+      <input type="email" class="lh-einput" id="lh-email-in" placeholder="Enter your email address">
+      <button class="lh-ebtn" onclick="lhSubscribe()">Get My 10% Off</button>
+    </div>
+    <p id="lh-email-ok" class="lh-email-ok">🎉 Check your inbox for your discount code!</p>
+    <p class="lh-email-note">No spam. Unsubscribe anytime. Never sold.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="lh-footer">
+  <div class="lh-fg">
+    <div>
+      <div class="lh-fbrand">Kurryculum</div>
+      <p class="lh-ftagline">Premium supplements crafted for every culture. Rooted in heritage, backed by science. Pharmacist formulated. Made in the USA.</p>
+      <p class="lh-fdisc">* These statements have not been evaluated by the FDA. These products are not intended to diagnose, treat, cure, or prevent any disease.</p>
+    </div>
+    <div class="lh-fcol"><h4>Products</h4><ul><li><a href="/shop">7 Chakra Complex</a></li><li><a href="/shop">Sugaverve</a></li><li><a href="/shop">Beet Root</a></li><li><a href="/shop">Vitamin B-12</a></li><li><a href="https://www.amazon.com/s?k=kurryculum&tag=kurryculum20-20" target="_blank">Amazon Store</a></li></ul></div>
+    <div class="lh-fcol"><h4>Tools</h4><ul><li><a href="/supplement-quiz">Supplement Quiz</a></li><li><a href="/recipes-calculator">Calorie Calculator</a></li><li><a href="/blog">Wellness Blog</a></li><li><a href="/about">Our Story</a></li></ul></div>
+    <div class="lh-fcol"><h4>Support</h4><ul><li><a href="mailto:hello@kurryculum.com">Contact Us</a></li><li><a href="/checkout">Checkout</a></li><li><a href="/blog">FAQ</a></li></ul></div>
+  </div>
+  <div class="lh-fbot">
+    <p>© 2026 Kurryculum. All rights reserved. Kansas City, MO.</p>
+    <div class="lh-flegal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">FDA Disclaimer</a><a href="#">Affiliate Disclosure</a></div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+function lhFilter(cat, btn) {
+  document.querySelectorAll('.lh-fb').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.lh-pcard').forEach(c => {
+    c.style.display = cat === 'all' ? 'flex' : c.dataset.cat === cat ? 'flex' : 'none';
+  });
+}
+
+async function lhSubscribe() {
+  var email = document.getElementById('lh-email-in').value.trim();
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  try {
+    if (window.KURRY) await fetch(window.KURRY.VERCEL + '/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'homepage_footer' }) });
+  } catch(e) {}
+  document.getElementById('lh-email-ok').style.display = 'block';
+  document.getElementById('lh-email-in').value = '';
+}
+
+var lhObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.lh-fade').forEach(el => lhObs.observe(el));
+
+document.querySelectorAll('.lh-btn-web, .lh-btn-amz').forEach(btn => {
+  btn.addEventListener('click', () => {
+    var card = btn.closest('.lh-pcard');
+    if (card && window.dataLayer) window.dataLayer.push({ event: 'product_click', product: card.querySelector('.lh-pname')?.textContent, channel: btn.classList.contains('lh-btn-amz') ? 'amazon' : 'website' });
+  });
+});
+</script>
