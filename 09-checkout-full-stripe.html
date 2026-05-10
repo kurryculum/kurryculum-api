@@ -1,0 +1,382 @@
+
+<script>window.KURRY={VERCEL:'https://kurryculum-api-djm8.vercel.app',TAG:'kurryculum20-20'};</script>
+<!--
+KURRYCULUM CHECKOUT — FULL STRIPE BACKEND VERSION
+Replace your existing checkout embed with this version.
+This connects to your Vercel backend to handle actual charges.
+
+BEFORE USING:
+1. Deploy your Vercel backend (see vercel-stripe-backend.md)
+2. Replace VERCEL_URL below with your actual Vercel URL
+3. Set your Stripe publishable key at /store-settings
+-->
+<style>
+body,html{background:#FAFAF7!important;color:#1A2E1A!important}
+*{box-sizing:border-box}
+
+.co-sub-toggle{background:#F0F7F4;border:1.5px solid #52796F;border-radius:12px;padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.co-sub-left{flex:1}
+.co-sub-title{font-size:15px;font-weight:700;color:#1B4332;margin-bottom:3px}
+.co-sub-desc{font-size:12px;color:#52796F}
+.co-sub-badge{background:#1B4332;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-left:8px}
+.co-switch{position:relative;width:44px;height:24px;flex-shrink:0}
+.co-switch input{opacity:0;width:0;height:0}
+.co-slider{position:absolute;cursor:pointer;inset:0;background:#ccc;border-radius:12px;transition:.3s}
+.co-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
+.co-switch input:checked+.co-slider{background:#1B4332}
+.co-switch input:checked+.co-slider::before{transform:translateX(20px)}
+
+.co-wrap{background:#f9f7f4;min-height:100vh;padding:40px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.co-inner{max-width:980px;margin:0 auto}
+.co-back{color:#C4521A;text-decoration:none;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px}
+.co-title{font-size:28px;font-weight:700;color:#1a1208;margin:0 0 32px}
+.co-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.co-card{background:#fff;border-radius:14px;padding:24px;margin-bottom:20px;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.co-card h2{font-size:15px;font-weight:700;color:#1a1208;margin:0 0 18px}
+.co-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f0ebe3;font-size:14px;color:#3a3028}
+.co-total{display:flex;justify-content:space-between;padding:14px 0;font-size:17px;font-weight:700;color:#1a1208}
+.co-empty{color:#aaa;font-size:14px;font-style:italic}
+.co-secure{background:#e8f5e9;border-radius:8px;padding:12px 14px;font-size:12px;color:#2e7d32;display:flex;align-items:center;gap:8px}
+.co-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#6B5C4A;display:block;margin-bottom:5px}
+.co-input{width:100%;padding:11px 13px;border:1.5px solid #E8E2D9;border-radius:8px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+.co-input:focus{border-color:#C4521A}
+.co-select{width:100%;padding:11px 13px;border:1.5px solid #E8E2D9;border-radius:8px;font-size:14px;font-family:inherit;outline:none;background:#fff;cursor:pointer}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.row1{margin-bottom:12px}
+#co-card-el{border:1.5px solid #E8E2D9;border-radius:8px;padding:13px;min-height:44px;background:#fff;transition:border-color .2s}
+#co-card-el.StripeElement--focus{border-color:#C4521A}
+#co-card-err{color:#e53935;font-size:12px;margin-top:6px;min-height:16px}
+.co-btn{width:100%;background:#C4521A;color:#fff;border:none;padding:16px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s;margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px}
+.co-btn:hover:not(:disabled){background:#2C1F14}
+.co-btn:disabled{background:#ccc;cursor:not-allowed}
+.co-powered{text-align:center;font-size:11px;color:#aaa;margin-top:10px}
+.co-alert{border-radius:8px;padding:12px 14px;font-size:13px;margin-bottom:12px}
+.co-alert-warn{background:#fff3cd;border:1px solid #ffc107;color:#856404}
+.co-alert-info{background:#e3f2fd;border:1px solid #90caf9;color:#1565c0}
+.co-success{display:none;text-align:center;padding:40px 20px}
+.co-success-icon{font-size:64px;margin-bottom:16px}
+.co-success h2{font-size:26px;font-weight:700;margin:0 0 8px;color:#1a1208}
+.co-success p{color:#6B5C4A;font-size:15px;margin:0 0 24px}
+.co-success a{display:inline-block;background:#C4521A;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700}
+.co-spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:700px){.co-grid{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
+</style>
+
+<div class="co-wrap">
+<div class="co-inner">
+
+  <a href="/shop" class="co-back">← Back to Shop</a>
+  <h1 class="co-title">Secure Checkout</h1>
+
+  <div class="co-grid">
+    <!-- LEFT: ORDER SUMMARY -->
+    <div>
+      <div class="co-card">
+        <h2>🛒 Order Summary</h2>
+        <div id="co-items"><p class="co-empty">Your cart is empty. <a href="/shop" style="color:#C4521A">Browse products →</a></p></div>
+        <div style="border-top:1.5px solid #eee;margin-top:8px;padding-top:8px">
+          <div class="co-row"><span>Subtotal</span><span id="co-subtotal">$0.00</span></div>
+          <div class="co-row"><span>Shipping</span><span id="co-shipping">Free over $35</span></div>
+          <div class="co-row"><span>Tax (<span id="co-tax-lbl">select state</span>)</span><span id="co-tax-amt">$0.00</span></div>
+          <div class="co-total"><span>Total</span><span id="co-total">$0.00</span></div>
+        </div>
+      </div>
+      <div class="co-secure">🔒 Secured by Stripe · 256-bit SSL · PCI DSS Compliant · We never store card details</div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div>
+      <div class="co-card" id="co-form-section">
+        <div class="co-sub-toggle" id="co-sub-box">
+  <div class="co-sub-left">
+    <div class="co-sub-title">Subscribe &amp; Save 15% <span class="co-sub-badge">Best Value</span></div>
+    <div class="co-sub-desc">Free shipping every order &bull; Cancel anytime &bull; Save $4–$5 per bottle</div>
+  </div>
+  <label class="co-switch">
+    <input type="checkbox" id="co-sub-check" onchange="coToggleSub(this.checked)">
+    <span class="co-slider"></span>
+  </label>
+</div>
+<h2>📦 Shipping Details</h2>
+        <div class="row2">
+          <div><label class="co-label">First Name</label><input class="co-input" id="co-fname" type="text" placeholder="Jane" autocomplete="given-name"></div>
+          <div><label class="co-label">Last Name</label><input class="co-input" id="co-lname" type="text" placeholder="Smith" autocomplete="family-name"></div>
+        </div>
+        <div class="row1"><label class="co-label">Email Address</label><input class="co-input" id="co-email" type="email" placeholder="jane@example.com" autocomplete="email"></div>
+        <div class="row1"><label class="co-label">Street Address</label><input class="co-input" id="co-addr" type="text" placeholder="123 Main St" autocomplete="address-line1"></div>
+        <div class="row2">
+          <div><label class="co-label">City</label><input class="co-input" id="co-city" type="text" placeholder="Chicago" autocomplete="address-level2"></div>
+          <div><label class="co-label">ZIP Code</label><input class="co-input" id="co-zip" type="text" placeholder="60601" autocomplete="postal-code"></div>
+        </div>
+        <div class="row1">
+          <label class="co-label">State</label>
+          <select class="co-select" id="co-state" onchange="coTaxUpdate()"><option value="">Select your state...</option></select>
+        </div>
+
+        <div style="margin-top:20px;padding-top:20px;border-top:1px solid #f0ebe3">
+          <h2 style="font-size:15px;font-weight:700;color:#1a1208;margin:0 0 14px">💳 Payment</h2>
+          <div id="co-stripe-warning" class="co-alert co-alert-warn" style="display:none">
+            ⚠️ Stripe not configured. <a href="/store-settings" style="color:#C4521A;font-weight:600">Add your key in Settings →</a>
+          </div>
+          <div id="co-backend-warning" class="co-alert co-alert-info" style="display:none">
+            ℹ️ Backend not connected. <a href="#" style="color:#1565c0;font-weight:600">See setup guide →</a>
+          </div>
+          <div id="co-card-el"><em style="color:#aaa;font-size:14px">Loading secure payment form...</em></div>
+          <div id="co-card-err"></div>
+          <button class="co-btn" id="co-pay-btn" onclick="coSubmit()">🔒 Pay Securely</button>
+          <div class="co-powered">Powered by Stripe · Verified secure checkout</div>
+        </div>
+      </div>
+
+      <div class="co-success" id="co-success">
+        <div class="co-success-icon">🎉</div>
+        <h2>Order Confirmed!</h2>
+        <p>Thank you for your order. A confirmation email will be sent to <span id="co-success-email"></span>. Your supplements will ship within 1–2 business days.</p>
+        <a href="/shop">Continue Shopping</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+// ================================================================
+// CONFIGURATION — update these when you deploy your Vercel backend
+// ================================================================
+var CO_CONFIG = {
+  // Replace with your actual Vercel URL once deployed:
+  VERCEL_URL: 'https://kurryculum-api.vercel.app',
+  // Replace with your Amazon Associates tracking ID:
+  AMAZON_TAG: 'kurryculum-20'
+};
+
+// US State tax rates — all 50 states + DC
+var CO_TAX = {
+  AL:4,AK:0,AZ:5.6,AR:6.5,CA:7.25,CO:2.9,CT:6.35,DE:0,FL:6,GA:4,
+  HI:4,ID:6,IL:6.25,IN:7,IA:6,KS:6.5,KY:6,LA:4.45,ME:5.5,MD:6,
+  MA:6.25,MI:6,MN:6.875,MS:7,MO:4.225,MT:0,NE:5.5,NV:6.85,NH:0,NJ:6.625,
+  NM:5,NY:4,NC:4.75,ND:5,OH:5.75,OK:4.5,OR:0,PA:6,RI:7,SC:6,
+  SD:4.5,TN:7,TX:6.25,UT:6.1,VT:6,VA:5.3,WA:6.5,WV:6,WI:5,WY:4,DC:6
+};
+
+var CO_STATES = {
+  AL:'Alabama',AK:'Alaska',AZ:'Arizona',AR:'Arkansas',CA:'California',
+  CO:'Colorado',CT:'Connecticut',DE:'Delaware',FL:'Florida',GA:'Georgia',
+  HI:'Hawaii',ID:'Idaho',IL:'Illinois',IN:'Indiana',IA:'Iowa',
+  KS:'Kansas',KY:'Kentucky',LA:'Louisiana',ME:'Maine',MD:'Maryland',
+  MA:'Massachusetts',MI:'Michigan',MN:'Minnesota',MS:'Mississippi',MO:'Missouri',
+  MT:'Montana',NE:'Nebraska',NV:'Nevada',NH:'New Hampshire',NJ:'New Jersey',
+  NM:'New Mexico',NY:'New York',NC:'North Carolina',ND:'North Dakota',OH:'Ohio',
+  OK:'Oklahoma',OR:'Oregon',PA:'Pennsylvania',RI:'Rhode Island',SC:'South Carolina',
+  SD:'South Dakota',TN:'Tennessee',TX:'Texas',UT:'Utah',VT:'Vermont',
+  VA:'Virginia',WA:'Washington',WV:'West Virginia',WI:'Wisconsin',WY:'Wyoming',
+  DC:'Washington DC'
+};
+
+// Demo cart — in production, read from sessionStorage or KurryCart
+var coCart = window.KurryCart && window.KurryCart.items.length
+  ? window.KurryCart.items
+  : [
+    { id: 'sugaverve',  name: 'Sugaverve',                price: 29.99, qty: 1 },
+    { id: '7-chakra',   name: '7 Chakra Ayurvedic Complex', price: 24.99, qty: 1 }
+  ];
+
+
+var coIsSubscription = false;
+function coToggleSub(on) {
+  coIsSubscription = on;
+  var badge = document.getElementById('co-sub-box');
+  badge.style.borderColor = on ? '#C9951A' : '#52796F';
+  badge.style.background = on ? '#FFFBF0' : '#F0F7F4';
+  coRenderCart();
+}
+function coGetPrice(basePrice) {
+  return coIsSubscription ? Math.round(basePrice * 0.85 * 100) / 100 : basePrice;
+}
+
+var coStripe = null;
+var coCard = null;
+
+// ---- INIT ----
+document.addEventListener('DOMContentLoaded', function() {
+  // Populate state dropdown
+  var sel = document.getElementById('co-state');
+  Object.keys(CO_STATES).sort().forEach(function(k) {
+    var o = document.createElement('option');
+    o.value = k;
+    o.textContent = CO_STATES[k] + ' (' + k + ')';
+    sel.appendChild(o);
+  });
+
+  // Render cart items
+  coRenderCart();
+
+  // Load Stripe
+  var pk = localStorage.getItem('kurry_pk');
+  if (!pk) {
+    document.getElementById('co-stripe-warning').style.display = 'block';
+    document.getElementById('co-card-el').innerHTML = '';
+    document.getElementById('co-pay-btn').disabled = true;
+    return;
+  }
+
+  var s = document.createElement('script');
+  s.src = 'https://js.stripe.com/v3/';
+  s.onload = function() {
+    try {
+      coStripe = Stripe(pk);
+      var elements = coStripe.elements();
+      coCard = elements.create('card', {
+        style: { base: { fontSize: '15px', color: '#1a1208', fontFamily: '-apple-system,sans-serif', '::placeholder': { color: '#aaa' } } }
+      });
+      coCard.mount('#co-card-el');
+      coCard.on('change', function(e) {
+        document.getElementById('co-card-err').textContent = e.error ? e.error.message : '';
+      });
+    } catch(e) {
+      document.getElementById('co-card-el').innerHTML = '<span style="color:#e53935">Failed to load payment form. Please refresh.</span>';
+    }
+  };
+  document.head.appendChild(s);
+});
+
+// ---- CART ----
+function coRenderCart() {
+  if (!coCart || coCart.length === 0) return;
+  var sub = coCart.reduce(function(s,i) { return s + (coGetPrice(i.price) * i.qty); }, 0);
+  var html = coCart.map(function(i) {
+    return '<div class="co-row"><span>' + i.name + ' &times;' + i.qty + '</span><span>$' + (coGetPrice(i.price) * i.qty).toFixed(2) + '</span></div>';
+  }).join('');
+  document.getElementById('co-items').innerHTML = html;
+  document.getElementById('co-subtotal').textContent = '$' + sub.toFixed(2);
+  document.getElementById('co-shipping').textContent = sub >= 35 ? 'Free' : '$5.99';
+  document.getElementById('co-total').textContent = '$' + (sub + (sub < 35 ? 5.99 : 0)).toFixed(2);
+}
+
+// ---- TAX ----
+function coTaxUpdate() {
+  var st = document.getElementById('co-state').value;
+  var sub = coCart.reduce(function(s,i) { return s + (coGetPrice(i.price) * i.qty); }, 0);
+  var taxRate = (CO_TAX[st] || 0) / 100;
+  var tax = parseFloat((sub * taxRate).toFixed(2));
+  var ship = sub >= 35 ? 0 : 5.99;
+  var total = parseFloat((sub + tax + ship).toFixed(2));
+  document.getElementById('co-tax-lbl').textContent = st ? (CO_STATES[st] + ' ' + Math.round(taxRate * 100) + '%') : 'select state';
+  document.getElementById('co-tax-amt').textContent = '$' + tax.toFixed(2);
+  document.getElementById('co-shipping').textContent = sub >= 35 ? 'Free' : '$5.99';
+  document.getElementById('co-total').textContent = '$' + total.toFixed(2);
+}
+
+// ---- VALIDATE ----
+function coValidate() {
+  var required = [
+    ['co-fname', 'first name'],
+    ['co-lname', 'last name'],
+    ['co-email', 'email address'],
+    ['co-addr', 'street address'],
+    ['co-city', 'city'],
+    ['co-zip', 'ZIP code']
+  ];
+  for (var i = 0; i < required.length; i++) {
+    var el = document.getElementById(required[i][0]);
+    if (!el || !el.value.trim()) {
+      alert('Please enter your ' + required[i][1] + '.');
+      if (el) el.focus();
+      return false;
+    }
+  }
+  var email = document.getElementById('co-email').value;
+  if (!email.includes('@') || !email.includes('.')) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+  if (!document.getElementById('co-state').value) {
+    alert('Please select your state for tax calculation.');
+    return false;
+  }
+  return true;
+}
+
+// ---- SUBMIT ----
+async function coSubmit() {
+  if (!coValidate()) return;
+  if (!coStripe || !coCard) {
+    document.getElementById('co-card-err').textContent = 'Payment system not ready. Please check your settings.';
+    return;
+  }
+
+  var btn = document.getElementById('co-pay-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="co-spinner"></span> Processing...';
+  document.getElementById('co-card-err').textContent = '';
+
+  var name = document.getElementById('co-fname').value.trim() + ' ' + document.getElementById('co-lname').value.trim();
+  var email = document.getElementById('co-email').value.trim();
+  var state = document.getElementById('co-state').value;
+
+  try {
+    // Step 1: Create PaymentIntent on Vercel backend
+    var intentRes = await fetch(CO_CONFIG.VERCEL_URL + '/api/create-payment-intent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: coCart.map(function(i) { return { id: i.id || i.name.toLowerCase().replace(/\s+/g,'-'), qty: i.qty }; }),
+        subscription: coIsSubscription,
+        state: state,
+        customer: {
+          name: name,
+          email: email,
+          address: document.getElementById('co-addr').value.trim(),
+          city: document.getElementById('co-city').value.trim(),
+          zip: document.getElementById('co-zip').value.trim()
+        }
+      })
+    });
+
+    var intentData = await intentRes.json();
+    if (!intentRes.ok) throw new Error(intentData.error || 'Backend error');
+
+    // Update totals with server-calculated values (tax, shipping)
+    var b = intentData.breakdown;
+    document.getElementById('co-tax-amt').textContent = '$' + (b.tax / 100).toFixed(2);
+    document.getElementById('co-shipping').textContent = b.freeShipping ? 'Free' : '$5.99';
+    document.getElementById('co-total').textContent = '$' + (b.total / 100).toFixed(2);
+
+    // Step 2: Confirm payment with Stripe.js on frontend
+    var confirmResult = await coStripe.confirmCardPayment(intentData.clientSecret, {
+      payment_method: {
+        card: coCard,
+        billing_details: {
+          name: name,
+          email: email,
+          address: {
+            line1: document.getElementById('co-addr').value.trim(),
+            city: document.getElementById('co-city').value.trim(),
+            state: state,
+            postal_code: document.getElementById('co-zip').value.trim(),
+            country: 'US'
+          }
+        }
+      }
+    });
+
+    if (confirmResult.error) {
+      throw new Error(confirmResult.error.message);
+    }
+
+    // Payment confirmed!
+    document.getElementById('co-success-email').textContent = email;
+    document.getElementById('co-form-section').style.display = 'none';
+    document.getElementById('co-success').style.display = 'block';
+
+    // Clear cart
+    if (window.KurryCart) { window.KurryCart.items = []; window.KurryCart.save(); window.KurryCart.updateBadge(); }
+
+  } catch (error) {
+    document.getElementById('co-card-err').textContent = error.message || 'Payment failed. Please try again.';
+    btn.disabled = false;
+    btn.innerHTML = '🔒 Pay Securely';
+  }
+}
+</script>
