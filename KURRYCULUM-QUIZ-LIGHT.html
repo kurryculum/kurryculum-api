@@ -1,0 +1,141 @@
+<!--
+KURRYCULUM SUPPLEMENT QUIZ - LIGHT THEME
+Paste into Webflow Embed on /supplement-quiz page
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAFAF7;--white:#FFFFFF;--forest:#1B4332;--sage:#52796F;--sage-light:#84A98C;--gold:#C9951A;--warm:#F5F0E8;--border:#E8E2D9;--muted:#6B7280;--red:#C4521A;--ink:#1A2E1A}
+*{box-sizing:border-box;margin:0;padding:0}
+.qz{font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,var(--cream),var(--warm));min-height:80vh;padding:60px 20px;display:flex;align-items:flex-start;justify-content:center}
+.qz-box{background:var(--white);border-radius:20px;max-width:620px;width:100%;padding:48px;box-shadow:0 4px 40px rgba(27,67,50,.08);border:1px solid var(--border)}
+.qz-logo{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sage);margin-bottom:20px}
+.qz-title{font-family:'Lora',serif;font-size:clamp(22px,4vw,32px);font-weight:700;color:var(--forest);margin:0 0 8px;line-height:1.2}
+.qz-sub{font-size:14px;color:var(--muted);margin:0 0 24px;line-height:1.6}
+.qz-prog{height:4px;background:var(--warm);border-radius:2px;margin-bottom:28px;overflow:hidden}
+.qz-bar{height:100%;background:var(--sage);border-radius:2px;transition:width .4s ease}
+.qz-step{display:none}
+.qz-step.active{display:block}
+.qz-q{font-size:17px;font-weight:600;color:var(--forest);margin:0 0 18px;line-height:1.4}
+.qz-opts{display:flex;flex-direction:column;gap:10px}
+.qz-opt{padding:14px 18px;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;font-size:14px;color:var(--ink);transition:all .2s;background:var(--white);text-align:left;font-family:'DM Sans',sans-serif}
+.qz-opt:hover{border-color:var(--sage);background:#F0F7F4;color:var(--forest)}
+.qz-opt.sel{border-color:var(--forest);background:#F0F7F4;color:var(--forest);font-weight:600}
+.qz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.qz-sl{font-size:12px;color:var(--muted)}
+.qz-back{background:none;border:1.5px solid var(--border);color:var(--muted);padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.qz-back:hover{border-color:var(--forest);color:var(--forest)}
+.qz-next{background:var(--forest);color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:background .2s;font-family:'DM Sans',sans-serif}
+.qz-next:hover{background:var(--sage)}
+.qz-next:disabled{background:var(--border);cursor:not-allowed;color:var(--muted)}
+.qz-res{display:none;text-align:center}
+.qz-res.show{display:block}
+.qz-res-icon{font-size:52px;margin-bottom:14px}
+.qz-res-title{font-family:'Lora',serif;font-size:26px;font-weight:700;color:var(--forest);margin:0 0 8px}
+.qz-res-sub{font-size:14px;color:var(--muted);margin:0 0 24px}
+.qz-prods{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.qz-prod{display:flex;align-items:center;gap:14px;background:var(--cream);border-radius:12px;padding:16px;text-align:left;border:1px solid var(--border)}
+.qz-prod img{width:56px;height:56px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 3px 8px rgba(0,0,0,.1))}
+.qz-prod-name{font-size:15px;font-weight:700;color:var(--forest);margin-bottom:3px}
+.qz-prod-why{font-size:12px;color:var(--muted);line-height:1.4;margin-bottom:8px}
+.qz-prod-btn{display:inline-block;background:var(--forest);color:#fff;padding:7px 14px;border-radius:6px;font-size:11px;font-weight:700;text-decoration:none}
+.qz-prod-btn.amz{background:var(--red)}
+
+.qz-gate{background:linear-gradient(135deg,#F0F7F4,#E8F5EE);border:1.5px solid #52796F;border-radius:14px;padding:24px;text-align:center;margin-top:12px}
+.qz-gate-title{font-size:16px;font-weight:700;color:#1B4332;margin-bottom:6px}
+.qz-gate-sub{font-size:13px;color:#52796F;margin-bottom:16px}
+.qz-gate-form{display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap}
+.qz-gate-input{flex:1;min-width:200px;padding:11px 14px;border:1.5px solid #E8E2D9;border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;background:#fff}
+.qz-gate-input:focus{border-color:#52796F}
+.qz-gate-btn{background:#1B4332;color:#fff;border:none;padding:11px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.qz-gate-btn:hover{background:#52796F}
+.qz-gate-note{font-size:11px;color:#6B7280;margin-top:8px}
+.qz-blur{filter:blur(4px);pointer-events:none;user-select:none;opacity:0.5}
+
+.qz-retake{background:none;border:1.5px solid var(--border);color:var(--muted);padding:10px 24px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+</style>
+<div class="qz">
+<div class="qz-box">
+  <div class="qz-logo">Kurryculum — Free Supplement Quiz</div>
+  <div id="qz-form">
+    <h1 class="qz-title">Find Your Perfect Supplement Stack</h1>
+    <p class="qz-sub">5 quick questions. Personalised results. Takes under 2 minutes.</p>
+    <div class="qz-prog"><div class="qz-bar" id="qz-bar" style="width:20%"></div></div>
+    <div class="qz-step active" id="s1"><div class="qz-q">1. What is your main wellness goal?</div><div class="qz-opts"><div class="qz-opt" onclick="sO(this,1,'energy')">⚡ More energy and less fatigue</div><div class="qz-opt" onclick="sO(this,1,'blood_sugar')">🩸 Blood sugar and metabolic health</div><div class="qz-opt" onclick="sO(this,1,'joint')">🦴 Joint, bone and mobility support</div><div class="qz-opt" onclick="sO(this,1,'vision')">👁️ Eye health and vision protection</div><div class="qz-opt" onclick="sO(this,1,'beauty')">✨ Skin, hair and beauty from within</div><div class="qz-opt" onclick="sO(this,1,'heart')">❤️ Heart and cardiovascular health</div></div></div>
+    <div class="qz-step" id="s2"><div class="qz-q">2. Which best describes your diet?</div><div class="qz-opts"><div class="qz-opt" onclick="sO(this,2,'indian')">🇮🇳 Indian / South Asian vegetarian</div><div class="qz-opt" onclick="sO(this,2,'indian_american')">🇮🇳🇺🇸 Indian-American mixed diet</div><div class="qz-opt" onclick="sO(this,2,'west_african')">🌍 West or East African cuisine</div><div class="qz-opt" onclick="sO(this,2,'caribbean')">🌴 Caribbean cuisine</div><div class="qz-opt" onclick="sO(this,2,'middle_eastern')">🌙 Middle Eastern or Mediterranean</div><div class="qz-opt" onclick="sO(this,2,'american')">🇺🇸 Western / American diet</div></div></div>
+    <div class="qz-step" id="s3"><div class="qz-q">3. How active are you on a typical week?</div><div class="qz-opts"><div class="qz-opt" onclick="sO(this,3,'sedentary')">💺 Mostly desk-based or sedentary</div><div class="qz-opt" onclick="sO(this,3,'light')">🚶 Light activity 1–2 days per week</div><div class="qz-opt" onclick="sO(this,3,'moderate')">🏃 Moderate exercise 3–4 days per week</div><div class="qz-opt" onclick="sO(this,3,'active')">🏋️ Active 5–6 days per week</div></div></div>
+    <div class="qz-step" id="s4"><div class="qz-q">4. Do you experience any of these regularly?</div><div class="qz-opts"><div class="qz-opt" onclick="sO(this,4,'fatigue')">😴 Fatigue or low energy</div><div class="qz-opt" onclick="sO(this,4,'joint_pain')">😣 Joint stiffness or discomfort</div><div class="qz-opt" onclick="sO(this,4,'eye_strain')">👀 Eye strain from screens</div><div class="qz-opt" onclick="sO(this,4,'sugar')">🍬 Sugar cravings or energy crashes</div><div class="qz-opt" onclick="sO(this,4,'skin')">💇 Dull skin, hair loss or brittle nails</div><div class="qz-opt" onclick="sO(this,4,'none')">✅ None of the above</div></div></div>
+    <div class="qz-step" id="s5"><div class="qz-q">5. What matters most to you in a supplement?</div><div class="qz-opts"><div class="qz-opt" onclick="sO(this,5,'natural')">🌿 Natural and Ayurvedic ingredients</div><div class="qz-opt" onclick="sO(this,5,'clinical')">🔬 Clinically researched and lab-tested</div><div class="qz-opt" onclick="sO(this,5,'value')">💰 Best value for money</div><div class="qz-opt" onclick="sO(this,5,'cultural')">🌍 Culturally relevant and holistic</div></div></div>
+    <div class="qz-nav"><button class="qz-back" id="qz-back" onclick="qzPrev()" style="display:none">← Back</button><div class="qz-sl" id="qz-sl">Step 1 of 5</div><button class="qz-next" id="qz-next" onclick="qzNext()" disabled>Next →</button></div>
+  </div>
+  <div class="qz-res" id="qz-res">
+    <div class="qz-res-icon">🎯</div>
+    <div class="qz-res-title">Your Personalised Stack</div>
+    <div class="qz-res-sub" id="qz-rsub">Based on your answers, here are your top picks:</div>
+    <div class="qz-prods" id="qz-prods"></div>
+    
+<div id="qz-gate-box" class="qz-gate" style="display:none">
+  <div class="qz-gate-title">🔒 Unlock Your Full Personalised Stack</div>
+  <div class="qz-gate-sub">Enter your email to see your complete recommendation + get 10% off your first order</div>
+  <div class="qz-gate-form">
+    <input type="email" class="qz-gate-input" id="qz-email" placeholder="your@email.com">
+    <button class="qz-gate-btn" onclick="qzSubmitEmail()">Get My Plan →</button>
+  </div>
+  <p class="qz-gate-note">No spam. Unsubscribe anytime. Your 10% code arrives instantly.</p>
+</div>
+
+<button class="qz-retake" onclick="qzReset()">← Retake the quiz</button>
+  </div>
+</div>
+</div>
+<script>
+var A={},step=1,total=5;
+var PD={
+  energy:{n:'Vitamin B-12',p:'$8.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c591d0f8777d3a89_VitB12.jpg',l:'/checkout',w:true,r:'Cellular energy and metabolism support. The #1 deficiency causing fatigue in Indian vegetarian diets — affects up to 70% of South Asian vegetarians.'},
+  blood_sugar:{n:'Sugaverve',p:'$29.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d460535627b2b0671a8_sugaverve%20%20with%20certifications.png',l:'/checkout',w:true,r:'15+ clinically recognised ingredients including Chromium, Cinnamon and Bitter Melon for healthy blood sugar support.'},
+  joint:{n:'BoneVite+',p:'$22.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d7bcc9837f3bf598714_31uV9dzQzML._AC_.jpg',l:'https://www.amazon.com/dp/B0DV4385Z1?tag=kurryculum20-20',w:false,r:'Glucosamine, Chondroitin, MSM and Elderberry — the gold standard for joint and bone support. Amazon #1 Best Seller.'},
+  vision:{n:'OptiKind Vision Support',p:'$24.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c556bc53003c011b_61jgHQ%2BP29L._AC_UL640_FMwebp_QL65_.webp',l:'https://www.amazon.com/dp/B0GBP7PDCJ?tag=kurryculum20-20',w:false,r:'Lutein, Glutathione and Zinc for vision clarity and blue light protection from screen time.'},
+  beauty:{n:'Collagen Peptides',p:'$27.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d5442c8245c27c16f49_61UCAEobscL._AC_UL640_FMwebp_QL65_.webp',l:'https://www.amazon.com/dp/B0FPY6ZLYY?tag=kurryculum20-20',w:false,r:'Grass-fed Type I and III collagen for firmer skin, stronger nails and healthier hair. Amazon #1 Best Seller.'},
+  heart:{n:'CardiaVite+',p:'$26.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54e19f21497ad7c358_61A0eqIQMoL._AC_UL640_FMwebp_QL65_.webp',l:'https://www.amazon.com/dp/B0FGY9454R?tag=kurryculum20-20',w:false,r:'22 heart-healthy ingredients including CoQ10, L-Arginine and Hawthorn Berry for cardiovascular wellness.'}
+};
+var BD={
+  indian:{n:'7 Chakra Ayurvedic Complex',p:'$24.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d8253ee59c1fc22878a_IMG_8467.jpeg',l:'/checkout',w:true,r:'Turmeric, Ashwagandha and Shilajit — bridging Ayurvedic tradition with modern Indian-American wellness needs.'},
+  indian_american:{n:'Krill Oil 500mg',p:'$19.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c321ab254b984de6_61E5X-OgXAL._AC_SX679_PIbundle-60%2CTopRight%2C0%2C0_SH20_.jpg',l:'https://www.amazon.com/dp/B0DN2RTWVL?tag=kurryculum20-20',w:false,r:'Indian-American diets are critically low in Omega-3. Krill oil with Astaxanthin provides superior cardiovascular and brain support.'},
+  west_african:{n:'Beet Root + Black Pepper',p:'$9.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d5489116b61c2b4aff4_BeetRoot.jpg',l:'/checkout',w:true,r:'Natural nitrates for circulation and energy — pairs perfectly with high-carb West African cuisine like jollof and pounded yam.'},
+  caribbean:{n:'Krill Oil 500mg',p:'$19.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c321ab254b984de6_61E5X-OgXAL._AC_SX679_PIbundle-60%2CTopRight%2C0%2C0_SH20_.jpg',l:'https://www.amazon.com/dp/B0DN2RTWVL?tag=kurryculum20-20',w:false,r:'Omega-3 EPA and DHA — supports heart and brain health. Amazon #1 Best Seller.'},
+  middle_eastern:{n:'7 Chakra Ayurvedic Complex',p:'$24.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d8253ee59c1fc22878a_IMG_8467.jpeg',l:'/checkout',w:true,r:'Anti-inflammatory herbs that complement Mediterranean-style eating patterns and address Ramadan fasting cycles.'},
+  american:{n:'Krill Oil 500mg',p:'$19.99',i:'https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c321ab254b984de6_61E5X-OgXAL._AC_SX679_PIbundle-60%2CTopRight%2C0%2C0_SH20_.jpg',l:'https://www.amazon.com/dp/B0DN2RTWVL?tag=kurryculum20-20',w:false,r:'Most American diets are severely deficient in Omega-3. Krill oil provides EPA, DHA and Astaxanthin.'}
+};
+function sO(el,n,v){el.closest('.qz-opts').querySelectorAll('.qz-opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');A[n]=v;document.getElementById('qz-next').disabled=false;}
+function qzNext(){if(!A[step])return;if(step===total){showRes();return;}document.getElementById('s'+step).classList.remove('active');step++;document.getElementById('s'+step).classList.add('active');document.getElementById('qz-bar').style.width=(step/total*100)+'%';document.getElementById('qz-sl').textContent='Step '+step+' of '+total;document.getElementById('qz-back').style.display='block';document.getElementById('qz-next').textContent=step===total?'See My Results →':'Next →';document.getElementById('qz-next').disabled=!A[step];}
+function qzPrev(){if(step===1)return;document.getElementById('s'+step).classList.remove('active');step--;document.getElementById('s'+step).classList.add('active');document.getElementById('qz-bar').style.width=(step/total*100)+'%';document.getElementById('qz-sl').textContent='Step '+step+' of '+total;document.getElementById('qz-back').style.display=step===1?'none':'block';document.getElementById('qz-next').textContent='Next →';document.getElementById('qz-next').disabled=false;}
+function showRes(){document.getElementById('qz-form').style.display='none';var r=document.getElementById('qz-res');r.classList.add('show');
+  // Store results for later reveal
+  window._qzPending = true;var primary=PD[A[1]]||PD.energy;var bonus=BD[A[2]]||BD.american;function card(p){var btn=p.w?`<a href="${p.l}" class="qz-prod-btn">Buy on Website — ${p.p}</a>`:`<a href="${p.l}" class="qz-prod-btn amz" target="_blank" rel="noopener sponsored">Buy on Amazon — ${p.p}</a>`;return`<div class="qz-prod"><img src="${p.i}" alt="${p.n}"><div><div class="qz-prod-name">${p.n}</div><div class="qz-prod-why">${p.r}</div>${btn}</div></div>`;}
+var html=card(primary);if(bonus&&bonus.n!==primary.n)html+=card(bonus);document.getElementById('qz-prods').innerHTML=html;
+  // Show gate after first product
+  setTimeout(function(){
+    var prodCards = document.querySelectorAll('.qz-prod');
+    prodCards.forEach(function(card, i){ if(i > 0) card.classList.add('qz-blur'); });
+    if(prodCards.length > 0) document.getElementById('qz-gate-box').style.display='block';
+  }, 100);var diets={indian:'Indian vegetarian',indian_american:'Indian-American',west_african:'West African',caribbean:'Caribbean',middle_eastern:'Middle Eastern',american:'Western'};document.getElementById('qz-rsub').textContent='Based on your goals and '+(diets[A[2]]||'your')+' diet:';}
+
+function qzSubmitEmail(){
+  var email = document.getElementById('qz-email').value.trim();
+  if(!email || !email.includes('@')){ alert('Please enter a valid email.'); return; }
+  // Send to Klaviyo via Vercel
+  var vercel = (window.KURRY && window.KURRY.VERCEL) || 'https://kurryculum-api-djm8.vercel.app';
+  fetch(vercel + '/api/subscribe', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({email: email, source: 'quiz_gate', quiz_goal: A[1], quiz_diet: A[2]})
+  }).catch(function(){});
+  // Unlock results
+  document.querySelectorAll('.qz-prod').forEach(function(c){ c.classList.remove('qz-blur'); });
+  document.getElementById('qz-gate-box').style.display = 'none';
+  // Show success
+  var btn = document.querySelector('.qz-gate-btn');
+  if(btn){ btn.textContent = '✓ Unlocked!'; btn.style.background = '#639922'; }
+}
+
+function qzReset(){A={};step=1;document.querySelectorAll('.qz-step').forEach(s=>s.classList.remove('active'));document.getElementById('s1').classList.add('active');document.querySelectorAll('.qz-opt').forEach(o=>o.classList.remove('sel'));document.getElementById('qz-bar').style.width='20%';document.getElementById('qz-sl').textContent='Step 1 of 5';document.getElementById('qz-back').style.display='none';document.getElementById('qz-next').textContent='Next →';document.getElementById('qz-next').disabled=true;document.getElementById('qz-res').classList.remove('show');document.getElementById('qz-form').style.display='block';}
+</script>
