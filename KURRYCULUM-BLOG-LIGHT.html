@@ -1,0 +1,71 @@
+<!--
+KURRYCULUM BLOG - LIGHT THEME
+-->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAFAF7;--white:#FFFFFF;--forest:#1B4332;--sage:#52796F;--sage-light:#84A98C;--gold:#C9951A;--warm:#F5F0E8;--border:#E8E2D9;--muted:#6B7280;--red:#C4521A;--ink:#1A2E1A}
+*{box-sizing:border-box;margin:0;padding:0}
+.bl{font-family:"DM Sans",sans-serif;background:var(--cream)}
+.bl-hero{background:var(--white);padding:64px 40px 48px;text-align:center;border-bottom:1px solid var(--border)}
+.bl-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.bl-h1{font-family:"Lora",serif;font-size:clamp(28px,4vw,48px);font-weight:700;color:var(--forest);margin-bottom:10px}
+.bl-sub{font-size:16px;color:var(--muted);max-width:540px;margin:0 auto;line-height:1.7}
+.bl-wrap{max-width:1100px;margin:0 auto;padding:52px 24px 80px}
+.bl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.bl-card{background:var(--white);border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:all .3s;text-decoration:none;display:block;color:inherit}
+.bl-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(27,67,50,.08)}
+.bl-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:56px;position:relative}
+.bl-cat{position:absolute;top:12px;left:12px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:3px;color:#fff}
+.bl-body{padding:20px}
+.bl-meta{font-size:12px;color:var(--muted);margin-bottom:7px}
+.bl-title{font-size:17px;font-weight:700;color:var(--forest);margin:0 0 8px;line-height:1.35}
+.bl-excerpt{font-size:13px;color:var(--muted);line-height:1.65;margin:0 0 14px}
+.bl-foot{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--border)}
+.bl-read{font-size:12px;font-weight:700;color:var(--sage)}
+.bl-time{font-size:12px;color:var(--muted)}
+.bl-rec{background:linear-gradient(135deg,#F0F7F4,#E8F5EE);border:1px solid #84A98C;border-radius:10px;padding:14px 16px;margin-top:12px;display:flex;align-items:center;gap:12px}
+.bl-rec img{width:48px;height:48px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1))}
+.bl-rec-text{flex:1}
+.bl-rec-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#52796F;margin-bottom:2px}
+.bl-rec-name{font-size:13px;font-weight:700;color:#1B4332;margin-bottom:2px}
+.bl-rec-btn{font-size:11px;font-weight:700;color:#fff;background:#1B4332;padding:5px 12px;border-radius:5px;text-decoration:none;white-space:nowrap;flex-shrink:0;cursor:pointer;border:none;font-family:inherit}
+.bl-cta{text-align:center;margin-top:48px;padding:40px;background:var(--forest);border-radius:16px}
+.bl-cta h2{font-family:"Lora",serif;font-size:26px;font-weight:700;color:#FAFAF7;margin:0 0 8px}
+.bl-cta p{color:rgba(255,255,255,.6);margin:0 0 20px;font-size:14px}
+.bl-cta a{display:inline-block;background:var(--gold);color:var(--ink);padding:13px 32px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}
+@media(max-width:600px){.bl-hero{padding:48px 20px 36px}.bl-wrap{padding:32px 16px 60px}}
+</style>
+<div class="bl">
+<div class="bl-hero">
+  <div class="bl-label">Kurryculum Blog</div>
+  <h1 class="bl-h1">Wellness for Every Culture</h1>
+  <p class="bl-sub">Supplement guides, calorie tips and healthy recipes tailored to Indian-American, South Asian and multicultural diets. Written by a pharmacist.</p>
+</div>
+<div class="bl-wrap">
+<div class="bl-grid">
+  <div class="bl-card"><div class="bl-img" style="background:linear-gradient(135deg,#FFF8F0,#FFE8CC)"><span>🌿</span><span class="bl-cat" style="background:var(--sage)">South Asian</span></div><div class="bl-body"><div class="bl-meta">Nutrition · 6 min read</div><h2 class="bl-title">The 5 Supplements Every South Asian Should Be Taking</h2><p class="bl-excerpt">South Asian diets are rich in spice — but B12, Vitamin D and Omega-3 gaps affect up to 70% of Indian vegetarians.</p><div class="bl-foot"><span class="bl-read">Pharmacist Picks Below</span><span class="bl-time">6 min</span></div><div class="bl-rec"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d8253ee59c1fc22878a_IMG_8467.jpeg" alt="7 Chakra"><div class="bl-rec-text"><div class="bl-rec-label">Pharmacist recommends</div><div class="bl-rec-name">7 Chakra — $24.99</div></div><button class="bl-rec-btn" onclick="blBuy('7-chakra','7 Chakra Ayurvedic Complex',24.99)">Buy on Website</button></div><div class="bl-rec"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c591d0f8777d3a89_VitB12.jpg" alt="Vitamin B12"><div class="bl-rec-text"><div class="bl-rec-label">Pharmacist recommends</div><div class="bl-rec-name">Vitamin B-12 — $8.99</div></div><button class="bl-rec-btn" onclick="blBuy('vitamin-b12','Vitamin B-12',8.99)">Buy on Website</button></div><div class="bl-rec"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c321ab254b984de6_61E5X-OgXAL._AC_SX679_PIbundle-60%2CTopRight%2C0%2C0_SH20_.jpg" alt="Krill Oil"><div class="bl-rec-text"><div class="bl-rec-label">Pharmacist recommends</div><div class="bl-rec-name">Krill Oil 500mg — $19.99</div></div><a href="https://www.amazon.com/dp/B0DN2RTWVL?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="bl-rec-btn">Buy on Amazon</a></div></div></div></div>
+  <div class="bl-card"><div class="bl-img" style="background:linear-gradient(135deg,#FFF0F0,#FFE0E0)"><span>🩸</span><span class="bl-cat" style="background:var(--red)">Blood Sugar</span></div><div class="bl-body"><div class="bl-meta">Supplements · 8 min read</div><h2 class="bl-title">Sugaverve Reviewed: All 15 Ingredients Explained by Science</h2><p class="bl-excerpt">Chromium, Cinnamon, Alpha Lipoic Acid, Bitter Melon — every ingredient and what clinical research actually says.</p><div class="bl-foot"><span class="bl-read">Pharmacist Pick Below</span><span class="bl-time">8 min</span></div><div class="bl-rec"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d460535627b2b0671a8_sugaverve%20%20with%20certifications.png" alt="Sugaverve"><div class="bl-rec-text"><div class="bl-rec-label">Pharmacist recommends</div><div class="bl-rec-name">Sugaverve — $29.99</div></div><button class="bl-rec-btn" onclick="blBuy('sugaverve','Sugaverve',29.99)">Buy on Website</button></div></div></div></div>
+  <div class="bl-card"><div class="bl-img" style="background:linear-gradient(135deg,#F5F0F8,#EAE0F5)"><span>🫐</span><span class="bl-cat" style="background:var(--forest)">Performance</span></div><div class="bl-body"><div class="bl-meta">Fitness · 5 min read</div><h2 class="bl-title">Beet Root Supplements: 7 Science-Backed Benefits Explained</h2><p class="bl-excerpt">From blood pressure to athletic endurance — and why combining beet root with black pepper makes it 20x more bioavailable.</p><div class="bl-foot"><span class="bl-read">Pharmacist Pick Below</span><span class="bl-time">5 min</span></div><div class="bl-rec"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d5489116b61c2b4aff4_BeetRoot.jpg" alt="Beet Root"><div class="bl-rec-text"><div class="bl-rec-label">Pharmacist recommends</div><div class="bl-rec-name">Beet Root + Black Pepper — $9.99</div></div><button class="bl-rec-btn" onclick="blBuy('beet-root','Beet Root + Black Pepper',9.99)">Buy on Website</button></div></div></div></div>
+  <a href="https://www.amazon.com/dp/B0DV4385Z1?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="bl-card"><div class="bl-img" style="background:linear-gradient(135deg,#F0F4FF,#E0EAFF)"><span>🦴</span><span class="bl-cat" style="background:var(--sage)">Joint Health</span></div><div class="bl-body"><div class="bl-meta">Supplements · 7 min read</div><h2 class="bl-title">BoneVite+ Review: Is This the Best Joint Supplement for Over 40?</h2><p class="bl-excerpt">Glucosamine, Chondroitin, MSM and Elderberry — the evidence behind BoneVite+ and how it compares to competitors.</p><div class="bl-foot"><span class="bl-read">Buy on Amazon →</span><span class="bl-time">7 min</span></div></div></a>
+  <a href="https://www.amazon.com/dp/B0DN2RTWVL?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="bl-card"><div class="bl-img" style="background:linear-gradient(135deg,#F0F8FF,#E0F0FF)"><span>🐟</span><span class="bl-cat" style="background:#0E6BAF">Omega-3</span></div><div class="bl-body"><div class="bl-meta">Supplements · 6 min read</div><h2 class="bl-title">Krill Oil vs Fish Oil: Krill Wins on 5 Out of 6 Measures</h2><p class="bl-excerpt">Better absorption, no fishy aftertaste, Astaxanthin antioxidant, sustainable sourcing — the science behind krill oil.</p><div class="bl-foot"><span class="bl-read">Buy on Amazon →</span><span class="bl-time">6 min</span></div></div></a>
+  <a href="https://www.amazon.com/dp/B0FPY6ZLYY?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="bl-card"><div class="bl-img" style="background:linear-gradient(135deg,#FFF8F0,#FFE8D0)"><span>✨</span><span class="bl-cat" style="background:#A0522D">Beauty</span></div><div class="bl-body"><div class="bl-meta">Wellness · 5 min read</div><h2 class="bl-title">What Happens to Your Skin After 90 Days of Collagen Peptides</h2><p class="bl-excerpt">At 30, 60 and 90 days — what clinical studies show about skin elasticity, nail strength and hair thickness.</p><div class="bl-foot"><span class="bl-read">Buy on Amazon →</span><span class="bl-time">5 min</span></div></div></a>
+  <a href="/recipes-calculator" class="bl-card"><div class="bl-img" style="background:linear-gradient(135deg,#F0FAF0,#E0F5E0)"><span>🍲</span><span class="bl-cat" style="background:var(--forest)">West African</span></div><div class="bl-body"><div class="bl-meta">Nutrition · 7 min read</div><h2 class="bl-title">How to Count Calories on a West African Diet (Jollof, Egusi and More)</h2><p class="bl-excerpt">Calorie tracking was designed for Western diets. Your practical guide to jollof rice, pounded yam, suya and more.</p><div class="bl-foot"><span class="bl-read">Try the Calculator →</span><span class="bl-time">7 min</span></div></div></a>
+  <div class="bl-card"><div class="bl-img" style="background:linear-gradient(135deg,#F8F0FF,#F0E0FF)"><span>🪷</span><span class="bl-cat" style="background:#7B4FA0">Ayurveda</span></div><div class="bl-body"><div class="bl-meta">Ayurveda · 6 min read</div><h2 class="bl-title">7 Chakra Supplement: The Ancient Herbs Behind Every Capsule</h2><p class="bl-excerpt">Turmeric, Ashwagandha, Triphala, Shilajit, Brahmi, Neem and Tulsi — 5,000 years of Ayurvedic wisdom explained.</p><div class="bl-foot"><span class="bl-read">Pharmacist Pick Below</span><span class="bl-time">6 min</span></div><div class="bl-rec"><img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d8253ee59c1fc22878a_IMG_8467.jpeg" alt="7 Chakra"><div class="bl-rec-text"><div class="bl-rec-label">Pharmacist recommends</div><div class="bl-rec-name">7 Chakra Complex — $24.99</div></div><button class="bl-rec-btn" onclick="blBuy('7-chakra','7 Chakra Ayurvedic Complex',24.99)">Buy on Website</button></div></div></div></div>
+  <a href="https://www.amazon.com/dp/B0GBP7PDCJ?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="bl-card"><div class="bl-img" style="background:linear-gradient(135deg,#F0FFF8,#E0FFF0)"><span>👁️</span><span class="bl-cat" style="background:var(--sage)">Eye Health</span></div><div class="bl-body"><div class="bl-meta">Wellness · 5 min read</div><h2 class="bl-title">Protect Your Eyes in the Screen Age: Why OptiKind Works</h2><p class="bl-excerpt">11 hours of screens per day. Lutein, Glutathione and Zinc — the three nutrients your eyes need most.</p><div class="bl-foot"><span class="bl-read">Buy on Amazon →</span><span class="bl-time">5 min</span></div></div></a>
+  <a href="/supplement-quiz" class="bl-card"><div class="bl-img" style="background:linear-gradient(135deg,#F5F5F0,#EEEEE8)"><span>🎯</span><span class="bl-cat" style="background:var(--forest)">Quiz</span></div><div class="bl-body"><div class="bl-meta">Guide · 4 min read</div><h2 class="bl-title">Stop Guessing Which Supplements You Need — Take Our 5-Question Quiz</h2><p class="bl-excerpt">The supplement industry earns $170 billion annually but most people take the wrong things. 5 questions. Free.</p><div class="bl-foot"><span class="bl-read">Take the Quiz →</span><span class="bl-time">2 min</span></div></div></a>
+</div>
+<div class="bl-cta">
+  <h2>Find Your Perfect Supplement</h2>
+  <p>Answer 5 questions and get a personalised recommendation based on your body, goal and cultural diet.</p>
+  <a href="/supplement-quiz">Take the Free Quiz</a>
+</div>
+</div>
+</div>
+<script>
+function blBuy(id, name, price) {
+  try {
+    sessionStorage.setItem('kurry_cart', JSON.stringify([{id:id, name:name, price:price, qty:1}]));
+  } catch(e) {}
+  window.location.href = '/checkout';
+}
+</script>
