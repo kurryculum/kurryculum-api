@@ -1,0 +1,405 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.ba{font-family:'DM Sans',sans-serif;background:#FAFAF7;color:#0F1F17}
+.ba-nav{background:#1B4332;padding:14px 40px;display:flex;align-items:center;justify-content:space-between}
+.ba-nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500}
+.ba-back{color:#E8B84B!important;font-weight:600!important;display:flex;align-items:center;gap:6px}
+.ba-wrap{max-width:760px;margin:0 auto;padding:56px 40px 80px}
+.ba-list{display:none}.ba-list.active{display:block}
+.ba-hero{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid #E0EDE6}
+.ba-cat{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:14px}
+.ba-h1{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,42px);font-weight:900;color:#1B4332;line-height:1.15;margin-bottom:14px;letter-spacing:-.3px}
+.ba-meta{font-size:13px;color:#6B7280;display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.ba-intro{font-size:16px;line-height:1.8;color:#3D4F3A;font-weight:300;padding:20px;background:#F0F7F4;border-left:3px solid #52796F;border-radius:0 8px 8px 0;margin-bottom:32px}
+.ba-body h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#1B4332;margin:36px 0 12px}
+.ba-body h3{font-size:15px;font-weight:600;color:#1B4332;margin:20px 0 8px}
+.ba-body p{font-size:15px;line-height:1.85;color:#3D4F3A;margin-bottom:16px;font-weight:300}
+.ba-body ul,.ba-body ol{margin:0 0 16px 20px}
+.ba-body li{font-size:15px;line-height:1.75;color:#3D4F3A;margin-bottom:6px;font-weight:300}
+.ba-body strong{font-weight:600;color:#1B4332}
+.ba-stat{background:#FFF8F0;border:1px solid #F0D5B0;border-radius:12px;padding:16px 20px;margin:24px 0;display:flex;gap:16px;align-items:center}
+.ba-stat-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:#C9951A;line-height:1;flex-shrink:0}
+.ba-stat-text{font-size:13px;color:#6B7280;line-height:1.5}
+.ba-stat-text strong{color:#1B4332;font-size:14px;display:block;margin-bottom:2px}
+.ba-cta{background:linear-gradient(135deg,#1B4332,#2D5A40);border-radius:16px;padding:28px;margin:36px 0;display:flex;gap:20px;align-items:center}
+.ba-cta-img{width:80px;height:80px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 4px 10px rgba(0,0,0,.2))}
+.ba-cta-body{flex:1}
+.ba-cta-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#E8B84B;margin-bottom:4px}
+.ba-cta-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
+.ba-cta-desc{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:300}
+.ba-cta-prices{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.ba-cta-old{font-size:14px;color:rgba(255,255,255,.4);text-decoration:line-through}
+.ba-cta-new{font-size:20px;font-weight:700;color:#E8B84B}
+.ba-cta-save{font-size:11px;font-weight:600;background:rgba(201,149,26,.2);color:#E8B84B;padding:2px 8px;border-radius:100px}
+.ba-cta-btn{display:inline-block;background:#C9951A;color:#0F1F17;padding:10px 20px;border-radius:100px;font-size:13px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.ba-quote{background:#F0F7F4;border-radius:12px;padding:20px 24px;margin:24px 0;border-left:4px solid #52796F}
+.ba-quote p{font-size:15px;font-style:italic;color:#3D4F3A;margin:0;line-height:1.7}
+.ba-quote cite{font-size:12px;color:#6B7280;font-style:normal;margin-top:8px;display:block}
+.ba-compliance{background:#FFF8F0;border:1px solid #F0D5B0;border-radius:10px;padding:16px;margin:32px 0;font-size:12px;color:#6B7280;line-height:1.7}
+.ba-compliance strong{color:#1B4332;display:block;margin-bottom:4px}
+.ba-ref{font-size:12px;color:#9CA3AF;margin-top:40px;padding-top:20px;border-top:1px solid #E0EDE6;line-height:1.8}
+@media(max-width:600px){.ba-wrap{padding:32px 20px}.ba-nav{padding:12px 20px}.ba-cta{flex-direction:column;text-align:center}}
+</style>
+
+<div class="ba">
+<nav class="ba-nav">
+  <a href="/blog" class="ba-back">← Back to Blog</a>
+  <div style="display:flex;gap:20px">
+    <a href="/">Home</a><a href="/shop">Shop</a><a href="/supplement-quiz">Free Quiz</a>
+  </div>
+</nav>
+
+<!-- ============ ARTICLE 1 ============ -->
+<div id="article-1" class="ba-list active">
+<div class="ba-wrap">
+  <div class="ba-hero">
+    <span class="ba-cat" style="background:#E8F5EE;color:#1B4332">Nutrition Education</span>
+    <h1 class="ba-h1">Vitamin B12 and Indian Vegetarian Diets: What the Research Shows</h1>
+    <div class="ba-meta"><span>👨‍⚕️ Reviewed by a Pharmacist</span><span>📖 6 min read</span><span>🔬 Educational content</span></div>
+    <div class="ba-intro">Research suggests that individuals following plant-based diets — including many South Asian vegetarians — may have lower dietary B12 intake than those who consume animal products regularly. This article explores what the research says and how to discuss your options with a healthcare provider.</div>
+  </div>
+  <div class="ba-body">
+    <div class="ba-compliance"><strong>Important: Please read before continuing</strong>This article is for general educational purposes only. It does not constitute medical advice and is not intended to diagnose, treat, cure or prevent any disease or health condition. Always consult a qualified healthcare provider before making changes to your diet, lifestyle or supplement routine. Individual nutritional needs vary significantly.</div>
+    <h2>Understanding B12 and Plant-Based Diets</h2>
+    <p>Vitamin B12 is a water-soluble vitamin that plays important roles in nerve function, DNA synthesis and red blood cell formation. It is found primarily in animal-sourced foods including meat, fish, eggs and dairy products.</p>
+    <p>Multiple nutritional surveys have found that individuals following vegetarian and vegan diets — a dietary pattern common among many South Asians — tend to have lower B12 serum levels compared to those consuming omnivorous diets. Research published in nutrition journals suggests this gap may be particularly relevant for long-term vegetarians.</p>
+    <div class="ba-stat"><div class="ba-stat-num">2.4</div><div class="ba-stat-text"><strong>mcg is the adult daily recommended intake for B12 (NIH)</strong>Getting this from dairy alone can be challenging, particularly when cooking reduces B12 content in heated milk products.</div></div>
+    <h2>Why Dietary Sources May Be Insufficient for Some</h2>
+    <p>While dairy products do contain B12, the amounts vary and several factors can affect how much the body actually absorbs:</p>
+    <ul>
+      <li>Heat from cooking can reduce B12 content in dairy by up to 30%</li>
+      <li>Absorption of B12 from food decreases naturally with age due to reduced stomach acid production</li>
+      <li>Certain medications — including metformin and proton pump inhibitors — are associated with reduced B12 absorption</li>
+      <li>Individual absorption capacity varies based on intrinsic factor production</li>
+    </ul>
+    <h2>Common Signs That May Prompt a B12 Check</h2>
+    <p>Many people do not know their B12 status until they get a blood test. Your healthcare provider can order a simple serum B12 test. Signs that some people associate with low B12 — and which may have many other causes — include persistent fatigue, difficulty concentrating, and tingling sensations. These symptoms require proper medical evaluation, not self-diagnosis.</p>
+    <div class="ba-quote"><p>"Plant-based eaters, particularly long-term vegetarians and vegans, are a population for whom B12 supplementation or fortified food consumption warrants discussion with a healthcare provider."</p><cite>— Position of the Academy of Nutrition and Dietetics on Vegetarian Diets</cite></div>
+    <h2>Supplementation: What to Discuss with Your Doctor</h2>
+    <p>If blood tests confirm low B12, your healthcare provider may recommend supplementation. B12 supplements are available in several forms. Methylcobalamin is the active, coenzyme form. Fast-dissolve sublingual tablets are one delivery method that bypasses the need for intrinsic factor — which may be relevant for those with absorption difficulties.</p>
+    <p>Dosing recommendations should come from your healthcare provider based on your test results. General maintenance doses and repletion doses differ significantly.</p>
+    <div class="ba-cta">
+      <img class="ba-cta-img" src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c591d0f8777d3a89_VitB12.jpg" alt="Vitamin B-12">
+      <div class="ba-cta-body">
+        <div class="ba-cta-label">Kurryculum Supplement</div>
+        <div class="ba-cta-name">Vitamin B-12 Fast-Dissolve</div>
+        <div class="ba-cta-desc">Methylcobalamin · Sublingual tablet · 60 tablets · Made in USA · GMP Certified</div>
+        <div class="ba-cta-prices"><span class="ba-cta-old">$10.99</span><span class="ba-cta-new">$8.79</span><span class="ba-cta-save">20% off</span></div>
+        <button class="ba-cta-btn" onclick="blBuy('vitamin-b12','Vitamin B-12',8.79)">Shop Now — $8.79</button>
+      </div>
+    </div>
+    <div class="ba-ref"><strong style="color:#1B4332;font-size:13px">References</strong><br>1. National Institutes of Health Office of Dietary Supplements — Vitamin B12 Fact Sheet for Health Professionals (ods.od.nih.gov)<br>2. Pawlak R et al. How prevalent is vitamin B12 deficiency among vegetarians? Nutrition Reviews. 2013.<br>3. Academy of Nutrition and Dietetics. Position Paper on Vegetarian Diets. Journal of the Academy of Nutrition and Dietetics. 2016.</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ ARTICLE 2 ============ -->
+<div id="article-2" class="ba-list">
+<div class="ba-wrap">
+  <div class="ba-hero">
+    <span class="ba-cat" style="background:#FFF0F0;color:#C4521A">Metabolic Health</span>
+    <h1 class="ba-h1">South Asian Metabolic Health: Understanding the Research on Cardiometabolic Risk</h1>
+    <div class="ba-meta"><span>👨‍⚕️ Reviewed by a Pharmacist</span><span>📖 8 min read</span><span>🔬 Educational content</span></div>
+    <div class="ba-intro">Published research consistently identifies South Asians as a population with distinct metabolic risk factors. Understanding this research may help individuals make more informed conversations with their healthcare providers about preventive care and supplementation.</div>
+  </div>
+  <div class="ba-body">
+    <div class="ba-compliance"><strong>Medical Disclaimer</strong>This article is educational only. Supplements are not intended to diagnose, treat, cure or prevent diabetes or any other disease. If you have diabetes, prediabetes or metabolic concerns, work with your healthcare provider. Do not modify any medication without medical supervision.</div>
+    <h2>What the Research Says About South Asian Metabolic Health</h2>
+    <p>Multiple peer-reviewed studies, including research from the MASALA (Mediators of Atherosclerosis in South Asians Living in America) cohort at UCSF, have documented that South Asians living in Western countries tend to develop type 2 diabetes at lower body weights and younger ages than other ethnic groups.</p>
+    <p>The Johns Hopkins Patient Guide to Diabetes notes that South Asians have a higher risk for heart disease, diabetes and obesity, likely due to a combination of genetic and lifestyle factors. Researchers believe this relates in part to greater visceral adiposity — fat stored around internal organs — at lower BMI thresholds.</p>
+    <div class="ba-stat"><div class="ba-stat-num">2x</div><div class="ba-stat-text"><strong>South Asians develop diabetes at approximately half the BMI threshold of white Europeans</strong>Source: Journal of the American College of Cardiology. This is why standard BMI risk charts may not reflect accurate risk for this population.</div></div>
+    <h2>Dietary Factors in Traditional South Asian Diets</h2>
+    <p>Research published in the American Journal of Clinical Nutrition found that South Asian dietary patterns characterised by higher refined carbohydrate intake — white rice, refined flour products, sugary beverages — were associated with worse metabolic markers. Conversely, patterns higher in vegetables, legumes and fibre were associated with more favourable outcomes.</p>
+    <h2>Nutrients of Interest in the Research Literature</h2>
+    <p>Several nutritional compounds have been studied in the context of metabolic health. The following are areas of active research — they are not established treatments for any condition:</p>
+    <h3>Chromium</h3>
+    <p>Some clinical trials have examined chromium picolinate in relation to insulin sensitivity. A meta-analysis in Diabetes Technology and Therapeutics found improvements in fasting glucose in some populations. Results across studies have been mixed, and chromium is not an approved treatment for diabetes.</p>
+    <h3>Cinnamon (Ceylon variety)</h3>
+    <p>Several small randomised controlled trials have examined Ceylon cinnamon in relation to blood glucose markers. A systematic review in the Journal of the Academy of Nutrition and Dietetics noted modest effects in some studies, with significant variability. Cassia cinnamon should not be used in supplement doses due to coumarin content.</p>
+    <h3>Bitter Melon (Momordica charantia)</h3>
+    <p>Bitter melon has a long history in Ayurvedic and traditional medicine for blood sugar support. Some laboratory and small human studies have identified compounds — including charantin and polypeptide-p — that may influence glucose metabolism. Larger, well-designed clinical trials are needed to establish efficacy and optimal dosing.</p>
+    <div class="ba-cta">
+      <img class="ba-cta-img" src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d460535627b2b0671a8_sugaverve%20%20with%20certifications.png" alt="Sugaverve">
+      <div class="ba-cta-body">
+        <div class="ba-cta-label">Kurryculum Supplement</div>
+        <div class="ba-cta-name">Sugaverve — Metabolic Support Formula</div>
+        <div class="ba-cta-desc">15+ ingredients including chromium, Ceylon cinnamon and bitter melon · 60 Vegan Capsules · GMP Certified</div>
+        <div class="ba-cta-prices"><span class="ba-cta-old">$35.99</span><span class="ba-cta-new">$28.79</span><span class="ba-cta-save">20% off</span></div>
+        <button class="ba-cta-btn" onclick="blBuy('sugaverve','Sugaverve',28.79)">Shop Now — $28.79</button>
+      </div>
+    </div>
+    <div class="ba-ref"><strong style="color:#1B4332;font-size:13px">References</strong><br>1. Kanaya AM et al. Understanding the high prevalence of diabetes in US South Asians. Clinical Diabetes. 2010.<br>2. Hopkins Diabetes Info. South Asian Diets and Diabetes. hopkinsdiabetesinfo.org<br>3. Balk EM et al. Effect of chromium supplementation on glucose metabolism. Diabetes Technology & Therapeutics. 2007.<br>4. Leach MJ, Kumar S. Cinnamon for diabetes mellitus. Cochrane Database of Systematic Reviews. 2012.</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ ARTICLE 3 ============ -->
+<div id="article-3" class="ba-list">
+<div class="ba-wrap">
+  <div class="ba-hero">
+    <span class="ba-cat" style="background:#F8F0FF;color:#7B4FA0">Ayurvedic Herbs</span>
+    <h1 class="ba-h1">Ashwagandha, Turmeric and Shilajit: A Review of the Research</h1>
+    <div class="ba-meta"><span>👨‍⚕️ Reviewed by a Pharmacist</span><span>📖 7 min read</span><span>🔬 Educational content</span></div>
+    <div class="ba-intro">These three Ayurvedic ingredients are among the most researched herbal compounds in modern nutritional science. Here is an objective summary of what published research has examined — without the marketing claims.</div>
+  </div>
+  <div class="ba-body">
+    <div class="ba-compliance"><strong>Important Disclaimer</strong>Herbal supplements are not regulated as drugs by the FDA and have not been approved to treat, cure or prevent any disease. The research discussed here is presented for educational purposes. Individual results vary. Consult your healthcare provider before use, especially if pregnant, nursing, or taking medications.</div>
+    <h2>Ashwagandha (Withania somnifera)</h2>
+    <p>Ashwagandha is classified as an adaptogen — a herb studied for its potential to help the body respond to physiological stress. It is one of the most researched Ayurvedic herbs, with over 50 published human clinical trials as of 2024.</p>
+    <p>A 2019 randomised, double-blind, placebo-controlled study published in Medicine found that adults taking a standardised ashwagandha root extract showed statistically significant reductions in perceived stress scores and serum cortisol compared to placebo. The study followed 58 participants over 60 days.</p>
+    <p>Other areas of active research include sleep quality, male reproductive health, and thyroid function. It is important to note that research quality varies significantly across studies, and results in one population may not generalise to others.</p>
+    <div class="ba-quote"><p>"Withania somnifera may be considered a potential therapeutic agent for stress, anxiety and related conditions, though larger trials are needed to confirm these findings."</p><cite>— Systematic review, Journal of Evidence-Based Integrative Medicine, 2021</cite></div>
+    <h2>Turmeric / Curcumin</h2>
+    <p>Curcumin — the primary active compound in turmeric — has been extensively studied for its antioxidant and anti-inflammatory properties in laboratory and animal models. Human clinical trial results have been more variable, partly due to curcumin's notoriously poor bioavailability when consumed alone.</p>
+    <p>Research has consistently shown that combining curcumin with piperine (black pepper extract) significantly enhances its absorption. A commonly cited study in Planta Medica found that 20mg of piperine combined with 2g of curcumin increased curcumin serum levels by approximately 2000% compared to curcumin alone in humans.</p>
+    <p>Areas under clinical investigation include joint comfort, cognitive function and metabolic markers. Results across trials have been mixed, and curcumin is not an approved treatment for any condition.</p>
+    <h2>Shilajit</h2>
+    <p>Shilajit is a naturally occurring resinous substance found in Himalayan rock formations, composed of fulvic acid, humic acid and over 80 minerals. Research on shilajit is earlier stage than ashwagandha or curcumin, with most trials being small and of short duration.</p>
+    <p>A 2016 randomised controlled trial in Andrologia found that purified shilajit supplementation was associated with statistically significant increases in total testosterone, free testosterone and DHEA in healthy male volunteers compared to placebo over 90 days. Research on other proposed benefits — including cognitive function and fatigue — is preliminary.</p>
+    <div class="ba-cta">
+      <img class="ba-cta-img" src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d8253ee59c1fc22878a_IMG_8467.jpeg" alt="7 Chakra">
+      <div class="ba-cta-body">
+        <div class="ba-cta-label">Kurryculum Supplement</div>
+        <div class="ba-cta-name">7 Chakra Ayurvedic Complex</div>
+        <div class="ba-cta-desc">Ashwagandha + Turmeric + Shilajit + 4 additional herbs · 60 Capsules · Third-party tested</div>
+        <div class="ba-cta-prices"><span class="ba-cta-old">$29.99</span><span class="ba-cta-new">$23.99</span><span class="ba-cta-save">20% off</span></div>
+        <button class="ba-cta-btn" onclick="blBuy('7-chakra','7 Chakra Ayurvedic Complex',23.99)">Shop Now — $23.99</button>
+      </div>
+    </div>
+    <div class="ba-ref"><strong style="color:#1B4332;font-size:13px">References</strong><br>1. Chandrasekhar K et al. A prospective, randomized double-blind, placebo-controlled study of ashwagandha root extract. Medicine. 2019.<br>2. Shoba G et al. Influence of piperine on the pharmacokinetics of curcumin. Planta Medica. 1998.<br>3. Pandit S et al. Clinical evaluation of purified shilajit on testosterone levels. Andrologia. 2016.</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ ARTICLE 4 ============ -->
+<div id="article-4" class="ba-list">
+<div class="ba-wrap">
+  <div class="ba-hero">
+    <span class="ba-cat" style="background:#F0F7F4;color:#1B4332">Nutrition Tools</span>
+    <h1 class="ba-h1">Calorie Counting on an Indian Diet: A Practical Reference Guide</h1>
+    <div class="ba-meta"><span>👨‍⚕️ Reviewed by a Pharmacist</span><span>📖 8 min read</span><span>🔢 Includes reference tables</span></div>
+    <div class="ba-intro">Standard calorie counting apps were designed around Western dietary patterns. This guide provides estimated calorie and macronutrient values for common Indian dishes to help South Asian and Indian-American individuals better understand their nutritional intake.</div>
+  </div>
+  <div class="ba-body">
+    <div class="ba-compliance"><strong>Important Note</strong>Calorie values below are estimates based on standard home-prepared recipes and USDA data. Actual values vary significantly based on cooking method, portion size, ingredients and preparation. This guide is for general educational reference only. For personalised nutrition guidance, consult a registered dietitian.</div>
+    <h2>Why Standard Apps Fall Short for Indian Diets</h2>
+    <p>Research published in the Journal of the American Dietetic Association has noted that culturally specific dietary assessment is often lacking for South Asian populations. Most widely available nutrition tracking tools have limited databases for Indian cuisine, often containing inconsistent or inaccurate entries for home-cooked dishes.</p>
+    <p>This creates a practical barrier for Indian-Americans attempting to track their intake — estimated to number over 4 million adults in the United States.</p>
+    <h2>Estimated Calorie Reference Table</h2>
+    <div style="overflow-x:auto;margin:24px 0">
+      <table style="width:100%;border-collapse:collapse;font-size:14px">
+        <thead><tr style="background:#1B4332;color:#fff"><th style="padding:10px 14px;text-align:left">Dish (standard serving)</th><th style="padding:10px;text-align:right">Est. Calories</th><th style="padding:10px;text-align:right">Protein</th><th style="padding:10px;text-align:right">Carbs</th></tr></thead>
+        <tbody>
+          <tr style="background:#F7FAF8"><td style="padding:9px 14px;border-bottom:1px solid #E0EDE6">Dal tadka (1 cup / 240ml)</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">~220 kcal</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">12g</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">32g</td></tr>
+          <tr><td style="padding:9px 14px;border-bottom:1px solid #E0EDE6">Roti / chapati (1 piece, ~30g)</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">~70 kcal</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">2.5g</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">15g</td></tr>
+          <tr style="background:#F7FAF8"><td style="padding:9px 14px;border-bottom:1px solid #E0EDE6">Basmati rice, cooked (1 cup / 185g)</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">~210 kcal</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">4g</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">45g</td></tr>
+          <tr><td style="padding:9px 14px;border-bottom:1px solid #E0EDE6">Paneer tikka (100g)</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">~265 kcal</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">18g</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">8g</td></tr>
+          <tr style="background:#F7FAF8"><td style="padding:9px 14px;border-bottom:1px solid #E0EDE6">Aloo gobi (1 cup / 200g)</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">~165 kcal</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">4g</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">25g</td></tr>
+          <tr><td style="padding:9px 14px;border-bottom:1px solid #E0EDE6">Masala chai with whole milk (1 cup)</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">~80 kcal</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">3g</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">12g</td></tr>
+          <tr style="background:#F7FAF8"><td style="padding:9px 14px;border-bottom:1px solid #E0EDE6">Vegetable biryani (1 cup / 200g)</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">~290 kcal</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">6g</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">52g</td></tr>
+          <tr><td style="padding:9px 14px;border-bottom:1px solid #E0EDE6">Samosa, baked (1 medium piece)</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">~130 kcal</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">3g</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">18g</td></tr>
+          <tr style="background:#F7FAF8"><td style="padding:9px 14px;border-bottom:1px solid #E0EDE6">Chole (chickpea curry, 1 cup)</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">~269 kcal</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">15g</td><td style="padding:9px;text-align:right;border-bottom:1px solid #E0EDE6">40g</td></tr>
+          <tr><td style="padding:9px 14px">Ghee (1 tablespoon / 14g)</td><td style="padding:9px;text-align:right">~120 kcal</td><td style="padding:9px;text-align:right">0g</td><td style="padding:9px;text-align:right">0g</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#9CA3AF;margin-top:-12px;margin-bottom:24px">Estimates based on USDA FoodData Central and standard home-recipe analyses. Values are approximate and intended for general reference only.</p>
+    <h2>The Ghee Factor: A Common Source of Underestimation</h2>
+    <p>One tablespoon of ghee contains approximately 120 calories and 14g of fat — comparable to any refined oil. Research in nutritional epidemiology has found that added fats are among the most commonly underestimated sources of calories in self-reported dietary intake. Many Indian dishes are prepared with 2-4 tablespoons of ghee or oil, which can substantially increase the caloric content beyond what is apparent from the main ingredients alone.</p>
+    <div style="background:linear-gradient(135deg,#1B4332,#2D5A40);border-radius:16px;padding:28px;margin:32px 0;text-align:center">
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#fff;margin-bottom:8px">Try Our Free AI Calorie Calculator</div>
+      <p style="font-size:14px;color:rgba(255,255,255,.6);margin-bottom:20px;font-weight:300">Designed for Indian, South Asian and multicultural diets. Enter your details for an ethnicity-adjusted calorie estimate and cultural recipe suggestions.</p>
+      <a href="/recipes-calculator" style="display:inline-block;background:#C9951A;color:#0F1F17;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none">Calculate My Calorie Target →</a>
+    </div>
+    <div class="ba-ref"><strong style="color:#1B4332;font-size:13px">References</strong><br>1. USDA FoodData Central. fdc.nal.usda.gov<br>2. Gulyani P et al. Dietary assessment methods for South Asian migrants. Nutrition & Dietetics. 2024.<br>3. Misra A et al. Nutrition transition in India. Public Health Nutrition. 2011.</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ ARTICLE 5 ============ -->
+<div id="article-5" class="ba-list">
+<div class="ba-wrap">
+  <div class="ba-hero">
+    <span class="ba-cat" style="background:#F0F4FF;color:#185FA5">Bone Health</span>
+    <h1 class="ba-h1">Vitamin D Status in South Asian Populations: What the Research Shows</h1>
+    <div class="ba-meta"><span>👨‍⚕️ Reviewed by a Pharmacist</span><span>📖 6 min read</span><span>🔬 Educational content</span></div>
+    <div class="ba-intro">Multiple studies have documented lower average Vitamin D levels in South Asian populations living in Western countries compared to other ethnic groups, even in sun-rich regions. This article summarises the research and relevant considerations for South Asian adults.</div>
+  </div>
+  <div class="ba-body">
+    <div class="ba-compliance"><strong>Medical Disclaimer</strong>This article is for educational purposes only. Vitamin D status should be assessed by a healthcare provider through blood testing (25-hydroxyvitamin D). Do not self-diagnose or self-treat. Optimal supplementation doses vary by individual and should be determined with a healthcare professional.</div>
+    <h2>The Research on South Asian Vitamin D Status</h2>
+    <p>A systematic review published in Osteoporosis International examined Vitamin D status across South Asian populations and found consistently lower 25-hydroxyvitamin D levels compared to age and sex-matched European individuals, even when controlling for latitude, season and sun exposure habits.</p>
+    <p>Research has identified several contributing factors specific to individuals with higher melanin concentrations in the skin — a characteristic common among South Asians. Melanin functions as a natural UV filter, which reduces skin synthesis of previtamin D3 in response to solar ultraviolet B radiation.</p>
+    <div class="ba-stat"><div class="ba-stat-num">3-5x</div><div class="ba-stat-text"><strong>longer sun exposure may be needed for adequate D synthesis in darker skin tones</strong>Research in the Journal of Investigative Dermatology suggests melanin-rich skin requires significantly longer UV exposure to produce equivalent previtamin D3 compared to lighter skin tones.</div></div>
+    <h2>Dietary Sources and Their Limitations</h2>
+    <p>Very few foods naturally contain significant Vitamin D. Fatty fish, egg yolks and UV-exposed mushrooms are among the best food sources. Fortified dairy products contain added D, though the amounts are modest relative to recommended intakes, and the South Asian practice of boiling milk for chai reduces D content.</p>
+    <p>The NIH Office of Dietary Supplements recommends 600-800 IU of Vitamin D daily for adults, with many researchers suggesting higher amounts for individuals at risk of deficiency. A blood test is the only reliable way to determine your personal status.</p>
+    <h2>Why This Matters for Bone Health</h2>
+    <p>Vitamin D is essential for calcium absorption in the intestine. Without adequate D, even a calcium-rich diet may not translate to adequate bone mineralisation. Research from the National Osteoporosis Foundation and multiple cohort studies has identified South Asian women as a group with elevated osteoporosis risk.</p>
+    <div class="ba-cta">
+      <img class="ba-cta-img" src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d7bcc9837f3bf598714_31uV9dzQzML._AC_.jpg" alt="BoneVite+">
+      <div class="ba-cta-body">
+        <div class="ba-cta-label">Kurryculum Supplement</div>
+        <div class="ba-cta-name">BoneVite+ Joint & Bone Support</div>
+        <div class="ba-cta-desc">Vitamin D3 + Calcium + Glucosamine + Chondroitin + MSM · 90 Tablets · Amazon Best Seller</div>
+        <div class="ba-cta-prices"><span class="ba-cta-old">$35.99</span><span class="ba-cta-new">$28.79</span><span class="ba-cta-save">20% off</span></div>
+        <button class="ba-cta-btn" onclick="blBuy('bonevite','BoneVite+',28.79)">Shop Now — $28.79</button>
+      </div>
+    </div>
+    <div class="ba-ref"><strong style="color:#1B4332;font-size:13px">References</strong><br>1. Darling AL et al. Vitamin D deficiency in South Asians: a systematic review. Osteoporosis International. 2013.<br>2. NIH Office of Dietary Supplements — Vitamin D Fact Sheet. ods.od.nih.gov<br>3. Clemens TL et al. Increased skin pigment reduces the capacity of skin to synthesise vitamin D. Lancet. 1982.</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ ARTICLE 6 ============ -->
+<div id="article-6" class="ba-list">
+<div class="ba-wrap">
+  <div class="ba-hero">
+    <span class="ba-cat" style="background:#F0F8FF;color:#185FA5">Omega-3 Research</span>
+    <h1 class="ba-h1">Krill Oil vs Fish Oil: Understanding the Differences in Bioavailability</h1>
+    <div class="ba-meta"><span>👨‍⚕️ Reviewed by a Pharmacist</span><span>📖 6 min read</span><span>🔬 Educational content</span></div>
+    <div class="ba-intro">Both krill oil and fish oil are sources of long-chain omega-3 fatty acids EPA and DHA. Research suggests they differ in how the body absorbs and utilises these compounds. This article summarises the published comparative research.</div>
+  </div>
+  <div class="ba-body">
+    <div class="ba-compliance"><strong>Important Note</strong>This article discusses general nutritional research and is not intended to recommend any supplement for the treatment or prevention of any medical condition. Omega-3 supplements may interact with blood-thinning medications. Consult your healthcare provider before starting supplementation.</div>
+    <h2>How Omega-3s Are Packaged Differently</h2>
+    <p>In fish oil, EPA and DHA are primarily bound in triglyceride form — the same molecular structure as most dietary fats. The body must hydrolyse these triglycerides in the small intestine, repackage the fatty acids, and incorporate them into chylomicrons before they can be transported to tissues.</p>
+    <p>In krill oil, EPA and DHA are primarily bound to phospholipids — a structure identical to the fatty acid binding form used in human cell membranes. Research suggests this structural similarity may allow for more efficient intestinal uptake.</p>
+    <div class="ba-stat"><div class="ba-stat-num">+40%</div><div class="ba-stat-text"><strong>higher EPA+DHA blood levels observed with krill oil in one comparative study</strong>A 2011 study in Lipids found krill oil produced significantly higher plasma EPA and DHA levels than fish oil at equivalent doses in healthy volunteers over 7 weeks.</div></div>
+    <h2>Omega-3 Intake in South Asian and Indian Vegetarian Diets</h2>
+    <p>The traditional South Asian vegetarian diet contains virtually no EPA or DHA — the long-chain omega-3s studied extensively for cardiovascular and cognitive health benefits. Plant foods provide ALA (alpha-linolenic acid), a short-chain omega-3 found in flaxseed, walnuts and mustard oil. However, the human body converts ALA to EPA and DHA with low efficiency — typically less than 10-15% conversion to EPA and even less to DHA.</p>
+    <p>Research in the European Journal of Clinical Nutrition has documented lower omega-3 status in South Asian vegetarians compared to omnivores, even when ALA intake is adequate. For this population, direct supplementation with preformed EPA and DHA may be more effective than relying on conversion from plant sources.</p>
+    <h2>What the Research Says About Omega-3 and Health</h2>
+    <p>EPA and DHA are among the most studied nutritional compounds. Research has examined their role in cardiovascular health, brain function, inflammatory markers and eye health. The American Heart Association recommends omega-3 fatty acids as part of a heart-healthy dietary pattern.</p>
+    <div class="ba-cta">
+      <img class="ba-cta-img" src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c321ab254b984de6_61E5X-OgXAL._AC_SX679_PIbundle-60%2CTopRight%2C0%2C0_SH20_.jpg" alt="Krill Oil">
+      <div class="ba-cta-body">
+        <div class="ba-cta-label">Kurryculum Supplement</div>
+        <div class="ba-cta-name">Krill Oil 500mg</div>
+        <div class="ba-cta-desc">Phospholipid-bound EPA & DHA · Astaxanthin antioxidant · Antarctic sourced · Burpless · 60 Softgels</div>
+        <div class="ba-cta-prices"><span class="ba-cta-old">$23.99</span><span class="ba-cta-new">$19.19</span><span class="ba-cta-save">20% off</span></div>
+        <button class="ba-cta-btn" onclick="blBuy('krill-oil','Krill Oil 500mg',19.19)">Shop Now — $19.19</button>
+      </div>
+    </div>
+    <div class="ba-ref"><strong style="color:#1B4332;font-size:13px">References</strong><br>1. Ulven SM et al. Metabolic effects of krill oil are essentially similar to those of fish oil. Lipids. 2011.<br>2. Geppert J et al. Docosahexaenoic acid supplementation in vegetarians. Journal of Nutrition. 2005.<br>3. American Heart Association. Fish and Omega-3 Fatty Acids. heart.org</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ ARTICLE 7 ============ -->
+<div id="article-7" class="ba-list">
+<div class="ba-wrap">
+  <div class="ba-hero">
+    <span class="ba-cat" style="background:#F0FAF0;color:#1B4332">Cultural Nutrition</span>
+    <h1 class="ba-h1">Nutritional Considerations for West African Diaspora in the United States</h1>
+    <div class="ba-meta"><span>👨‍⚕️ Reviewed by a Pharmacist</span><span>📖 7 min read</span><span>🔬 Educational content</span></div>
+    <div class="ba-intro">West African culinary traditions are among the most nutritionally diverse in the world, featuring exceptional plant variety, fermented foods and legume-rich dishes. This article explores research on potential nutritional gaps among West African diaspora communities in the USA.</div>
+  </div>
+  <div class="ba-body">
+    <div class="ba-compliance"><strong>Educational Disclaimer</strong>Nutritional research on West African diaspora populations in the USA is an emerging field with limited large-scale studies. The information below draws from available research and should not be interpreted as applicable to all individuals. Consult a registered dietitian familiar with African food traditions for personalised guidance.</div>
+    <h2>Nutritional Strengths of Traditional West African Diets</h2>
+    <p>Research in the Journal of Nutrition and Food Sciences has highlighted several strengths of West African dietary patterns. Leafy vegetables including ugu (fluted pumpkin leaf), bitter leaf and waterleaf provide iron, folate and antioxidant compounds. Fermented foods — including ogi, ogiri, kenkey and dawadawa — contribute to gut microbiome diversity. The heavy use of legumes provides plant protein and fibre that exceeds typical Western dietary intakes.</p>
+    <h2>Potential Gaps Identified in Research</h2>
+    <h3>Omega-3 Fatty Acids</h3>
+    <p>Traditional coastal West African diets were historically rich in omega-3 fatty acids from ocean fish. Diaspora dietary patterns often shift toward chicken, beef and catfish — species lower in EPA and DHA than cold-water oily fish like mackerel, sardines and salmon. Research on African immigrant populations in the USA has noted this shift and its potential cardiovascular implications.</p>
+    <h3>Vitamin D</h3>
+    <p>As with South Asian populations, individuals of West African descent have higher melanin concentrations that reduce cutaneous Vitamin D synthesis. Research from the NHANES (National Health and Nutrition Examination Survey) database has consistently shown lower serum 25-hydroxyvitamin D levels among Black Americans compared to other groups, across all geographic regions.</p>
+    <h3>Calcium</h3>
+    <p>Traditional West African cuisine uses relatively little dairy. While calcium is obtained through leafy greens and small fish consumed whole, diaspora dietary patterns may reduce these sources without adequate replacement, potentially affecting long-term bone health outcomes.</p>
+    <div class="ba-cta">
+      <img class="ba-cta-img" src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c321ab254b984de6_61E5X-OgXAL._AC_SX679_PIbundle-60%2CTopRight%2C0%2C0_SH20_.jpg" alt="Krill Oil">
+      <div class="ba-cta-body">
+        <div class="ba-cta-label">Kurryculum Supplements</div>
+        <div class="ba-cta-name">Krill Oil 500mg + BoneVite+</div>
+        <div class="ba-cta-desc">Supports omega-3 intake and bone health — two key areas identified in diaspora nutrition research</div>
+        <div class="ba-cta-prices"><span class="ba-cta-old">$59.98</span><span class="ba-cta-new">$47.98</span><span class="ba-cta-save">20% off</span></div>
+        <a href="/shop" class="ba-cta-btn">Shop Both →</a>
+      </div>
+    </div>
+    <div class="ba-ref"><strong style="color:#1B4332;font-size:13px">References</strong><br>1. Amaeze OU et al. Nutritional assessment of traditional Nigerian food plants. Journal of Nutrition and Food Sciences. 2011.<br>2. Ganji V et al. Serum vitamin D levels in US adults. Nutrients. 2012.<br>3. Adeyemo A et al. Cardiovascular risk factors among West Africans and African Americans. Circulation. 2009.</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ ARTICLE 8 ============ -->
+<div id="article-8" class="ba-list">
+<div class="ba-wrap">
+  <div class="ba-hero">
+    <span class="ba-cat" style="background:#F0F4FF;color:#1B4332">Joint Health</span>
+    <h1 class="ba-h1">Glucosamine vs Collagen for Joint Support: A Review of the Evidence</h1>
+    <div class="ba-meta"><span>👨‍⚕️ Reviewed by a Pharmacist</span><span>📖 7 min read</span><span>🔬 Educational content</span></div>
+    <div class="ba-intro">Glucosamine and collagen are among the most researched compounds in joint health supplementation. This article compares the available clinical evidence for both and discusses how they differ in mechanism and application.</div>
+  </div>
+  <div class="ba-body">
+    <div class="ba-compliance"><strong>Medical Disclaimer</strong>Joint supplements are not approved treatments for osteoarthritis or any other musculoskeletal condition. This article discusses general nutritional research. If you have joint pain or arthritis, consult a healthcare provider for diagnosis and treatment. Individual responses to supplements vary significantly.</div>
+    <h2>Glucosamine: Mechanism and Evidence</h2>
+    <p>Glucosamine is an amino sugar naturally present in cartilage tissue, where it serves as a building block for glycosaminoglycans — structural components of cartilage, synovial fluid and connective tissue. As cartilage does not have a blood supply, it relies on diffusion for nutrient delivery, making supplementation a theoretically sound approach to supporting cartilage health.</p>
+    <p>The most significant clinical trial examining glucosamine is the NIH-funded GAIT (Glucosamine/Chondroitin Arthritis Intervention Trial), which enrolled 1,583 participants with knee osteoarthritis. The trial found that glucosamine combined with chondroitin was effective for a subgroup of patients with moderate-to-severe pain, though results in the broader population were mixed. A 2018 Cochrane review of 26 trials concluded that glucosamine may reduce pain and improve function in knee osteoarthritis, with effects generally modest in magnitude.</p>
+    <h2>Collagen: Mechanism and Evidence</h2>
+    <p>Hydrolysed collagen peptides — particularly Type II collagen — have been studied for joint health through a different mechanism. Research suggests that orally consumed collagen peptides may accumulate in cartilage tissue and stimulate chondrocytes (cartilage cells) to produce new collagen. Additionally, some researchers propose an immunological mechanism for undenatured Type II collagen.</p>
+    <p>A 2017 randomised controlled trial in Nutrients followed 139 athletes taking collagen hydrolysate over 24 weeks and found statistically significant reductions in joint pain during activity compared to placebo. A 2016 study in the British Journal of Nutrition found Type II collagen improved physical function scores in participants with knee osteoarthritis.</p>
+    <h2>Comparing the Two: Different Targets</h2>
+    <p>Glucosamine primarily targets the structural components of cartilage (glycosaminoglycans and proteoglycans), while collagen targets the fibrillar protein network that gives cartilage its tensile strength. They also support different structures: glucosamine acts primarily on articular cartilage, while collagen has broader effects on tendons, ligaments and the joint capsule.</p>
+    <div class="ba-cta">
+      <img class="ba-cta-img" src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d7bcc9837f3bf598714_31uV9dzQzML._AC_.jpg" alt="BoneVite+">
+      <div class="ba-cta-body">
+        <div class="ba-cta-label">Kurryculum Supplement</div>
+        <div class="ba-cta-name">BoneVite+ Joint & Bone Support</div>
+        <div class="ba-cta-desc">Glucosamine + Chondroitin + MSM + Vitamin D3 + Elderberry · 90 Tablets · Third-party tested</div>
+        <div class="ba-cta-prices"><span class="ba-cta-old">$35.99</span><span class="ba-cta-new">$28.79</span><span class="ba-cta-save">20% off</span></div>
+        <button class="ba-cta-btn" onclick="blBuy('bonevite','BoneVite+',28.79)">Shop Now — $28.79</button>
+      </div>
+    </div>
+    <div class="ba-ref"><strong style="color:#1B4332;font-size:13px">References</strong><br>1. Clegg DO et al. Glucosamine, chondroitin sulfate, and the two in combination for painful knee osteoarthritis (GAIT). NEJM. 2006.<br>2. Shaw G et al. Vitamin C-enriched gelatin supplementation before intermittent activity augments collagen synthesis. American Journal of Clinical Nutrition. 2017.<br>3. Lugo JP et al. Undenatured type II collagen in knee osteoarthritis. Journal of the International Society of Sports Nutrition. 2016.</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ ARTICLE 9 ============ -->
+<div id="article-9" class="ba-list">
+<div class="ba-wrap">
+  <div class="ba-hero">
+    <span class="ba-cat" style="background:#FFF0EB;color:#C4521A">Sports Nutrition</span>
+    <h1 class="ba-h1">Dietary Nitrates and Athletic Performance: Beet Root Research Review</h1>
+    <div class="ba-meta"><span>👨‍⚕️ Reviewed by a Pharmacist</span><span>📖 5 min read</span><span>🔬 Educational content</span></div>
+    <div class="ba-intro">Beet root is one of the few natural dietary sources of inorganic nitrates with a substantial body of peer-reviewed research on exercise performance. This article summarises the key findings and compares whole food versus supplemental forms.</div>
+  </div>
+  <div class="ba-body">
+    <div class="ba-compliance"><strong>Important Note</strong>Dietary nitrates are not approved performance-enhancing substances and are not intended to treat any medical condition. This article discusses general nutritional research. Effects vary by individual, training status and dosing. Always consult a healthcare provider before using sports supplements, particularly if you have cardiovascular conditions or take nitrate medications.</div>
+    <h2>How Dietary Nitrates May Support Exercise</h2>
+    <p>The proposed mechanism for beet root's performance effects involves the dietary nitrate-nitrite-nitric oxide pathway. Inorganic nitrates consumed from food are reduced to nitrite by oral bacteria, and nitrite is subsequently converted to nitric oxide in the body — particularly in low-oxygen conditions such as exercising muscle tissue.</p>
+    <p>Nitric oxide is a well-established vasodilator. Research suggests it may reduce the oxygen cost of submaximal exercise, improve mitochondrial efficiency and enhance blood flow to working muscles. These mechanisms have been studied extensively in both laboratory and field settings.</p>
+    <div class="ba-stat"><div class="ba-stat-num">500mg</div><div class="ba-stat-text"><strong>of dietary nitrate is the dose most commonly used in performance research</strong>Most studies showing significant effects used approximately 400-600mg of nitrate, typically standardised beet root extract or concentrated juice, consumed 2-3 hours before exercise.</div></div>
+    <h2>Whole Beet Root Juice vs Standardised Extract</h2>
+    <p>Research published in the Journal of Applied Physiology and Medicine & Science in Sports & Exercise has predominantly used concentrated beet root juice or standardised extracts rather than whole beets or unpasteurised juice. This is because nitrate content in fresh beets varies considerably by growing conditions, storage and preparation method.</p>
+    <p>Pasteurisation of commercial beet juice can reduce nitrate content. Cooking beet root reduces nitrate by approximately 20-50% depending on method and duration. Standardised extracts offer more consistent and measurable nitrate delivery.</p>
+    <h2>The Role of Oral Bacteria</h2>
+    <p>An important and often overlooked aspect of dietary nitrate research: the conversion of nitrate to nitrite occurs in the mouth via oral bacteria. Using antibacterial mouthwash before consuming beet root significantly blunts the performance effect — an observation that supports the oral bacterial pathway proposed in the research.</p>
+    <div class="ba-cta">
+      <img class="ba-cta-img" src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d5489116b61c2b4aff4_BeetRoot.jpg" alt="Beet Root">
+      <div class="ba-cta-body">
+        <div class="ba-cta-label">Kurryculum Supplement</div>
+        <div class="ba-cta-name">Beet Root + Black Pepper</div>
+        <div class="ba-cta-desc">Standardised beet root extract · Enhanced absorption with piperine · 60 Tablets · Website Exclusive</div>
+        <div class="ba-cta-prices"><span class="ba-cta-old">$11.99</span><span class="ba-cta-new">$9.59</span><span class="ba-cta-save">20% off</span></div>
+        <button class="ba-cta-btn" onclick="blBuy('beet-root','Beet Root + Black Pepper',9.59)">Shop Now — $9.59</button>
+      </div>
+    </div>
+    <div class="ba-ref"><strong style="color:#1B4332;font-size:13px">References</strong><br>1. Jones AM. Dietary nitrate supplementation and exercise performance. Sports Medicine. 2014.<br>2. Larsen FJ et al. Effects of dietary nitrate on oxygen cost during exercise. Acta Physiologica. 2007.<br>3. Lansley KE et al. Dietary nitrate supplementation reduces the O2 cost of walking and running. Journal of Applied Physiology. 2011.</div>
+  </div>
+</div>
+</div>
+
+</div>
+<script>
+function blBuy(id,name,price){
+  try{sessionStorage.setItem('kurry_cart',JSON.stringify([{id:id,name:name,price:price,qty:1}]));}catch(e){}
+  window.location.href='/checkout';
+}
+window.showArticle=function(num){
+  document.querySelectorAll('.ba-list').forEach(function(el){el.classList.remove('active');});
+  var el=document.getElementById('article-'+num);
+  if(el){el.classList.add('active');window.scrollTo(0,0);}
+};
+</script>
