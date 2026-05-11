@@ -1,38 +1,44 @@
-// This patches Buy on Website buttons on the homepage to pass cart data
 (function(){
-  function patchBuyButtons() {
-    document.querySelectorAll('.lh-btn-web').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
-        var card = btn.closest('.lh-pcard');
-        if (!card) return;
-        var name = card.querySelector('.lh-pname') ? card.querySelector('.lh-pname').textContent.trim() : '';
-        var priceEl = card.querySelector('.lh-pprice');
-        var price = priceEl ? parseFloat(priceEl.textContent.replace('$','')) : 0;
-        // Map name to product ID
-        var idMap = {
-          '7 Chakra Ayurvedic Complex': '7-chakra',
-          'Sugaverve': 'sugaverve',
-          'Beet Root + Black Pepper': 'beet-root',
-          'Vitamin B-12': 'vitamin-b12',
-          'BoneVite+': 'bonevite',
-          'Krill Oil 500mg': 'krill-oil',
-          'Collagen Peptides': 'collagen'
-        };
-        var id = idMap[name] || name.toLowerCase().replace(/[^a-z0-9]+/g,'-');
-        if (name && price) {
-          try {
-            sessionStorage.setItem('kurry_cart', JSON.stringify([{id:id, name:name, price:price, qty:1}]));
-          } catch(err) {}
-        }
-      });
+  var price_to_prod = {
+    '24.99': ['7-chakra','7 Chakra Ayurvedic Complex'],
+    '29.99': ['sugaverve','Sugaverve'],
+    '9.99':  ['beet-root','Beet Root + Black Pepper'],
+    '8.99':  ['vitamin-b12','Vitamin B-12']
+  };
+  
+  function patch(){
+    document.querySelectorAll('.lh-btn-web').forEach(function(btn){
+      if(btn.dataset.patched) return;
+      btn.dataset.patched = '1';
+      var foot = btn.closest('.lh-pfoot');
+      if(!foot) return;
+      var priceEl = foot.querySelector('.lh-pprice');
+      if(!priceEl) return;
+      var price = priceEl.textContent.replace('$','').trim();
+      var prod = price_to_prod[price];
+      if(!prod) return;
+      var id = prod[0], name = prod[1], p = parseFloat(price);
+      // Replace anchor with button to avoid navigation before sessionStorage set
+      var newBtn = document.createElement('button');
+      newBtn.className = btn.className;
+      newBtn.textContent = btn.textContent;
+      newBtn.onclick = function(e){
+        e.preventDefault();
+        try{sessionStorage.setItem('kurry_cart',JSON.stringify([{id:id,name:name,price:p,qty:1}]));}catch(er){}
+        window.location.href='/checkout';
+      };
+      btn.parentNode.replaceChild(newBtn, btn);
     });
   }
-  // Run after DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', patchBuyButtons);
-  } else {
-    patchBuyButtons();
+  
+  // Run multiple times to catch dynamically injected content
+  setTimeout(patch, 500);
+  setTimeout(patch, 1500);
+  setTimeout(patch, 3000);
+  
+  // Also observe DOM changes
+  if(window.MutationObserver){
+    var obs = new MutationObserver(function(){ patch(); });
+    obs.observe(document.body, {childList:true, subtree:true});
   }
-  // Also run after a delay in case content loads dynamically
-  setTimeout(patchBuyButtons, 2000);
 })();
