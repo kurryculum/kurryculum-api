@@ -1,6 +1,6 @@
 (function(){
   if(window.location.pathname !== '/' && window.location.pathname !== '/index' && window.location.pathname !== '') return;
-  var COMMIT = '8e09cc3';
+  var COMMIT = '73fd00f';
   var URL = 'https://cdn.jsdelivr.net/gh/kurryculum/kurryculum-api@' + COMMIT + '/KURRYCULUM-HOMEPAGE-FINAL.html';
   if(document.getElementById('kh-loaded')) return;
   fetch(URL).then(function(r){return r.text();}).then(function(html){
