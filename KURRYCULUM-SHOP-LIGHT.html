@@ -1,0 +1,287 @@
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.sh{font-family:'DM Sans',sans-serif;background:#FAFAF7;color:#0F1F17}
+.sh-hero{background:#fff;padding:72px 40px 56px;text-align:center;border-bottom:1px solid #E0EDE6}
+.sh-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#52796F;margin-bottom:10px}
+.sh-h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:900;color:#1B4332;margin-bottom:12px;letter-spacing:-.3px}
+.sh-sub{font-size:15px;color:#6B7280;max-width:520px;margin:0 auto 20px;line-height:1.7;font-weight:300}
+.sh-legend{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+.sh-leg{display:flex;align-items:center;gap:6px;font-size:13px;color:#6B7280}
+.sh-dot{width:10px;height:10px;border-radius:50%}
+.sh-tbar{background:#1B4332;padding:14px 40px}
+.sh-tbar-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.sh-tbi{font-size:11px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.sh-wrap{max-width:1200px;margin:0 auto;padding:56px 40px 80px}
+.sh-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px;justify-content:center}
+.sh-fb{padding:8px 20px;border-radius:100px;font-size:12px;font-weight:600;border:1.5px solid #E0EDE6;background:transparent;color:#6B7280;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.sh-fb.active,.sh-fb:hover{background:#1B4332;border-color:#1B4332;color:#fff}
+.sh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.sh-card{background:#fff;border-radius:20px;overflow:hidden;border:0.5px solid #E0EDE6;transition:all .3s;display:flex;flex-direction:column}
+.sh-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(27,67,50,.1)}
+.sh-img{height:240px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sh-img img{height:210px;width:100%;object-fit:contain;transition:transform .4s;filter:drop-shadow(0 8px 20px rgba(0,0,0,.12))}
+.sh-card:hover .sh-img img{transform:scale(1.06) translateY(-4px)}
+.sh-badge{position:absolute;top:12px;left:12px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;color:#fff}
+.sh-badge-web{background:#1B4332}
+.sh-badge-amz{background:#C9951A;color:#0F1F17}
+.sh-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.sh-brand{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C4521A;margin-bottom:3px}
+.sh-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#1B4332;margin-bottom:5px;line-height:1.3}
+.sh-stars{color:#C9951A;font-size:12px;margin-bottom:10px}
+.sh-stars span{color:#6B7280;font-size:11px;font-family:'DM Sans',sans-serif}
+.sh-bens{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;flex:1}
+.sh-ben{font-size:12px;color:#6B7280;display:flex;gap:6px;align-items:flex-start}
+.sh-ben::before{content:'✓';color:#52796F;font-weight:700;flex-shrink:0}
+.sh-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.sh-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px}
+.sh-tag-w{background:#E8F0EC;color:#1B4332}
+.sh-tag-a{background:#EBF5EC;color:#2A6030}
+.sh-foot{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:0.5px solid #E0EDE6;margin-top:auto}
+.sh-price-wrap{display:flex;flex-direction:column}
+.sh-old{font-size:12px;color:#9CA3AF;text-decoration:line-through;line-height:1}
+.sh-price{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#1B4332;line-height:1.1}
+.sh-save{font-size:10px;font-weight:700;color:#C9951A;background:#FEF3E2;padding:1px 6px;border-radius:3px;margin-top:2px;display:inline-block}
+.sh-btn-web{background:#1B4332;color:#fff;padding:9px 16px;border-radius:100px;font-size:11px;font-weight:700;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;white-space:nowrap}
+.sh-btn-web:hover{background:#52796F}
+.sh-btn-amz{background:#C9951A;color:#0F1F17;padding:9px 16px;border-radius:100px;font-size:11px;font-weight:700;text-decoration:none;transition:all .2s;white-space:nowrap;display:inline-block}
+.sh-btn-amz:hover{background:#E8B84B}
+.sh-quiz-cta{background:linear-gradient(135deg,#C9951A,#E8B84B);border-radius:20px;padding:48px 40px;text-align:center;margin-top:56px}
+.sh-quiz-h{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#0F1F17;margin-bottom:8px}
+.sh-quiz-p{font-size:15px;color:rgba(15,31,23,.65);margin-bottom:24px;font-weight:300}
+.sh-quiz-btn{display:inline-block;background:#1B4332;color:#fff;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none}
+.sh-disclaimer{font-size:11px;color:#9CA3AF;text-align:center;margin-top:40px;line-height:1.7;max-width:700px;margin-left:auto;margin-right:auto}
+@media(max-width:768px){.sh-hero{padding:48px 20px 36px}.sh-wrap{padding:32px 16px 60px}.sh-tbar{padding:12px 16px}.sh-tbar-inner{gap:16px}}
+</style>
+
+<div class="sh">
+<div class="sh-hero">
+  <div class="sh-label">Shop All Products</div>
+  <h1 class="sh-h1">Nine supplements.<br>One wellness journey.</h1>
+  <p class="sh-sub">Website-exclusive products ship direct from us. Our Amazon bestsellers are also available on Prime with free shipping and Subscribe &amp; Save discounts.</p>
+  <div class="sh-legend">
+    <div class="sh-leg"><div class="sh-dot" style="background:#1B4332"></div>Website Exclusive</div>
+    <div class="sh-leg"><div class="sh-dot" style="background:#C9951A"></div>Amazon Best Seller</div>
+  </div>
+</div>
+
+<div class="sh-tbar">
+  <div class="sh-tbar-inner">
+    <div class="sh-tbi">🔬 Third-party lab tested</div>
+    <div class="sh-tbi">🌿 Non-GMO · Gluten free</div>
+    <div class="sh-tbi">🚚 Free shipping $35+</div>
+    <div class="sh-tbi">🔄 30-day guarantee</div>
+    <div class="sh-tbi">🏥 Made in USA</div>
+  </div>
+</div>
+
+<div class="sh-wrap">
+  <div class="sh-filter">
+    <button class="sh-fb active" onclick="shFilter('all',this)">All Products</button>
+    <button class="sh-fb" onclick="shFilter('web',this)">Website Exclusive</button>
+    <button class="sh-fb" onclick="shFilter('amz',this)">Amazon Best Sellers</button>
+  </div>
+
+  <div class="sh-grid">
+
+    <div class="sh-card" data-cat="web">
+      <div class="sh-img" style="background:linear-gradient(135deg,#F0F7F4,#E0EDE6)">
+        <span class="sh-badge sh-badge-web">Website Only</span>
+        <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d8253ee59c1fc22878a_IMG_8467.jpeg" alt="7 Chakra Ayurvedic Complex">
+      </div>
+      <div class="sh-body">
+        <div class="sh-brand">Kurryculum</div>
+        <div class="sh-name">7 Chakra Ayurvedic Complex</div>
+        <div class="sh-stars">★★★★★ <span>(312)</span></div>
+        <div class="sh-bens">
+          <div class="sh-ben">Ashwagandha for stress &amp; cortisol support</div>
+          <div class="sh-ben">Turmeric + black pepper for anti-inflammatory support</div>
+          <div class="sh-ben">Shilajit for energy &amp; mineral support</div>
+        </div>
+        <div class="sh-tags"><span class="sh-tag sh-tag-w">60 Capsules</span><span class="sh-tag sh-tag-w">Vegan</span><span class="sh-tag sh-tag-w">GMP Certified</span></div>
+        <div class="sh-foot">
+          <div class="sh-price-wrap"><div class="sh-old">$29.99</div><div class="sh-price">$23.99</div><div class="sh-save">20% off</div></div>
+          <button class="sh-btn-web" onclick="shBuy('7-chakra','7 Chakra Ayurvedic Complex',23.99)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh-card" data-cat="web">
+      <div class="sh-img" style="background:linear-gradient(135deg,#FFF5F5,#FFE8E8)">
+        <span class="sh-badge sh-badge-web">Website Only</span>
+        <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d460535627b2b0671a8_sugaverve%20%20with%20certifications.png" alt="Sugaverve">
+      </div>
+      <div class="sh-body">
+        <div class="sh-brand">Kurryculum</div>
+        <div class="sh-name">Sugaverve</div>
+        <div class="sh-stars">★★★★★ <span>(198)</span></div>
+        <div class="sh-bens">
+          <div class="sh-ben">15+ ingredients for metabolic wellness support</div>
+          <div class="sh-ben">Chromium, Ceylon cinnamon &amp; bitter melon</div>
+          <div class="sh-ben">Vegan capsules, GMP certified, made in USA</div>
+        </div>
+        <div class="sh-tags"><span class="sh-tag sh-tag-w">60 Vegan Caps</span><span class="sh-tag sh-tag-w">GMP Certified</span></div>
+        <div class="sh-foot">
+          <div class="sh-price-wrap"><div class="sh-old">$35.99</div><div class="sh-price">$28.79</div><div class="sh-save">20% off</div></div>
+          <button class="sh-btn-web" onclick="shBuy('sugaverve','Sugaverve',28.79)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh-card" data-cat="web">
+      <div class="sh-img" style="background:linear-gradient(135deg,#FFF0EB,#FFE0D5)">
+        <span class="sh-badge sh-badge-web">Website Only</span>
+        <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d5489116b61c2b4aff4_BeetRoot.jpg" alt="Beet Root + Black Pepper">
+      </div>
+      <div class="sh-body">
+        <div class="sh-brand">Kurryculum</div>
+        <div class="sh-name">Beet Root + Black Pepper</div>
+        <div class="sh-stars">★★★★★ <span>(441)</span></div>
+        <div class="sh-bens">
+          <div class="sh-ben">Standardised beet root extract for nitric oxide support</div>
+          <div class="sh-ben">Enhanced absorption with piperine (black pepper)</div>
+          <div class="sh-ben">Supports healthy circulation &amp; exercise performance</div>
+        </div>
+        <div class="sh-tags"><span class="sh-tag sh-tag-w">60 Tablets</span><span class="sh-tag sh-tag-w">Third-party tested</span></div>
+        <div class="sh-foot">
+          <div class="sh-price-wrap"><div class="sh-old">$11.99</div><div class="sh-price">$9.59</div><div class="sh-save">20% off</div></div>
+          <button class="sh-btn-web" onclick="shBuy('beet-root','Beet Root + Black Pepper',9.59)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh-card" data-cat="web">
+      <div class="sh-img" style="background:linear-gradient(135deg,#F0F8FF,#E0F0FF)">
+        <span class="sh-badge sh-badge-web">Website Only</span>
+        <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c591d0f8777d3a89_VitB12.jpg" alt="Vitamin B-12">
+      </div>
+      <div class="sh-body">
+        <div class="sh-brand">Kurryculum</div>
+        <div class="sh-name">Vitamin B-12</div>
+        <div class="sh-stars">★★★★★ <span>(287)</span></div>
+        <div class="sh-bens">
+          <div class="sh-ben">Methylcobalamin fast-dissolve sublingual tablets</div>
+          <div class="sh-ben">Supports energy, nerve function &amp; red blood cells</div>
+          <div class="sh-ben">Essential for vegetarian &amp; Indian-American diets</div>
+        </div>
+        <div class="sh-tags"><span class="sh-tag sh-tag-w">60 Tablets</span><span class="sh-tag sh-tag-w">Fast-dissolve</span></div>
+        <div class="sh-foot">
+          <div class="sh-price-wrap"><div class="sh-old">$10.99</div><div class="sh-price">$8.79</div><div class="sh-save">20% off</div></div>
+          <button class="sh-btn-web" onclick="shBuy('vitamin-b12','Vitamin B-12',8.79)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh-card" data-cat="amz">
+      <div class="sh-img" style="background:linear-gradient(135deg,#FFFBF0,#FFF0D0)">
+        <span class="sh-badge sh-badge-amz">★ Amazon #1</span>
+        <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d7bcc9837f3bf598714_31uV9dzQzML._AC_.jpg" alt="BoneVite+">
+      </div>
+      <div class="sh-body">
+        <div class="sh-brand">Kurryculum</div>
+        <div class="sh-name">BoneVite+</div>
+        <div class="sh-stars">★★★★★ <span>(189)</span></div>
+        <div class="sh-bens">
+          <div class="sh-ben">Glucosamine + Chondroitin + MSM for joint support</div>
+          <div class="sh-ben">Vitamin D3 + Calcium for bone health</div>
+          <div class="sh-ben">Elderberry for immune support</div>
+        </div>
+        <div class="sh-tags"><span class="sh-tag sh-tag-a">90 Tablets</span><span class="sh-tag sh-tag-a">Amazon Best Seller</span></div>
+        <div class="sh-foot">
+          <div class="sh-price-wrap"><div class="sh-old">$35.99</div><div class="sh-price">$28.79</div><div class="sh-save">20% off</div></div>
+          <a href="https://www.amazon.com/dp/B0DV4385Z1?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="sh-btn-amz">Buy on Amazon</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh-card" data-cat="amz">
+      <div class="sh-img" style="background:linear-gradient(135deg,#F0F8FF,#DDF0FF)">
+        <span class="sh-badge sh-badge-amz">★ Amazon #1</span>
+        <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d54c321ab254b984de6_61E5X-OgXAL._AC_SX679_PIbundle-60%2CTopRight%2C0%2C0_SH20_.jpg" alt="Krill Oil 500mg">
+      </div>
+      <div class="sh-body">
+        <div class="sh-brand">Kurryculum</div>
+        <div class="sh-name">Krill Oil 500mg</div>
+        <div class="sh-stars">★★★★★ <span>(367)</span></div>
+        <div class="sh-bens">
+          <div class="sh-ben">Phospholipid-bound EPA &amp; DHA for better absorption</div>
+          <div class="sh-ben">Astaxanthin antioxidant · Antarctic sourced</div>
+          <div class="sh-ben">Burpless · No fishy aftertaste</div>
+        </div>
+        <div class="sh-tags"><span class="sh-tag sh-tag-a">60 Softgels</span><span class="sh-tag sh-tag-a">Amazon Best Seller</span></div>
+        <div class="sh-foot">
+          <div class="sh-price-wrap"><div class="sh-old">$23.99</div><div class="sh-price">$19.19</div><div class="sh-save">20% off</div></div>
+          <a href="https://www.amazon.com/dp/B0DN2RTWVL?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="sh-btn-amz">Buy on Amazon</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh-card" data-cat="amz">
+      <div class="sh-img" style="background:linear-gradient(135deg,#FFF8F5,#FFE8E0)">
+        <span class="sh-badge sh-badge-amz">★ Amazon #1</span>
+        <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d5442c8245c27c16f49_61UCAEobscL._AC_UL640_FMwebp_QL65_.webp" alt="Collagen Peptides">
+      </div>
+      <div class="sh-body">
+        <div class="sh-brand">Kurryculum</div>
+        <div class="sh-name">Collagen Peptides</div>
+        <div class="sh-stars">★★★★★ <span>(203)</span></div>
+        <div class="sh-bens">
+          <div class="sh-ben">Grass-fed Type I &amp; III hydrolysed collagen</div>
+          <div class="sh-ben">Supports skin elasticity, hair, nails &amp; joints</div>
+          <div class="sh-ben">Unflavoured · Mixes easily in chai or smoothies</div>
+        </div>
+        <div class="sh-tags"><span class="sh-tag sh-tag-a">30 Servings</span><span class="sh-tag sh-tag-a">Grass-fed</span></div>
+        <div class="sh-foot">
+          <div class="sh-price-wrap"><div class="sh-old">$33.99</div><div class="sh-price">$27.19</div><div class="sh-save">20% off</div></div>
+          <a href="https://www.amazon.com/dp/B0FPY6ZLYY?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="sh-btn-amz">Buy on Amazon</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh-card" data-cat="amz">
+      <div class="sh-img" style="background:linear-gradient(135deg,#F0FFF0,#E0F5E0)">
+        <span class="sh-badge sh-badge-amz">★ Amazon #1</span>
+        <img src="https://cdn.prod.website-files.com/69f636cb06eece1d1ee4ec8a/69f66d7bcc9837f3bf598714_31uV9dzQzML._AC_.jpg" alt="OptiKind Eye Health">
+      </div>
+      <div class="sh-body">
+        <div class="sh-brand">Kurryculum</div>
+        <div class="sh-name">OptiKind Eye Health</div>
+        <div class="sh-stars">★★★★★ <span>(156)</span></div>
+        <div class="sh-bens">
+          <div class="sh-ben">Lutein &amp; Zeaxanthin for blue light protection</div>
+          <div class="sh-ben">Glutathione &amp; Zinc for oxidative stress support</div>
+          <div class="sh-ben">For screen-heavy South Asian professionals</div>
+        </div>
+        <div class="sh-tags"><span class="sh-tag sh-tag-a">60 Capsules</span><span class="sh-tag sh-tag-a">Eye Health</span></div>
+        <div class="sh-foot">
+          <div class="sh-price-wrap"><div class="sh-old">$29.99</div><div class="sh-price">$23.99</div><div class="sh-save">20% off</div></div>
+          <a href="https://www.amazon.com/dp/B0GBP7PDCJ?tag=kurryculum20-20" target="_blank" rel="noopener sponsored" class="sh-btn-amz">Buy on Amazon</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sh-quiz-cta">
+    <h2 class="sh-quiz-h">Not sure which supplements you need?</h2>
+    <p class="sh-quiz-p">Answer 5 quick questions. Get a personalised pharmacist recommendation based on your cultural background, body and goals. Free, instant, no email required.</p>
+    <a href="/supplement-quiz" class="sh-quiz-btn">Take the Free Quiz →</a>
+  </div>
+
+  <p class="sh-disclaimer">* These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure or prevent any disease. Prices shown include 20% promotional discount applied automatically. Amazon prices subject to change. Amazon links are affiliate links — Kurryculum may earn a commission at no extra cost to you. Always consult a healthcare provider before starting any supplement regimen.</p>
+</div>
+</div>
+
+<script>
+function shBuy(id,name,price){
+  try{sessionStorage.setItem('kurry_cart',JSON.stringify([{id:id,name:name,price:price,qty:1}]));}catch(e){}
+  window.location.href='/checkout';
+}
+function shFilter(cat,btn){
+  document.querySelectorAll('.sh-fb').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.sh-card').forEach(function(c){
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'flex':'none';
+  });
+}
+</script>
