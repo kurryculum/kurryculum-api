@@ -25,7 +25,7 @@
       newBtn.onclick = function(e){
         e.preventDefault();
         try{sessionStorage.setItem('kurry_cart',JSON.stringify([{id:id,name:name,price:p,qty:1}]));}catch(er){}
-        window.location.href='/checkout';
+        window.location.href='/order';
       };
       btn.parentNode.replaceChild(newBtn, btn);
     });
