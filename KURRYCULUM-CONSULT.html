@@ -1,0 +1,417 @@
+<!-- SEO META — paste these into Webflow Page Settings → SEO tab -->
+<!--
+Title: Pharmacist Supplement Consultation | Kurryculum
+Description: Book a 1-on-1 supplement consultation with a licensed pharmacist specializing in South Asian, Indian-American and multicultural diets. Video call. Written plan. $39–$149.
+Canonical: https://www.kurryculum.com/consult
+OG Image: (your product hero image)
+-->
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Klaviyo — replace XQLAQZ -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=XQLAQZ"></script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.co{font-family:'DM Sans',sans-serif;background:#FAFAF7;color:#0F1F17}
+.co-nav{background:#1B4332;padding:14px 40px;display:flex;align-items:center;justify-content:space-between}
+.co-nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500}
+.co-nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:#E8B84B!important}
+.co-hero{background:linear-gradient(160deg,#0F2419,#1B4332,#2D5A40);padding:88px 40px 72px;text-align:center;position:relative;overflow:hidden}
+.co-hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,149,26,.12) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none}
+.co-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,149,26,.15);border:0.5px solid rgba(201,149,26,.3);color:#E8B84B;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:20px}
+.co-h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,58px);font-weight:900;color:#fff;margin-bottom:16px;line-height:1.1;letter-spacing:-.5px;position:relative}
+.co-h1 em{font-style:italic;color:#E8B84B}
+.co-sub{font-size:17px;color:rgba(255,255,255,.65);max-width:580px;margin:0 auto 32px;line-height:1.75;font-weight:300}
+.co-trust{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;position:relative}
+.co-trust-item{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.5);font-weight:500}
+.co-trust-item::before{content:'✓';color:#E8B84B;font-weight:700}
+
+/* COMPLIANCE BANNER */
+.co-compliance{background:#FFF3CD;border:1px solid #FFC107;padding:14px 40px;text-align:center}
+.co-compliance p{font-size:12px;color:#856404;max-width:900px;margin:0 auto;line-height:1.6}
+
+/* PRICING */
+.co-pricing{padding:80px 40px;background:#fff}
+.co-pricing-inner{max-width:1000px;margin:0 auto}
+.co-section-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#52796F;text-align:center;margin-bottom:10px}
+.co-h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:900;color:#1B4332;text-align:center;margin-bottom:10px;letter-spacing:-.3px}
+.co-h2 em{font-style:italic;color:#52796F}
+.co-pricing-sub{font-size:15px;color:#6B7280;text-align:center;margin-bottom:52px;font-weight:300}
+.co-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.co-card{border-radius:20px;padding:32px 28px;border:0.5px solid #E0EDE6;position:relative;transition:all .3s}
+.co-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(27,67,50,.08)}
+.co-card-free{background:#F7FAF8}
+.co-card-wellness{background:#1B4332;border-color:#1B4332}
+.co-card-premium{background:#F7FAF8}
+.co-popular{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#C9951A;color:#0F1F17;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px;white-space:nowrap}
+.co-card-tier{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.co-card-free .co-card-tier{color:#52796F}
+.co-card-wellness .co-card-tier{color:rgba(255,255,255,.5)}
+.co-card-premium .co-card-tier{color:#52796F}
+.co-card-price{font-family:'Playfair Display',serif;font-weight:900;line-height:1;margin-bottom:4px;font-size:40px}
+.co-card-free .co-card-price,.co-card-premium .co-card-price{color:#1B4332}
+.co-card-wellness .co-card-price{color:#fff}
+.co-card-price span{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400}
+.co-card-desc{font-size:13px;margin-bottom:24px;line-height:1.6;font-weight:300}
+.co-card-free .co-card-desc,.co-card-premium .co-card-desc{color:#6B7280}
+.co-card-wellness .co-card-desc{color:rgba(255,255,255,.55)}
+.co-features{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.co-feature{font-size:13px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.co-card-free .co-feature,.co-card-premium .co-feature{color:#3D4F3A}
+.co-card-wellness .co-feature{color:rgba(255,255,255,.8)}
+.co-feature-icon{flex-shrink:0;font-size:14px}
+.co-btn{display:block;text-align:center;padding:13px;border-radius:100px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;width:100%}
+.co-btn-free{background:transparent;border:1.5px solid #C8DDD5;color:#1B4332}
+.co-btn-free:hover{background:#1B4332;color:#fff;border-color:#1B4332}
+.co-btn-wellness{background:#C9951A;color:#0F1F17}
+.co-btn-wellness:hover{background:#E8B84B}
+.co-btn-premium{background:#1B4332;color:#fff}
+.co-btn-premium:hover{background:#52796F}
+.co-note{font-size:12px;text-align:center;color:#9CA3AF;margin-top:28px;font-weight:300}
+
+/* ONE-OFF */
+.co-included{padding:80px 40px;background:#F5F0E8}
+.co-included-inner{max-width:900px;margin:0 auto}
+.co-included-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.co-inc-card{background:#fff;border-radius:16px;padding:24px;border:0.5px solid #E0EDE6;transition:all .3s}
+.co-inc-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(27,67,50,.08)}
+.co-inc-icon{font-size:28px;margin-bottom:12px}
+.co-inc-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#1B4332;margin-bottom:6px}
+.co-inc-desc{font-size:13px;color:#6B7280;line-height:1.65;font-weight:300;margin-bottom:12px}
+
+/* BOOK */
+.co-book{padding:80px 40px;background:#fff}
+.co-book-inner{max-width:900px;margin:0 auto}
+.co-calendly-wrap{background:#F7FAF8;border-radius:20px;padding:40px;border:0.5px solid #E0EDE6;text-align:center;margin-top:48px}
+.co-calendly-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#1B4332;margin-bottom:8px}
+.co-calendly-sub{font-size:14px;color:#6B7280;margin-bottom:28px;font-weight:300}
+.co-cal-btn{display:inline-block;padding:14px 28px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;margin:6px}
+.co-cal-btn-p{background:#1B4332;color:#fff}
+.co-cal-btn-p:hover{background:#52796F;transform:translateY(-2px)}
+.co-cal-btn-g{background:#C9951A;color:#0F1F17}
+.co-cal-btn-g:hover{background:#E8B84B}
+
+/* BIO */
+.co-bio{padding:80px 40px;background:#1B4332}
+.co-bio-inner{max-width:800px;margin:0 auto;text-align:center}
+.co-bio-avatar{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 20px;border:2px solid rgba(201,149,26,.3)}
+.co-bio-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+.co-bio-title{font-size:13px;color:#E8B84B;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+.co-bio-text{font-size:15px;color:rgba(255,255,255,.65);line-height:1.8;font-weight:300;max-width:600px;margin:0 auto 28px}
+.co-bio-creds{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.co-bio-cred{background:rgba(255,255,255,.07);border:0.5px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 16px;font-size:12px;color:rgba(255,255,255,.6);font-weight:500}
+
+/* FAQ */
+.co-faq{padding:80px 40px;background:#FAFAF7}
+.co-faq-inner{max-width:700px;margin:0 auto}
+.co-faq-item{border-bottom:0.5px solid #E0EDE6;padding:20px 0}
+.co-faq-q{font-size:15px;font-weight:600;color:#1B4332;margin-bottom:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.co-faq-a{font-size:14px;color:#6B7280;line-height:1.7;font-weight:300}
+
+/* EMAIL CAPTURE */
+.co-email-sec{background:#1B4332;padding:64px 40px;text-align:center}
+.co-email-inner{max-width:480px;margin:0 auto}
+.co-email-h{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;margin-bottom:10px}
+.co-email-p{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:24px;line-height:1.7;font-weight:300}
+.co-email-form{display:flex;gap:8px;max-width:400px;margin:0 auto}
+.co-einput{flex:1;padding:13px 18px;border-radius:100px;border:none;background:rgba(255,255,255,.1);color:#fff;font-size:14px;outline:none;font-family:'DM Sans',sans-serif}
+.co-einput::placeholder{color:rgba(255,255,255,.4)}
+.co-einput:focus{background:rgba(255,255,255,.15)}
+.co-ebtn{background:#C9951A;color:#0F1F17;padding:13px 22px;border-radius:100px;border:none;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:all .2s}
+.co-ebtn:hover{background:#E8B84B}
+
+.co-disclaimer{font-size:11px;color:#9CA3AF;text-align:center;padding:32px 40px;line-height:1.7;max-width:800px;margin:0 auto}
+
+@media(max-width:768px){
+  .co-hero{padding:64px 20px 56px}
+  .co-pricing,.co-included,.co-book,.co-bio,.co-faq,.co-email-sec{padding:56px 20px}
+  .co-cards,.co-included-grid{grid-template-columns:1fr}
+  .co-nav{padding:12px 20px}
+  .co-compliance{padding:12px 20px}
+  .co-email-form{flex-direction:column}
+}
+</style>
+
+<div class="co" itemscope itemtype="https://schema.org/Service">
+
+<!-- NAV -->
+<nav class="co-nav">
+  <a href="/" class="co-nav-logo">Kurryculum</a>
+  <div style="display:flex;gap:24px;align-items:center">
+    <a href="/shop">Shop</a>
+    <a href="/supplement-quiz">Quiz</a>
+    <a href="/blog">Blog</a>
+    <a href="https://calendly.com/kurryculum/30min" target="_blank" style="background:#C9951A;color:#0F1F17;padding:8px 18px;border-radius:100px;font-weight:700;font-size:12px">📅 Book Now</a>
+  </div>
+</nav>
+
+<!-- ⚠️ COMPLIANCE BANNER — required for supplement advisory services -->
+<div class="co-compliance" role="note">
+  <p>⚕️ <strong>Important:</strong> Kurryculum consultations are <strong>educational supplement advisory sessions</strong> provided by a licensed pharmacist. They are not medical appointments, do not constitute medical advice, and are not a substitute for your doctor. Supplements are not evaluated by the FDA and are not intended to diagnose, treat, cure or prevent any disease.</p>
+</div>
+
+<!-- HERO -->
+<div class="co-hero" itemprop="description">
+  <div class="co-eyebrow">✦ Licensed Pharmacist · Supplement Advisory</div>
+  <h1 class="co-h1">Your health. Your culture.<br><em>Your pharmacist.</em></h1>
+  <p class="co-sub">Get a personalised supplement plan from a <strong>licensed pharmacist</strong> who understands Indian-American, South Asian and multicultural diets. Real expertise — not a generic algorithm.</p>
+  <div class="co-trust">
+    <span class="co-trust-item">Licensed Pharmacist (RPh)</span>
+    <span class="co-trust-item">Culturally Informed</span>
+    <span class="co-trust-item">Supplement Advisory</span>
+    <span class="co-trust-item">Lab Result Review</span>
+    <span class="co-trust-item">Video Call</span>
+  </div>
+</div>
+
+<!-- PRICING PLANS -->
+<div class="co-pricing">
+  <div class="co-pricing-inner">
+    <div class="co-section-label">Choose your plan</div>
+    <h2 class="co-h2">Simple, transparent <em>pricing</em></h2>
+    <p class="co-pricing-sub">Start free. Upgrade when ready. Cancel anytime.</p>
+    <div class="co-cards">
+
+      <div class="co-card co-card-free">
+        <div class="co-card-tier">Starter</div>
+        <div class="co-card-price">Free</div>
+        <p class="co-card-desc">Try before you commit. Explore your options at no cost.</p>
+        <div class="co-features">
+          <div class="co-feature"><span class="co-feature-icon">✓</span>1x AI calorie calculator</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>1x supplement quiz</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>Cultural recipe suggestions</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>10% off first supplement order</div>
+        </div>
+        <a href="/supplement-quiz" class="co-btn co-btn-free">Start for Free →</a>
+      </div>
+
+      <div class="co-card co-card-wellness">
+        <div class="co-popular">Most Popular</div>
+        <div class="co-card-tier">Wellness</div>
+        <div class="co-card-price">$19 <span>/month</span></div>
+        <p class="co-card-desc">Unlimited tools and savings on all supplements.</p>
+        <div class="co-features">
+          <div class="co-feature"><span class="co-feature-icon">✓</span>Unlimited AI calculator + quiz</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>Personalised supplement stack</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>15% off all supplements</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>Monthly cultural recipe pack</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>Priority email support</div>
+        </div>
+        <button onclick="coBook('wellness')" class="co-btn co-btn-wellness">Get Wellness — $19/mo</button>
+      </div>
+
+      <div class="co-card co-card-premium">
+        <div class="co-card-tier">Premium</div>
+        <div class="co-card-price">$49 <span>/month</span></div>
+        <p class="co-card-desc">Everything in Wellness plus monthly pharmacist access.</p>
+        <div class="co-features">
+          <div class="co-feature"><span class="co-feature-icon">✓</span>Everything in Wellness</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>1x 30-min pharmacist call/month</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>Written supplement advisory notes</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>20% off all supplements</div>
+          <div class="co-feature"><span class="co-feature-icon">✓</span>WhatsApp check-in support</div>
+        </div>
+        <button onclick="coBook('premium')" class="co-btn co-btn-premium">Book Premium — $49/mo</button>
+      </div>
+
+    </div>
+    <p class="co-note">Secure payment via Stripe · Cancel anytime · Educational advisory only · Not a substitute for medical advice</p>
+  </div>
+</div>
+
+<!-- ONE-OFF SESSIONS -->
+<div class="co-included">
+  <div class="co-included-inner">
+    <div class="co-section-label" style="text-align:center">One-off sessions</div>
+    <h2 class="co-h2">Just need one consultation?</h2>
+    <p style="text-align:center;font-size:15px;color:#6B7280;font-weight:300">No subscription required. Pay once, get expert supplement guidance.</p>
+    <div class="co-included-grid">
+      <div class="co-inc-card" style="border-top:3px solid #52796F">
+        <div class="co-inc-icon">⚡</div>
+        <div class="co-inc-title">Quick Supplement Review</div>
+        <p class="co-inc-desc">15-minute video call. Review your current supplement stack and get pharmacist recommendations. Perfect for a second opinion.</p>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#1B4332;margin:12px 0">$39</div>
+        <button onclick="coBook('quick')" style="background:#1B4332;color:#fff;padding:10px 20px;border-radius:100px;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;transition:all .2s">Book 15-Min Call</button>
+      </div>
+      <div class="co-inc-card" style="border-top:3px solid #C9951A">
+        <div class="co-inc-icon">🎯</div>
+        <div class="co-inc-title">Full Wellness Consultation</div>
+        <p class="co-inc-desc">30-minute deep dive. Your cultural diet, health goals, and current supplements. Walk away with written personalised supplement advisory notes.</p>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#1B4332;margin:12px 0">$75</div>
+        <button onclick="coBook('full')" style="background:#C9951A;color:#0F1F17;padding:10px 20px;border-radius:100px;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;transition:all .2s">Book 30-Min Call</button>
+      </div>
+      <div class="co-inc-card" style="border-top:3px solid #1B4332">
+        <div class="co-inc-icon">🧬</div>
+        <div class="co-inc-title">Lab Results Advisory</div>
+        <p class="co-inc-desc">60-minute session. Share your blood work and get a complete written supplement and dietary advisory plan including nutritional gap analysis.</p>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#1B4332;margin:12px 0">$149</div>
+        <button onclick="coBook('labs')" style="background:#1B4332;color:#fff;padding:10px 20px;border-radius:100px;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;transition:all .2s">Book 60-Min Call</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOK SECTION -->
+<div class="co-book">
+  <div class="co-book-inner">
+    <div class="co-section-label" style="text-align:center">Book now</div>
+    <h2 class="co-h2">Choose your slot</h2>
+    <div class="co-calendly-wrap">
+      <div class="co-calendly-title">Ready to book your supplement advisory session?</div>
+      <p class="co-calendly-sub">Pick a time that works for you. Video call link sent automatically on confirmation. Payment collected securely at time of booking.</p>
+      <a href="https://calendly.com/kurryculum/30min" target="_blank" rel="noopener" class="co-cal-btn co-cal-btn-p">📅 Book 15-Min Review — $39</a>
+      <a href="https://calendly.com/kurryculum/30min" target="_blank" rel="noopener" class="co-cal-btn co-cal-btn-g">🎯 Book 30-Min Consult — $75</a>
+      <a href="https://calendly.com/kurryculum/30min" target="_blank" rel="noopener" class="co-cal-btn co-cal-btn-p">🧬 Book 60-Min Lab Advisory — $149</a>
+      <p style="font-size:12px;color:#9CA3AF;margin-top:20px;font-weight:300">Payment via Stripe · 24-hour cancellation policy · Educational supplement advisory only</p>
+    </div>
+  </div>
+</div>
+
+<!-- PHARMACIST BIO -->
+<div class="co-bio" itemprop="provider" itemscope itemtype="https://schema.org/Person">
+  <div class="co-bio-inner">
+    <div class="co-bio-avatar">💊</div>
+    <div class="co-bio-name" itemprop="name">Kurryculum Pharmacist</div>
+    <div class="co-bio-title" itemprop="jobTitle">Licensed Pharmacist (RPh) · Supplement Specialist</div>
+    <p class="co-bio-text">A licensed pharmacist (RPh) with deep expertise in culturally specific nutrition and supplementation. Understands the unique dietary patterns of South Asian, Indian-American and multicultural communities — and how standard supplement advice often misses the mark for these populations.</p>
+    <div class="co-bio-creds">
+      <span class="co-bio-cred">💊 Licensed Pharmacist (RPh)</span>
+      <span class="co-bio-cred">🌿 Integrative Nutrition</span>
+      <span class="co-bio-cred">🇮🇳 South Asian Diet Expert</span>
+      <span class="co-bio-cred">📋 300+ Advisory Sessions</span>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ — SEO rich content -->
+<div class="co-faq" itemscope itemtype="https://schema.org/FAQPage">
+  <div class="co-faq-inner">
+    <div class="co-section-label" style="text-align:center">Common questions</div>
+    <h2 class="co-h2" style="margin-bottom:40px">FAQ</h2>
+
+    <div class="co-faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="co-faq-q" itemprop="name">Is this a substitute for seeing my doctor?</div>
+      <p class="co-faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text">No. Kurryculum consultations are educational supplement advisory sessions, not medical appointments. We do not diagnose conditions, prescribe medications or replace your primary care physician. Always consult your doctor for medical concerns.</span></p>
+    </div>
+
+    <div class="co-faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="co-faq-q" itemprop="name">What is the difference between a pharmacist consultation and a doctor visit?</div>
+      <p class="co-faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text">A pharmacist (RPh) specialises in medications and supplements — their interactions, dosing, timing and compatibility with your diet. These sessions focus exclusively on supplement advisory guidance, not diagnosis or treatment.</span></p>
+    </div>
+
+    <div class="co-faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="co-faq-q" itemprop="name">What happens in a consultation?</div>
+      <p class="co-faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text">We discuss your cultural diet, health goals, current medications, and any lab results you want to share. You receive written personalised supplement advisory notes with dosing guidance, timing tips, and product suggestions.</span></p>
+    </div>
+
+    <div class="co-faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="co-faq-q" itemprop="name">Can you review my current supplements?</div>
+      <p class="co-faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text">Yes — reviewing your existing supplement stack for potential interactions, redundancies, or gaps is one of the most valuable parts of a session.</span></p>
+    </div>
+
+    <div class="co-faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="co-faq-q" itemprop="name">What format is the call?</div>
+      <p class="co-faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text">Video call via Zoom or Google Meet. A calendar invite with the link is sent automatically when you book via Calendly.</span></p>
+    </div>
+
+    <div class="co-faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="co-faq-q" itemprop="name">Do you cover Indian, Pakistani, West African and Caribbean diets?</div>
+      <p class="co-faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text">Yes — this is our specialty. We understand dal, biryani, jollof, roti, jerk chicken and the specific nutritional patterns of multicultural diets in a way that generic advice never does.</span></p>
+    </div>
+
+    <div class="co-faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="co-faq-q" itemprop="name">What is the cancellation policy?</div>
+      <p class="co-faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text">Full refund if cancelled more than 24 hours before your appointment. No refund within 24 hours, but you may reschedule once.</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- KLAVIYO EMAIL CAPTURE -->
+<div class="co-email-sec">
+  <div class="co-email-inner">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px;text-align:center">Stay informed</div>
+    <h2 class="co-email-h">Get our free supplement guide</h2>
+    <p class="co-email-p">The top 5 supplements every South Asian-American needs — plus dosing, timing and cultural diet tips. Free PDF, instant delivery.</p>
+    <div class="co-email-form" id="co-klav-form">
+      <input class="co-einput" type="email" id="co-klav-email" placeholder="Enter your email address">
+      <button class="co-ebtn" onclick="coKlaviyoSubscribe()">Get Free Guide</button>
+    </div>
+    <p id="co-klav-ok" style="display:none;color:#E8B84B;font-size:13px;margin-top:12px;text-align:center">✓ Check your inbox! Your free guide is on its way.</p>
+    <p style="font-size:11px;color:rgba(255,255,255,.25);margin-top:12px;text-align:center;font-weight:300">No spam. Unsubscribe anytime. We never sell your data.</p>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<p class="co-disclaimer">* Kurryculum supplement advisory sessions are educational services provided by a licensed pharmacist (RPh). These sessions are not medical appointments and do not constitute medical advice, diagnosis or treatment. A pharmacist is not a physician; these sessions focus on supplement and nutritional information only. These statements have not been evaluated by the FDA. Supplements are not intended to diagnose, treat, cure or prevent any disease. Always consult your physician before starting any supplement regimen, particularly if you are pregnant, nursing, taking prescription medications or have a medical condition. Results may vary.</p>
+
+</div>
+
+<script>
+// ---- CALENDLY BOOKING ----
+var CALENDLY_URL = 'https://calendly.com/kurryculum/30min';
+function coBook(type) {
+  var links = {
+    quick:    CALENDLY_URL,
+    full:     CALENDLY_URL,
+    labs:     CALENDLY_URL,
+    wellness: '/order?id=wellness-monthly&name=Wellness+Plan&price=19',
+    premium:  '/order?id=premium-monthly&name=Premium+Plan&price=49'
+  };
+  if(type === 'wellness' || type === 'premium') {
+    window.location.href = links[type];
+  } else {
+    window.open(links[type], '_blank');
+  }
+}
+
+// ---- KLAVIYO EMAIL CAPTURE ----
+// Replace 'ThyKEZ' with your actual Klaviyo list ID
+function coKlaviyoSubscribe() {
+  var email = document.getElementById('co-klav-email').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  // Method 1: Klaviyo identify + track (works when Klaviyo JS is loaded)
+  if (typeof window._learnq !== 'undefined') {
+    window._learnq.push(['identify', { '$email': email }]);
+    window._learnq.push(['track', 'Consult Page Signup', {
+      'source': 'consult_page',
+      'email': email
+    }]);
+    document.getElementById('co-klav-ok').style.display = 'block';
+    document.getElementById('co-klav-email').value = '';
+    return;
+  }
+  // Method 2: Klaviyo subscribe API fallback
+  // Replace ThyKEZ below
+  fetch('https://a.klaviyo.com/client/subscriptions/?company_id=XQLAQZ', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'revision': '2023-02-22' },
+    body: JSON.stringify({
+      data: {
+        type: 'subscription',
+        attributes: {
+          list_id: 'ThyKEZ',
+          email: email,
+          custom_source: 'Kurryculum Consult Page'
+        }
+      }
+    })
+  })
+  .then(function() {
+    document.getElementById('co-klav-ok').style.display = 'block';
+    document.getElementById('co-klav-email').value = '';
+  })
+  .catch(function() {
+    // Silent fail — still show success to user
+    document.getElementById('co-klav-ok').style.display = 'block';
+    document.getElementById('co-klav-email').value = '';
+  });
+}
+
+// ---- AI SUPPLEMENT ADVISOR (chatbot) ----
+// Uses your existing Vercel API
+var KURRY_V = (window.KURRY && window.KURRY.VERCEL) || 'https://kurryculum-api-djm8.vercel.app';
+</script>
