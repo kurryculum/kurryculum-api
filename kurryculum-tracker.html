@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurryculum Wellness Tracker</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;background:#faf6ef;color:#1a1a1a;min-height:100vh}
+.header{background:#1a2e1a;color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{color:#c9973a;font-weight:700;font-size:18px;text-decoration:none}
+.nav{display:flex;background:#1a2e1a;border-bottom:2px solid #2d5a27;overflow-x:auto}
+.nav-btn{padding:12px 16px;border:none;background:none;color:rgba(255,255,255,0.6);font-family:Georgia,serif;font-size:13px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px;font-weight:400}
+.nav-btn.active{color:#c9973a;border-bottom-color:#c9973a;font-weight:700}
+.container{max-width:780px;margin:0 auto;padding:20px 16px}
+.card{background:#fff;border-radius:14px;padding:20px;margin-bottom:16px;border:1px solid #e8e0d4;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.section-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2d5a27;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-bottom:5px;display:block}
+input,select{width:100%;padding:10px 12px;border:1.5px solid #e8e0d4;border-radius:8px;font-size:14px;font-family:Georgia,serif;background:#fff;color:#1a1a1a;outline:none}
+input:focus,select:focus{border-color:#2d5a27}
+.btn{background:#2d5a27;color:#fff;border:none;border-radius:10px;padding:13px 20px;font-size:15px;font-family:Georgia,serif;font-weight:700;cursor:pointer;width:100%}
+.btn:hover{background:#245020}
+.gold-btn{background:#c9973a;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-family:Georgia,serif;font-weight:700;cursor:pointer}
+.culture-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:18px}
+.culture-btn{padding:10px 8px;border-radius:10px;border:2px solid #e8e0d4;background:#fff;color:#1a1a1a;font-size:13px;font-family:Georgia,serif;cursor:pointer;text-align:center;transition:all 0.2s}
+.culture-btn.active{border-color:#2d5a27;background:#2d5a27;color:#fff;font-weight:700}
+.macro-card{border-radius:10px;padding:14px;text-align:center}
+.macro-val{font-size:24px;font-weight:800;font-family:Georgia,serif}
+.macro-lbl{font-size:11px;color:#6b7280;margin-top:2px}
+.bar-wrap{background:#f0f0f0;border-radius:4px;height:8px;margin-top:4px}
+.bar{height:8px;border-radius:4px;transition:width 0.5s ease}
+.meal-btn{padding:7px 14px;border-radius:20px;border:1.5px solid #e8e0d4;background:#fff;font-size:13px;font-family:Georgia,serif;cursor:pointer;margin-right:6px;margin-bottom:6px;font-weight:400}
+.meal-btn.active{border-color:#2d5a27;background:#2d5a27;color:#fff;font-weight:700}
+.food-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #e8e0d4}
+.food-name{font-size:14px;font-weight:600}
+.food-meta{font-size:12px;color:#6b7280}
+.recipe-card{background:#faf6ef;border-radius:12px;padding:16px;border:1px solid #e8e0d4}
+.recipe-name{font-size:15px;font-weight:700;margin-bottom:6px;font-family:Georgia,serif}
+.tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700;margin-right:4px;margin-bottom:6px}
+.supp-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid #e8e0d4}
+.supp-icon{width:42px;height:42px;background:#2d5a2720;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-right:12px}
+.remaining-box{background:#faf6ef;border-radius:10px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.height-wrap{display:flex;gap:8px}
+.height-wrap input{width:50%}
+.height-hint{font-size:11px;color:#9ca3af;margin-top:3px}
+a{color:inherit;text-decoration:none}
+.goal-btn{padding:8px 14px;border-radius:20px;border:1.5px solid #e8e0d4;background:#fff;font-size:13px;font-family:Georgia,serif;cursor:pointer;margin-right:6px;margin-bottom:6px}
+.goal-btn.active{border-color:#2d5a27;background:#2d5a27;color:#fff;font-weight:700}
+.recipes-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:500px){.grid2{grid-template-columns:1fr}.grid4{grid-template-columns:repeat(2,1fr)}.recipes-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/" class="logo">← Kurryculum</a>
+  <span style="color:#c9973a;font-weight:700;font-size:16px">Wellness Tracker</span>
+  <a href="/shop" style="color:#c9973a;font-size:13px">Shop →</a>
+</div>
+
+<div class="nav">
+  <button class="nav-btn active" onclick="showTab('calculator')">⚖ Calculator</button>
+  <button class="nav-btn" onclick="showTab('tracker')">📋 Food Diary</button>
+  <button class="nav-btn" onclick="showTab('recipes')">🍛 Recipes</button>
+  <button class="nav-btn" onclick="showTab('supplements')">💊 My Stack</button>
+</div>
+
+<div class="container">
+
+<!-- CALCULATOR -->
+<div id="tab-calculator" class="tab-content active">
+  <div class="card">
+    <div class="section-title">Step 1 — Your Cultural Background</div>
+    <div class="culture-grid" id="culture-grid"></div>
+    <div class="section-title">Step 2 — Your Body & Lifestyle</div>
+    <div class="grid2">
+      <div><label>Age</label><input type="number" id="age" placeholder="e.g. 30"></div>
+      <div><label>Sex</label><select id="sex"><option value="female">Female</option><option value="male">Male</option></select></div>
+      <div>
+        <label>Height (ft / in)</label>
+        <div class="height-wrap">
+          <input type="number" id="hft" placeholder="5">
+          <input type="number" id="hin" placeholder="6">
+        </div>
+        <div class="height-hint">feet &nbsp;&nbsp; inches</div>
+      </div>
+      <div><label>Weight (lbs)</label><input type="number" id="weight" placeholder="e.g. 150"></div>
+      <div><label>Activity Level</label>
+        <select id="activity">
+          <option value="1.2">Sedentary (desk job)</option>
+          <option value="1.375">Light (1-3x/week)</option>
+          <option value="1.55" selected>Moderate (3-5x/week)</option>
+          <option value="1.725">Active (6-7x/week)</option>
+          <option value="1.9">Very active</option>
+        </select>
+      </div>
+      <div><label>Diet Type</label>
+        <select id="diet">
+          <option value="vegetarian">Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="non-vegetarian">Non-vegetarian</option>
+          <option value="pescatarian">Pescatarian</option>
+        </select>
+      </div>
+    </div>
+    <div class="section-title">Step 3 — Your Health Goal</div>
+    <div style="margin-bottom:18px">
+      <button class="goal-btn" onclick="setGoal('lose',this)">🔥 Lose Weight</button>
+      <button class="goal-btn active" onclick="setGoal('maintain',this)">⚖ Maintain & Thrive</button>
+      <button class="goal-btn" onclick="setGoal('gain',this)">💪 Build Muscle</button>
+      <button class="goal-btn" onclick="setGoal('sugar',this)">🩸 Blood Sugar</button>
+      <button class="goal-btn" onclick="setGoal('energy',this)">⚡ More Energy</button>
+    </div>
+    <button class="btn" onclick="calculate()">Calculate My Calories & Get Recipes →</button>
+  </div>
+
+  <div class="card" id="result-card" style="display:none">
+    <div class="section-title">Your Daily Targets</div>
+    <div class="grid4" style="margin-bottom:20px">
+      <div class="macro-card" style="background:#c9973a15;border:1px solid #c9973a30">
+        <div class="macro-val" style="color:#c9973a" id="r-cal">—</div>
+        <div class="macro-lbl">Calories</div>
+      </div>
+      <div class="macro-card" style="background:#2d5a2715;border:1px solid #2d5a2730">
+        <div class="macro-val" style="color:#2d5a27" id="r-prot">—</div>
+        <div class="macro-lbl">Protein g</div>
+      </div>
+      <div class="macro-card" style="background:#3b82f615;border:1px solid #3b82f630">
+        <div class="macro-val" style="color:#3b82f6" id="r-carb">—</div>
+        <div class="macro-lbl">Carbs g</div>
+      </div>
+      <div class="macro-card" style="background:#f59e0b15;border:1px solid #f59e0b30">
+        <div class="macro-val" style="color:#f59e0b" id="r-fat">—</div>
+        <div class="macro-lbl">Fat g</div>
+      </div>
+    </div>
+    <button class="btn" style="background:#c9973a" onclick="showTab('tracker')">Start Tracking Today →</button>
+  </div>
+</div>
+
+<!-- FOOD DIARY -->
+<div id="tab-tracker" class="tab-content">
+  <div class="card" id="progress-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div class="section-title" style="margin:0">Today's Progress</div>
+      <div style="font-size:13px;color:#6b7280" id="progress-label">Set your target in Calculator</div>
+    </div>
+    <div id="macro-bars"></div>
+    <div class="remaining-box">
+      <div><div style="font-size:12px;color:#6b7280">Remaining</div><div style="font-size:22px;font-weight:800;color:#2d5a27;font-family:Georgia,serif" id="remaining">—</div></div>
+      <div style="text-align:right"><div style="font-size:12px;color:#6b7280">Eaten</div><div style="font-size:22px;font-weight:800;color:#c9973a;font-family:Georgia,serif" id="eaten">0 kcal</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">Add Food</div>
+    <div style="margin-bottom:12px">
+      <button class="meal-btn active" onclick="setMeal('Breakfast',this)">Breakfast</button>
+      <button class="meal-btn" onclick="setMeal('Lunch',this)">Lunch</button>
+      <button class="meal-btn" onclick="setMeal('Dinner',this)">Dinner</button>
+      <button class="meal-btn" onclick="setMeal('Snacks',this)">Snacks</button>
+    </div>
+    <input type="text" id="food-search" placeholder="Search cultural foods..." oninput="renderFoods()" style="margin-bottom:12px">
+    <div id="food-list" style="max-height:240px;overflow-y:auto"></div>
+  </div>
+
+  <div id="diary-sections"></div>
+</div>
+
+<!-- RECIPES -->
+<div id="tab-recipes" class="tab-content">
+  <div class="card">
+    <div class="section-title">Recipes for Your Goal</div>
+    <div style="margin-bottom:16px">
+      <button class="goal-btn" onclick="setGoal('lose',this);renderRecipes()">🔥 Lose Weight</button>
+      <button class="goal-btn active" onclick="setGoal('maintain',this);renderRecipes()">⚖ Maintain</button>
+      <button class="goal-btn" onclick="setGoal('gain',this);renderRecipes()">💪 Build Muscle</button>
+    </div>
+    <div class="recipes-grid" id="recipes-grid"></div>
+  </div>
+</div>
+
+<!-- SUPPLEMENTS -->
+<div id="tab-supplements" class="tab-content">
+  <div class="card">
+    <div class="section-title">Your Pharmacist-Recommended Stack</div>
+    <div style="background:#1a2e1a;border-radius:10px;padding:14px 16px;margin-bottom:18px;color:#fff">
+      <div style="font-size:12px;opacity:0.7;margin-bottom:4px">Based on your cultural background & goal</div>
+      <div style="font-size:15px;font-weight:700;color:#c9973a">Formulated for Every Culture · Every Body</div>
+    </div>
+    <div id="supp-list"></div>
+    <div style="margin-top:18px">
+      <a href="/supplement-quiz" class="btn" style="display:block;text-align:center;padding:13px">Take the Full Supplement Quiz →</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+var state = {
+  culture: 'South Asian',
+  goal: 'maintain',
+  diet: 'non-vegetarian',
+  calories: null,
+  protein: null,
+  carbs: null,
+  fat: null,
+  activeMeal: 'Breakfast',
+  diary: { Breakfast:[], Lunch:[], Dinner:[], Snacks:[] }
+};
+
+var FOODS = {
+  'South Asian': [
+    {name:'Dal Tadka (1 bowl)',cal:180,p:10,c:28,f:4},
+    {name:'Roti (1 piece)',cal:70,p:2,c:15,f:1},
+    {name:'Basmati Rice (1 cup)',cal:210,p:4,c:46,f:0},
+    {name:'Paneer (100g)',cal:265,p:18,c:4,f:20},
+    {name:'Chicken Curry (1 bowl)',cal:280,p:28,c:8,f:16},
+    {name:'Saag Aloo (1 bowl)',cal:160,p:4,c:22,f:7},
+    {name:'Biryani (1 cup)',cal:290,p:12,c:45,f:8},
+    {name:'Idli (2 pieces)',cal:130,p:4,c:26,f:1},
+    {name:'Masala Dosa',cal:220,p:6,c:38,f:6},
+    {name:'Rajma (1 bowl)',cal:200,p:12,c:32,f:4},
+    {name:'Chana Masala (1 bowl)',cal:230,p:12,c:35,f:6},
+    {name:'Samosa (1)',cal:150,p:3,c:22,f:6},
+    {name:'Lassi (1 glass)',cal:150,p:6,c:20,f:5},
+    {name:'Aloo Gobi (1 bowl)',cal:140,p:4,c:20,f:5},
+  ],
+  'West African': [
+    {name:'Jollof Rice (1 cup)',cal:280,p:6,c:52,f:6},
+    {name:'Egusi Soup (1 bowl)',cal:320,p:18,c:12,f:24},
+    {name:'Suya (100g)',cal:220,p:26,c:4,f:12},
+    {name:'Pounded Yam (1 cup)',cal:240,p:3,c:56,f:0},
+    {name:'Fried Plantain (1 medium)',cal:180,p:2,c:42,f:4},
+    {name:'Groundnut Soup (1 bowl)',cal:380,p:22,c:14,f:28},
+    {name:'Akara (3 pieces)',cal:210,p:10,c:24,f:8},
+    {name:'Fufu (1 ball)',cal:220,p:2,c:52,f:0},
+  ],
+  'Hispanic / Latin': [
+    {name:'Rice and Beans (1 cup)',cal:250,p:10,c:46,f:3},
+    {name:'Chicken Tacos (2)',cal:320,p:28,c:32,f:10},
+    {name:'Tamale (1)',cal:280,p:8,c:38,f:12},
+    {name:'Tortilla (1 flour)',cal:140,p:4,c:26,f:3},
+    {name:'Carne Asada (100g)',cal:210,p:30,c:0,f:10},
+    {name:'Arroz con Pollo (1 bowl)',cal:380,p:32,c:42,f:8},
+    {name:'Black Bean Soup (1 bowl)',cal:200,p:12,c:32,f:4},
+    {name:'Pozole (1 bowl)',cal:260,p:20,c:28,f:8},
+    {name:'Guacamole (3 tbsp)',cal:110,p:1,c:6,f:10},
+    {name:'Empanada (1)',cal:260,p:10,c:32,f:12},
+  ],
+  'American': [
+    {name:'Grilled Chicken Breast (100g)',cal:165,p:31,c:0,f:4},
+    {name:'Greek Yogurt (1 cup)',cal:130,p:22,c:9,f:0},
+    {name:'Oatmeal (1 cup)',cal:150,p:6,c:27,f:3},
+    {name:'Eggs (2 scrambled)',cal:180,p:12,c:2,f:14},
+    {name:'Sweet Potato (1 medium)',cal:100,p:2,c:23,f:0},
+    {name:'Salmon (100g)',cal:206,p:20,c:0,f:13},
+    {name:'Turkey Sandwich',cal:320,p:28,c:36,f:6},
+    {name:'Caesar Salad (1 bowl)',cal:280,p:8,c:18,f:20},
+    {name:'Protein Shake',cal:150,p:25,c:8,f:2},
+    {name:'Avocado Toast',cal:280,p:8,c:28,f:16},
+  ],
+  'Caribbean': [
+    {name:'Rice and Peas (1 cup)',cal:250,p:8,c:48,f:3},
+    {name:'Jerk Chicken (100g)',cal:210,p:30,c:4,f:9},
+    {name:'Ackee and Saltfish',cal:290,p:24,c:8,f:18},
+    {name:'Roti (1)',cal:180,p:5,c:34,f:3},
+    {name:'Callaloo (1 bowl)',cal:80,p:4,c:10,f:3},
+    {name:'Curry Goat (1 bowl)',cal:340,p:32,c:8,f:20},
+    {name:'Plantain (boiled)',cal:150,p:2,c:36,f:0},
+  ],
+  'Mediterranean': [
+    {name:'Hummus (100g)',cal:170,p:8,c:14,f:10},
+    {name:'Falafel (3)',cal:180,p:7,c:22,f:8},
+    {name:'Greek Salad (1 bowl)',cal:160,p:5,c:12,f:11},
+    {name:'Shawarma wrap',cal:380,p:28,c:42,f:12},
+    {name:'Lentil Soup (1 bowl)',cal:180,p:12,c:28,f:3},
+    {name:'Grilled Fish (100g)',cal:150,p:28,c:0,f:4},
+    {name:'Tzatziki (3 tbsp)',cal:45,p:2,c:3,f:3},
+  ],
+  'East Asian': [
+    {name:'Steamed Rice (1 cup)',cal:200,p:4,c:44,f:0},
+    {name:'Miso Soup (1 bowl)',cal:60,p:4,c:8,f:2},
+    {name:'Tofu Stir Fry (1 bowl)',cal:220,p:14,c:18,f:10},
+    {name:'Ramen (1 bowl)',cal:380,p:18,c:52,f:10},
+    {name:'Sushi (6 pieces)',cal:300,p:14,c:50,f:4},
+    {name:'Edamame (1 cup)',cal:190,p:17,c:14,f:8},
+    {name:'Dumplings (6)',cal:300,p:14,c:38,f:10},
+  ]
+};
+
+var RECIPES = {
+  lose: [
+    {name:'Masoor Dal Soup',cal:180,p:12,c:28,f:2,time:'20 min',tags:['High Protein','Low Fat']},
+    {name:'Tandoori Chicken Salad',cal:220,p:32,c:8,f:6,time:'25 min',tags:['High Protein','Low Carb']},
+    {name:'Grilled Fish Tacos (Light)',cal:240,p:28,c:22,f:6,time:'20 min',tags:['Low Cal','High Protein']},
+    {name:'Veggie Khichdi',cal:240,p:10,c:42,f:4,time:'30 min',tags:['Balanced','Filling']},
+    {name:'Chicken & Veggie Bowl',cal:280,p:34,c:18,f:8,time:'25 min',tags:['High Protein','Clean']},
+    {name:'Sprout Chaat Bowl',cal:160,p:10,c:24,f:2,time:'10 min',tags:['High Fibre','Low Cal']},
+  ],
+  maintain: [
+    {name:'Chicken Biryani',cal:380,p:28,c:48,f:8,time:'45 min',tags:['Balanced','Cultural']},
+    {name:'Paneer Tikka with Roti',cal:420,p:22,c:46,f:16,time:'30 min',tags:['Vegetarian','Complete']},
+    {name:'Dal Makhani & Rice',cal:360,p:16,c:52,f:10,time:'40 min',tags:['Protein Rich','Comfort']},
+    {name:'Grilled Fish Curry',cal:340,p:34,c:18,f:12,time:'35 min',tags:['High Protein','Omega-3']},
+    {name:'Arroz con Pollo',cal:380,p:32,c:42,f:8,time:'40 min',tags:['Balanced','Latin']},
+    {name:'Jerk Chicken & Rice',cal:360,p:30,c:44,f:8,time:'35 min',tags:['High Protein','Caribbean']},
+  ],
+  gain: [
+    {name:'Mutton Curry & Naan',cal:580,p:42,c:52,f:20,time:'60 min',tags:['High Protein','Calorie Dense']},
+    {name:'Peanut Butter Paratha',cal:480,p:16,c:58,f:22,time:'20 min',tags:['High Calorie','Filling']},
+    {name:'Rajma Chawal (Double)',cal:520,p:24,c:82,f:8,time:'40 min',tags:['Plant Protein','Bulking']},
+    {name:'Egg Bhurji & Bread',cal:440,p:28,c:38,f:18,time:'15 min',tags:['Quick','High Protein']},
+    {name:'Carne Asada Rice Bowl',cal:520,p:38,c:52,f:14,time:'30 min',tags:['High Protein','Latin']},
+    {name:'Peanut Stew & Fufu',cal:580,p:28,c:62,f:24,time:'45 min',tags:['Calorie Dense','West African']},
+  ],
+  sugar: [
+    {name:'Bitter Melon Stir Fry',cal:140,p:8,c:16,f:5,time:'20 min',tags:['Low GI','Blood Sugar']},
+    {name:'Cinnamon Oats Bowl',cal:200,p:8,c:32,f:5,time:'10 min',tags:['Low GI','Fibre Rich']},
+    {name:'Grilled Chicken Salad',cal:220,p:30,c:10,f:8,time:'20 min',tags:['Low Carb','High Protein']},
+    {name:'Lentil & Veggie Soup',cal:200,p:14,c:30,f:4,time:'30 min',tags:['Low GI','Plant Protein']},
+  ],
+  energy: [
+    {name:'Spinach & Egg Omelette',cal:280,p:22,c:6,f:18,time:'10 min',tags:['Quick Energy','Iron Rich']},
+    {name:'Quinoa & Chickpea Bowl',cal:320,p:16,c:48,f:8,time:'20 min',tags:['Complete Protein','Energy']},
+    {name:'Banana Almond Smoothie',cal:280,p:10,c:44,f:8,time:'5 min',tags:['Quick','Natural Energy']},
+    {name:'Salmon & Sweet Potato',cal:360,p:32,c:28,f:12,time:'30 min',tags:['Omega-3','Sustained Energy']},
+  ]
+};
+
+var SUPPLEMENTS = [
+  {name:'7 Chakra Complex',price:'$24.99',benefit:'Daily Ayurvedic support · Anti-inflammatory',link:'/shop'},
+  {name:'Sugaverve',price:'$29.99',benefit:'Blood sugar balance · 15 active ingredients',link:'/shop'},
+  {name:'Krill Oil 500mg',price:'$19.99',benefit:'Omega-3 heart & brain health · No fishy taste',link:'/shop'},
+  {name:'Vitamin B-12',price:'$8.99',benefit:'Energy & metabolism · Essential for vegetarians',link:'/shop'},
+  {name:'BoneVite+',price:'$22.99',benefit:'Joint health · Glucosamine, Chondroitin & MSM',link:'/shop'},
+  {name:'OptiKind Eye Health',price:'$22.99',benefit:'Screen eye protection · Lutein & Zeaxanthin',link:'/shop'},
+];
+
+var CULTURES = Object.keys(FOODS);
+
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});
+  document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')});
+  document.getElementById('tab-'+id).classList.add('active');
+  var btns = document.querySelectorAll('.nav-btn');
+  var map = {calculator:0,tracker:1,recipes:2,supplements:3};
+  if(btns[map[id]]) btns[map[id]].classList.add('active');
+  if(id==='recipes') renderRecipes();
+  if(id==='supplements') renderSupplements();
+  if(id==='tracker') renderFoods();
+}
+
+function renderCultures() {
+  var grid = document.getElementById('culture-grid');
+  grid.innerHTML = CULTURES.map(function(c){
+    return '<button class="culture-btn'+(c===state.culture?' active':'')+'" onclick="setCulture(\''+c+'\')">' + c + '</button>';
+  }).join('');
+}
+
+function setCulture(c) {
+  state.culture = c;
+  renderCultures();
+  renderFoods();
+}
+
+function setGoal(g, btn) {
+  state.goal = g;
+  if(btn) {
+    btn.closest('div').querySelectorAll('.goal-btn').forEach(function(b){b.classList.remove('active')});
+    btn.classList.add('active');
+  }
+}
+
+function setMeal(m, btn) {
+  state.activeMeal = m;
+  document.querySelectorAll('.meal-btn').forEach(function(b){b.classList.remove('active')});
+  if(btn) btn.classList.add('active');
+  renderFoods();
+}
+
+function calculate() {
+  var age = parseFloat(document.getElementById('age').value);
+  var sex = document.getElementById('sex').value;
+  var hft = parseFloat(document.getElementById('hft').value)||0;
+  var hin = parseFloat(document.getElementById('hin').value)||0;
+  var wlbs = parseFloat(document.getElementById('weight').value);
+  var act = parseFloat(document.getElementById('activity').value);
+  if(!age||!hft||!wlbs){alert('Please fill in all fields');return;}
+  var h = (hft*12+hin)*2.54;
+  var w = wlbs*0.453592;
+  var bmr = sex==='male'?10*w+6.25*h-5*age+5:10*w+6.25*h-5*age-161;
+  var tdee = Math.round(bmr*act);
+  var cal = state.goal==='lose'?tdee-500:state.goal==='gain'?tdee+300:state.goal==='sugar'?tdee-200:tdee;
+  state.calories=cal;
+  state.protein=Math.round(w*(state.goal==='gain'?2.2:1.8));
+  state.carbs=Math.round((cal*0.45)/4);
+  state.fat=Math.round((cal*0.25)/9);
+  document.getElementById('r-cal').textContent=cal;
+  document.getElementById('r-prot').textContent=state.protein+'g';
+  document.getElementById('r-carb').textContent=state.carbs+'g';
+  document.getElementById('r-fat').textContent=state.fat+'g';
+  document.getElementById('result-card').style.display='block';
+  updateProgress();
+}
+
+function getTotals() {
+  var all = [].concat(state.diary.Breakfast,state.diary.Lunch,state.diary.Dinner,state.diary.Snacks);
+  return all.reduce(function(s,f){return{cal:s.cal+f.cal,p:s.p+f.p,c:s.c+f.c,fat:s.fat+f.f}},{cal:0,p:0,c:0,fat:0});
+}
+
+function updateProgress() {
+  var t = getTotals();
+  var cal = state.calories||2000;
+  document.getElementById('eaten').textContent = t.cal+' kcal';
+  document.getElementById('remaining').textContent = Math.max(0,cal-t.cal)+' kcal';
+  document.getElementById('progress-label').textContent = t.cal+' / '+cal+' kcal';
+  var bars = '';
+  var macros = [
+    {label:'Protein',val:t.p,max:state.protein||120,color:'#2d5a27'},
+    {label:'Carbs',val:t.c,max:state.carbs||220,color:'#3b82f6'},
+    {label:'Fat',val:t.fat,max:state.fat||60,color:'#f59e0b'}
+  ];
+  macros.forEach(function(m){
+    var pct = Math.min(100,Math.round((m.val/(m.max||1))*100));
+    bars += '<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:12px;color:#6b7280">'+m.label+'</span><span style="font-size:12px;font-weight:700;color:'+m.color+'">'+m.val+'g / '+m.max+'g</span></div><div class="bar-wrap"><div class="bar" style="width:'+pct+'%;background:'+m.color+'"></div></div></div>';
+  });
+  document.getElementById('macro-bars').innerHTML = bars;
+  renderDiary();
+}
+
+function renderFoods() {
+  var search = (document.getElementById('food-search')||{}).value||'';
+  var foods = FOODS[state.culture]||FOODS['South Asian'];
+  var filtered = foods.filter(function(f){return f.name.toLowerCase().indexOf(search.toLowerCase())>=0});
+  var html = filtered.map(function(f){
+    return '<div class="food-row"><div><div class="food-name">'+f.name+'</div><div class="food-meta">'+f.cal+' kcal · P:'+f.p+'g · C:'+f.c+'g · F:'+f.f+'g</div></div><button class="gold-btn" onclick="addFood('+JSON.stringify(f)+')">+ Add</button></div>';
+  }).join('');
+  document.getElementById('food-list').innerHTML = html || '<div style="padding:12px;color:#9ca3af;font-size:14px">No foods found</div>';
+}
+
+function addFood(food) {
+  state.diary[state.activeMeal].push(food);
+  updateProgress();
+}
+
+function removeFood(meal,idx) {
+  state.diary[meal].splice(idx,1);
+  updateProgress();
+}
+
+function renderDiary() {
+  var html = '';
+  ['Breakfast','Lunch','Dinner','Snacks'].forEach(function(meal){
+    if(state.diary[meal].length===0) return;
+    var total = state.diary[meal].reduce(function(s,f){return s+f.cal},0);
+    html += '<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div style="font-size:14px;font-weight:700;color:#2d5a27">'+meal+'</div><div style="font-size:13px;color:#6b7280">'+total+' kcal</div></div>';
+    state.diary[meal].forEach(function(f,i){
+      html += '<div class="food-row"><div><div class="food-name">'+f.name+'</div><div class="food-meta">'+f.cal+' kcal · P:'+f.p+'g C:'+f.c+'g F:'+f.f+'g</div></div><button onclick="removeFood(\''+meal+'\','+i+')" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:20px;line-height:1">×</button></div>';
+    });
+    html += '</div>';
+  });
+  document.getElementById('diary-sections').innerHTML = html;
+}
+
+function renderRecipes() {
+  var recipes = RECIPES[state.goal]||RECIPES.maintain;
+  var html = recipes.map(function(r){
+    var tags = r.tags.map(function(t){return '<span class="tag" style="background:#2d5a2720;color:#2d5a27">'+t+'</span>'}).join('');
+    return '<div class="recipe-card"><div class="recipe-name">'+r.name+'</div><div style="font-size:12px;color:#6b7280;margin-bottom:8px">⏱ '+r.time+'</div><div style="margin-bottom:10px">'+tags+'</div><div class="grid4" style="margin-bottom:12px"><div style="text-align:center;background:#c9973a15;border-radius:6px;padding:6px 2px"><div style="font-size:14px;font-weight:800;color:#c9973a">'+r.cal+'</div><div style="font-size:10px;color:#6b7280">cal</div></div><div style="text-align:center;background:#2d5a2715;border-radius:6px;padding:6px 2px"><div style="font-size:14px;font-weight:800;color:#2d5a27">'+r.p+'g</div><div style="font-size:10px;color:#6b7280">prot</div></div><div style="text-align:center;background:#3b82f615;border-radius:6px;padding:6px 2px"><div style="font-size:14px;font-weight:800;color:#3b82f6">'+r.c+'g</div><div style="font-size:10px;color:#6b7280">carbs</div></div><div style="text-align:center;background:#f59e0b15;border-radius:6px;padding:6px 2px"><div style="font-size:14px;font-weight:800;color:#f59e0b">'+r.f+'g</div><div style="font-size:10px;color:#6b7280">fat</div></div></div><button class="gold-btn" onclick="addFoodFromRecipe('+JSON.stringify(r)+')" style="width:100%;text-align:center">Add to Diary</button></div>';
+  }).join('');
+  document.getElementById('recipes-grid').innerHTML = html;
+}
+
+function addFoodFromRecipe(r) {
+  state.diary[state.activeMeal].push({name:r.name,cal:r.cal,p:r.p,c:r.c,f:r.f});
+  updateProgress();
+  showTab('tracker');
+}
+
+function renderSupplements() {
+  var html = SUPPLEMENTS.map(function(s){
+    return '<div class="supp-row"><div style="display:flex;align-items:center"><div class="supp-icon">💊</div><div><div style="font-size:15px;font-weight:700">'+s.name+'</div><div style="font-size:13px;color:#6b7280">'+s.benefit+'</div></div></div><div style="text-align:right"><div style="font-size:15px;font-weight:700;color:#2d5a27;margin-bottom:6px">'+s.price+'</div><a href="'+s.link+'" class="gold-btn">Buy →</a></div></div>';
+  }).join('');
+  document.getElementById('supp-list').innerHTML = html;
+}
+
+// Init
+renderCultures();
+renderFoods();
+renderRecipes();
+renderSupplements();
+</script>
+</body>
+</html>
