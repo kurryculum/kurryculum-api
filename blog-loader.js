@@ -7,7 +7,7 @@
   // If article param exists, load the articles file
   var fileToLoad = param 
     ? 'https://cdn.jsdelivr.net/gh/kurryculum/kurryculum-api@' + COMMIT + '/blog-articles.html'
-    : 'https://cdn.jsdelivr.net/gh/kurryculum/kurryculum-api@2442595/KURRYCULUM-BLOG-LIGHT.html';
+    : 'https://cdn.jsdelivr.net/gh/kurryculum/kurryculum-api@2442595ffa5186011bff3522c4968ecd51bc5da7/KURRYCULUM-BLOG-LIGHT.html';
   
   var markerId = param ? 'ba-loaded' : 'bl-loaded';
   if(document.getElementById(markerId)) return;
