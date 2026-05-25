@@ -1,11 +1,17 @@
 {
+  "routes": [
+    {
+      "src": "/tracker",
+      "dest": "/public/tracker.html"
+    }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://kurryculum-02b0c0.webflow.io"
+          "value": "*"
         },
         {
           "key": "Access-Control-Allow-Methods",
