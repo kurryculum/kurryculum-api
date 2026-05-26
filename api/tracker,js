@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-export default function handler(req, res) {
+module.exports = (req, res) => {
   const filePath = path.join(process.cwd(), 'public', 'tracker.html');
   const html = fs.readFileSync(filePath, 'utf8');
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('X-Frame-Options', 'ALLOWALL');
   res.setHeader('Content-Security-Policy', "frame-ancestors *");
-  res.status(200).send(html);
-}
+  res.send(html);
+};
