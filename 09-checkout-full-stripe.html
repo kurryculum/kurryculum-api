@@ -120,7 +120,7 @@ body,html{background:#FAFAF7!important;color:#1A2E1A!important}
 <script>
 var CO_PRODUCTS = {
   'sugaverve':   { name:'Sugaverve',                 price:29.99 },
-  '7-chakra':    { name:'7 Chakra Ayurvedic Complex', price:24.99 },
+  '7-chakra':    { name:'7 Chakra Ayurvedic Complex', price:23.99 },
   'beet-root':   { name:'Beet Root + Black Pepper',   price:9.99  },
   'vitamin-b12': { name:'Vitamin B-12',               price:8.99  },
   'bonevite':    { name:'BoneVite+',                  price:22.99 },
@@ -279,6 +279,16 @@ async function coSubmit() {
     document.getElementById('co-form-section').style.display = 'none';
     document.getElementById('co-success').style.display = 'block';
     sessionStorage.removeItem('kurry_cart');
+    // Google Ads Purchase Conversion
+if (typeof gtag === 'function') {
+  var orderTotal = parseFloat(document.getElementById('co-total').textContent.replace('$','')) || 0;
+  gtag('event', 'conversion', {
+    'send_to': 'AW-11442049593/4eJ-CNL-q5YcELmk_88q',
+    'value': orderTotal,
+    'currency': 'USD',
+    'transaction_id': Date.now().toString()
+  });
+}
   } catch(err) {
     document.getElementById('co-card-err').textContent = err.message || 'Payment failed. Please try again.';
     btn.disabled = false;
