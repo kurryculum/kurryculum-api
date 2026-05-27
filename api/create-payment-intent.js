@@ -10,14 +10,14 @@ const TAX_RATES = {
 };
 
 const PRODUCTS = {
-  '7-chakra':    { name:'7 Chakra Ayurvedic Complex', price:2499 },
-  'sugaverve':   { name:'Sugaverve',                  price:2999 },
-  'beet-root':   { name:'Beet Root + Black Pepper',   price: 999 },
-  'vitamin-b12': { name:'Vitamin B-12',               price: 899 },
-  'bonevite':    { name:'BoneVite+',                  price:2299 },
-  'krill-oil':   { name:'Krill Oil 500mg',            price:1999 },
-  'collagen':    { name:'Collagen Peptides',          price:2799 },
-  'optikind':    { name:'OptiKind Vision Support',    price:2499 },
+  '7-chakra':    { name:'7 Chakra Ayurvedic Complex', price:2399 },
+  'sugaverve':   { name:'Sugaverve',                  price:2879 },
+  'beet-root':   { name:'Beet Root + Black Pepper',   price: 959 },
+  'vitamin-b12': { name:'Vitamin B-12',               price: 879 },
+  'bonevite':    { name:'BoneVite+',                  price:2879 },
+  'krill-oil':   { name:'Krill Oil 500mg',            price:1919 },
+  'collagen':    { name:'Collagen Peptides',          price:2719 },
+  'optikind':    { name:'OptiKind Vision Support',    price:2399 },
   'cardiavite':  { name:'CardiaVite+',                price:2699 },
 };
 
@@ -67,7 +67,7 @@ module.exports = async function handler(req, res) {
     }
 
     const taxCents = Math.round(subtotalCents * (TAX_RATES[state] / 100));
-    const freeShip = subtotalCents >= 3500 || subscription;
+    const freeShip = true;
     const shippingCents = freeShip ? 0 : 599;
     const totalCents = subtotalCents + taxCents + shippingCents;
 
