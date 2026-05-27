@@ -45,7 +45,7 @@ module.exports = async function handler(req, res) {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-5-20251001',
         max_tokens: Math.min(max_tokens || 500, 1500), // raised cap: chatbot=250, recipes=1400, both now work
         system: system || 'You are a helpful supplement advisor for Kurryculum.',
         messages: messages
