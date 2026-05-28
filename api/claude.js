@@ -14,11 +14,7 @@ function getRateLimit(ip) {
 
 module.exports = async function handler(req, res) {
   const origin = req.headers.origin || '';
-  if (origin.includes('webflow.io') || origin.includes('kurryculum.com') || origin.includes('vercel.app')) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  } else {
-    res.setHeader('Access-Control-Allow-Origin', 'https://kurryculum.com');
-  }
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(200).end();
