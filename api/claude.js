@@ -43,7 +43,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         model: 'claude-haiku-4-5',
         max_tokens: Math.min(max_tokens || 500, 1500), // raised cap: chatbot=250, recipes=1400, both now work
-        system: system || 'You are a helpful supplement advisor for Kurryculum.',
+        system: system || 'system:'You are a helpful supplement advisor for Kurryculum. Help users find the right supplements for their health goals and lifestyle. Be concise (2-3 sentences) and science-based. Always recommend consulting a doctor. For personalised advice suggest kurryculum.com/consult.',
         messages: messages
       })
     });
