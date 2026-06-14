@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Kurryculum | Calorie Calculator + Cultural Recipes</title>
+<meta name="description" content="Free calorie calculator for Indian, South Asian and multicultural diets. Get your personalised calorie and macro targets, then culturally-matched recipes that fit them. Pharmacist reviewed." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#f6efe2;
+    --parchment-2:#efe5d2;
+    --ink:#2b2118;
+    --ink-soft:#5c4f3f;
+    --turmeric:#e2a32b;
+    --saffron:#d9772a;
+    --curry:#a8341f;
+    --cardamom:#5d7251;
+    --cardamom-deep:#3e5238;
+    --line:rgba(43,33,24,.14);
+    --card:#fffaf0;
+    --shadow:0 18px 40px -24px rgba(74,45,20,.55);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Outfit',system-ui,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(226,163,43,.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(93,114,81,.16), transparent 55%),
+      var(--parchment);
+    line-height:1.5;
+    min-height:100vh;
+    padding:clamp(16px,3vw,40px);
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto}
+  .display{font-family:'Fraunces',serif;font-weight:600;line-height:1.05;letter-spacing:-.01em}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--curry);font-weight:600;display:inline-flex;align-items:center;gap:.5em;
+  }
+  .eyebrow::before{content:"✦"}
+
+  /* HERO */
+  header.hero{text-align:center;padding:clamp(18px,4vw,40px) 0 8px}
+  header.hero h1{font-size:clamp(2.1rem,5.6vw,3.6rem);margin:.35em 0 .25em}
+  header.hero h1 em{font-style:italic;color:var(--saffron)}
+  header.hero p.sub{max-width:560px;margin:0 auto;color:var(--ink-soft);font-size:clamp(1rem,2.2vw,1.12rem)}
+  .trust{display:flex;flex-wrap:wrap;gap:.5rem .9rem;justify-content:center;margin-top:1.1rem;font-size:.82rem;color:var(--ink-soft)}
+  .trust span{display:inline-flex;align-items:center;gap:.35em;background:rgba(255,255,255,.55);border:1px solid var(--line);padding:.3em .7em;border-radius:999px}
+
+  /* PANELS */
+  .grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:26px}
+  @media(min-width:880px){.grid.two{grid-template-columns:0.92fr 1.08fr}}
+  .panel{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:clamp(18px,3vw,28px);position:relative;overflow:hidden;
+  }
+  .panel::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;
+    background:linear-gradient(90deg,var(--turmeric),var(--saffron),var(--curry))}
+  .panel h2{font-family:'Fraunces',serif;font-weight:600;font-size:1.35rem;margin-bottom:.2em}
+  .panel .lead{color:var(--ink-soft);font-size:.92rem;margin-bottom:1.1rem}
+
+  /* FORM */
+  .field{margin-bottom:14px}
+  .field>label{display:block;font-weight:600;font-size:.82rem;letter-spacing:.02em;margin-bottom:6px;color:var(--ink)}
+  .row{display:flex;gap:10px}
+  .row>*{flex:1}
+  input[type=number],select{
+    width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid var(--line);
+    border-radius:12px;padding:12px 12px;transition:border-color .15s, box-shadow .15s;
+  }
+  input[type=number]:focus,select:focus{outline:none;border-color:var(--turmeric);box-shadow:0 0 0 3px rgba(226,163,43,.2)}
+  .seg{display:flex;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+  .seg button{flex:1;font:inherit;font-size:.85rem;font-weight:600;border:0;background:transparent;color:var(--ink-soft);padding:10px 6px;cursor:pointer;transition:.15s}
+  .seg button.active{background:var(--ink);color:var(--parchment)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font:inherit;font-size:.82rem;font-weight:500;border:1.5px solid var(--line);background:#fff;color:var(--ink-soft);
+    padding:8px 13px;border-radius:999px;cursor:pointer;transition:.15s}
+  .chip.active{background:var(--cardamom);border-color:var(--cardamom);color:#fff}
+  .unit-mini{display:flex;gap:6px;align-items:center}
+  .unit-mini .seg{flex:0 0 auto;width:120px}
+
+  .cta{
+    width:100%;font:inherit;font-weight:700;font-size:1.02rem;letter-spacing:.01em;cursor:pointer;
+    color:#fff;background:linear-gradient(135deg,var(--saffron),var(--curry));border:0;border-radius:14px;
+    padding:15px;margin-top:6px;box-shadow:0 12px 24px -12px rgba(168,52,31,.7);transition:transform .12s, filter .15s;
+  }
+  .cta:hover{filter:brightness(1.04)}
+  .cta:active{transform:translateY(1px)}
+
+  /* RESULTS */
+  #results{display:none}
+  #results.show{display:block;animation:rise .5s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .target-hero{text-align:center;padding:8px 0 4px}
+  .target-hero .big{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(3rem,9vw,4.4rem);line-height:1;color:var(--curry)}
+  .target-hero .big small{font-size:.28em;font-family:'Outfit';font-weight:600;color:var(--ink-soft);letter-spacing:.08em;display:block;margin-top:.4em;text-transform:uppercase}
+  .target-hero .goal-note{color:var(--ink-soft);font-size:.92rem;margin-top:.5rem}
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+  .stat{background:var(--parchment-2);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+  .stat b{display:block;font-family:'Fraunces',serif;font-size:1.4rem;color:var(--ink)}
+  .stat span{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft)}
+  .macros{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .macro{border-radius:12px;padding:12px;text-align:center;color:#fff}
+  .macro.p{background:var(--curry)} .macro.c{background:var(--turmeric);color:var(--ink)} .macro.f{background:var(--cardamom)}
+  .macro b{display:block;font-family:'Fraunces',serif;font-size:1.4rem}
+  .macro span{font-size:.72rem;letter-spacing:.06em;opacity:.92}
+  .meal-split{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px}
+  .meal-split h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft);margin-bottom:8px}
+  .meal-bars{display:grid;gap:7px}
+  .meal-bar{display:grid;grid-template-columns:90px 1fr 64px;align-items:center;gap:10px;font-size:.85rem}
+  .meal-bar .track{height:9px;background:var(--parchment-2);border-radius:99px;overflow:hidden}
+  .meal-bar .fill{height:100%;background:linear-gradient(90deg,var(--turmeric),var(--saffron));border-radius:99px}
+  .meal-bar .kc{text-align:right;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+
+  /* RECIPES */
+  .recipes-section{margin-top:30px;display:none}
+  .recipes-section.show{display:block}
+  .sec-head{text-align:center;margin-bottom:6px}
+  .sec-head h2{font-size:clamp(1.6rem,4vw,2.2rem)}
+  .sec-head h2 em{font-style:italic;color:var(--saffron)}
+  .sec-head p{color:var(--ink-soft);max-width:560px;margin:.4rem auto 0;font-size:.95rem}
+  .meal-group{margin-top:22px}
+  .meal-group>.label{display:flex;align-items:center;gap:.55em;font-family:'Fraunces',serif;font-size:1.2rem;margin-bottom:12px}
+  .meal-group>.label .budget{margin-left:auto;font-family:'Outfit';font-size:.78rem;font-weight:600;color:var(--ink-soft);background:var(--parchment-2);padding:.3em .7em;border-radius:99px}
+  .cards{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:620px){.cards{grid-template-columns:1fr 1fr}}
+  @media(min-width:980px){.cards{grid-template-columns:1fr 1fr 1fr}}
+  .rcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:9px;box-shadow:var(--shadow);transition:transform .15s}
+  .rcard:hover{transform:translateY(-3px)}
+  .rcard .cuisine{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--curry);font-weight:600}
+  .rcard h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.08rem;line-height:1.2}
+  .rcard .kcal{font-family:'Fraunces',serif;font-weight:700;font-size:1.5rem;color:var(--ink)}
+  .rcard .kcal small{font-family:'Outfit';font-size:.5em;font-weight:600;color:var(--ink-soft);letter-spacing:.06em}
+  .rcard .mac{display:flex;gap:6px;flex-wrap:wrap}
+  .rcard .mac span{font-size:.72rem;font-weight:600;padding:.25em .6em;border-radius:99px;background:var(--parchment-2);color:var(--ink-soft)}
+  .rcard .ing{font-size:.84rem;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:8px}
+  .rcard .method{font-size:.82rem;color:var(--ink-soft)}
+  .rcard details summary{cursor:pointer;font-size:.8rem;font-weight:600;color:var(--saffron);list-style:none}
+  .rcard details summary::-webkit-details-marker{display:none}
+  .rcard details[open] summary{margin-bottom:5px}
+  .empty{grid-column:1/-1;text-align:center;color:var(--ink-soft);font-size:.88rem;padding:10px;background:var(--parchment-2);border-radius:12px}
+
+  /* SUPPLEMENTS */
+  .supp{margin-top:30px;background:linear-gradient(135deg,var(--cardamom-deep),var(--cardamom));color:#fff;border-radius:var(--radius);padding:clamp(20px,3vw,30px);display:none}
+  .supp.show{display:block}
+  .supp .eyebrow{color:#f3e4c4}
+  .supp h2{font-family:'Fraunces',serif;font-size:1.5rem;margin:.3em 0 .2em}
+  .supp p.lead{color:rgba(255,255,255,.85);font-size:.92rem;margin-bottom:16px;max-width:620px}
+  .supp-cards{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:680px){.supp-cards{grid-template-columns:repeat(3,1fr)}}
+  .scard{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:15px;backdrop-filter:blur(4px)}
+  .scard h4{font-family:'Fraunces',serif;font-size:1.05rem;margin-bottom:3px}
+  .scard p{font-size:.82rem;color:rgba(255,255,255,.82);margin-bottom:10px}
+  .scard a{display:inline-block;font-size:.8rem;font-weight:700;color:var(--ink);background:var(--turmeric);padding:.5em 1em;border-radius:99px;text-decoration:none;transition:.15s}
+  .scard a:hover{filter:brightness(1.06)}
+
+  /* HANDOFF */
+  .handoff{margin-top:26px;display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:680px){.handoff{grid-template-columns:1fr 1fr}}
+  .ho{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s}
+  .ho:hover{transform:translateY(-2px)}
+  .ho .ic{font-size:1.7rem;flex:0 0 auto}
+  .ho b{display:block;font-family:'Fraunces',serif;font-size:1.05rem}
+  .ho span{font-size:.82rem;color:var(--ink-soft)}
+
+  footer.disc{margin-top:34px;text-align:center;color:var(--ink-soft);font-size:.76rem;line-height:1.6;border-top:1px solid var(--line);padding-top:18px}
+  footer.disc strong{color:var(--curry)}
+  .brand-foot{font-family:'Fraunces',serif;font-weight:600;color:var(--ink);font-size:.95rem;margin-bottom:4px}
+
+  /* ---------- MOBILE / PHONE TUNING ---------- */
+  @media (max-width:600px){
+    body{padding:12px}
+    .grid{gap:16px;margin-top:18px}
+    .panel{padding:18px 16px;border-radius:14px}
+    header.hero{padding:10px 0 4px}
+    header.hero h1{font-size:1.95rem;line-height:1.12}
+    header.hero p.sub{font-size:1rem}
+    .trust{gap:.4rem .5rem;font-size:.78rem}
+    /* unit toggles stack cleanly, never overflow */
+    .unit-mini{flex-wrap:wrap}
+    .unit-mini .seg{width:100%;flex:1 1 100%}
+    #hCm,#hFt{flex:1 1 100%;width:100%}
+    #hFt{margin-top:8px}
+    .unit-mini #weight{flex:1 1 100%;margin-top:8px}
+    /* comfortable tap targets */
+    .seg button{padding:13px 6px}
+    .chip{padding:11px 15px;font-size:.88rem}
+    .cta{padding:17px;font-size:1.05rem}
+    /* results spacing */
+    .target-hero .big{font-size:3rem}
+    .stat-row{gap:7px}
+    .stat{padding:10px 6px}
+    .stat b{font-size:1.15rem}
+    .macro b{font-size:1.2rem}
+    .meal-bar{grid-template-columns:74px 1fr 56px;gap:8px;font-size:.82rem}
+    /* recipes full-width, roomy */
+    .cards{gap:12px}
+    .rcard{padding:15px}
+    .meal-group>.label{font-size:1.08rem}
+    .handoff{gap:10px}
+    .ho{padding:14px 16px}
+  }
+  /* very small phones */
+  @media (max-width:360px){
+    header.hero h1{font-size:1.75rem}
+    .stat b{font-size:1.05rem}
+    .chip{padding:10px 12px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">Pharmacist reviewed · Built for every body</span>
+    <h1 class="display">Your numbers, then <em>your recipes.</em></h1>
+    <p class="sub">Enter your details to get a personalised calorie and macro target — then see culturally-matched recipes that actually fit it.</p>
+    <div class="trust">
+      <span>🔬 Mifflin–St Jeor formula</span>
+      <span>🌍 10 cuisines</span>
+      <span>🍳 60+ recipes</span>
+      <span>💪 Goal-matched macros</span>
+    </div>
+  </header>
+
+  <div class="grid two">
+    <!-- CALCULATOR -->
+    <section class="panel" aria-label="Calorie calculator">
+      <h2>Calorie calculator</h2>
+      <p class="lead">Free, instant, no email. We never store your data.</p>
+
+      <div class="field">
+        <label>Biological sex <span style="font-weight:400;color:var(--ink-soft)">(for BMR accuracy)</span></label>
+        <div class="seg" id="sex">
+          <button type="button" data-v="male" class="active">Male</button>
+          <button type="button" data-v="female">Female</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Age</label>
+          <input type="number" id="age" min="13" max="100" value="30" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label>Activity</label>
+          <select id="activity">
+            <option value="1.2">Sedentary (desk job)</option>
+            <option value="1.375">Light (1–3 days/wk)</option>
+            <option value="1.55" selected>Moderate (3–5 days/wk)</option>
+            <option value="1.725">Very active (6–7 days)</option>
+            <option value="1.9">Athlete (2x/day)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Height</label>
+        <div class="unit-mini">
+          <div class="seg" id="hUnit">
+            <button type="button" data-v="cm" class="active">cm</button>
+            <button type="button" data-v="ft">ft/in</button>
+          </div>
+          <div id="hCm" style="flex:1"><input type="number" id="cm" min="120" max="230" value="170" inputmode="numeric" placeholder="cm"></div>
+          <div id="hFt" style="display:none;flex:1" class="row">
+            <input type="number" id="ft" min="4" max="7" value="5" inputmode="numeric" placeholder="ft">
+            <input type="number" id="in" min="0" max="11" value="7" inputmode="numeric" placeholder="in">
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Weight</label>
+        <div class="unit-mini">
+          <div class="seg" id="wUnit">
+            <button type="button" data-v="kg" class="active">kg</button>
+            <button type="button" data-v="lb">lb</button>
+          </div>
+          <input type="number" id="weight" min="35" max="250" value="70" inputmode="decimal" style="flex:1">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Your goal</label>
+        <div class="chips" id="goal">
+          <button type="button" class="chip active" data-v="maintain">Maintain</button>
+          <button type="button" class="chip" data-v="lose">Lose weight</button>
+          <button type="button" class="chip" data-v="muscle">Build muscle</button>
+          <button type="button" class="chip" data-v="energy">More energy</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Cuisine you cook most <span style="font-weight:400;color:var(--ink-soft)">(pick any)</span></label>
+        <div class="chips" id="cuisine">
+          <button type="button" class="chip active" data-v="South Asian">South Asian</button>
+          <button type="button" class="chip" data-v="South Indian">South Indian</button>
+          <button type="button" class="chip" data-v="Bengali">Bengali</button>
+          <button type="button" class="chip" data-v="Gujarati">Gujarati</button>
+          <button type="button" class="chip" data-v="West African">West African</button>
+          <button type="button" class="chip" data-v="Hispanic/Latin">Hispanic / Latin</button>
+          <button type="button" class="chip" data-v="American">American</button>
+          <button type="button" class="chip" data-v="Caribbean">Caribbean</button>
+          <button type="button" class="chip" data-v="Mediterranean">Mediterranean</button>
+          <button type="button" class="chip" data-v="East Asian">East Asian</button>
+        </div>
+      </div>
+
+      <button class="cta" id="calc">Calculate my plan →</button>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="panel" id="results" aria-live="polite">
+      <div class="target-hero">
+        <div class="big"><span id="targetKcal">—</span><small>kcal / day target</small></div>
+        <div class="goal-note" id="goalNote"></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b id="bmr">—</b><span>BMR</span></div>
+        <div class="stat"><b id="tdee">—</b><span>Maintenance</span></div>
+        <div class="stat"><b id="adj">—</b><span>Adjustment</span></div>
+      </div>
+      <div class="macros">
+        <div class="macro p"><b id="pg">—</b><span>PROTEIN</span></div>
+        <div class="macro c"><b id="cg">—</b><span>CARBS</span></div>
+        <div class="macro f"><b id="fg">—</b><span>FAT</span></div>
+      </div>
+      <div class="meal-split">
+        <h3>Suggested per-meal calorie budget</h3>
+        <div class="meal-bars" id="mealBars"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- RECIPES -->
+  <section class="recipes-section" id="recipesSection">
+    <div class="sec-head">
+      <span class="eyebrow">Recipes that fit your day</span>
+      <h2 class="display">Eat to your <em>target.</em></h2>
+      <p>Each recipe below fits inside the per-meal budget above for your goal and cuisine. Mix and match to hit your daily number.</p>
+    </div>
+    <div id="mealGroups"></div>
+  </section>
+
+  <!-- SUPPLEMENTS -->
+  <section class="supp" id="suppSection">
+    <span class="eyebrow">From your pharmacist</span>
+    <h2 id="suppTitle">Supplements that pair with your plan</h2>
+    <p class="lead" id="suppLead"></p>
+    <div class="supp-cards" id="suppCards"></div>
+  </section>
+
+  <!-- HANDOFF -->
+  <div class="handoff" id="handoff" style="display:none">
+    <a class="ho" href="https://kurryculum-api-djm8.vercel.app/tracker.html">
+      <span class="ic">📊</span>
+      <span><b>Log it in the Tracker</b><span>Track today's food against your target →</span></span>
+    </a>
+    <a class="ho" href="https://www.kurryculum.com/supplement-quiz">
+      <span class="ic">🎯</span>
+      <span><b>Get your free supplement plan</b><span>5 questions, pharmacist-matched →</span></span>
+    </a>
+  </div>
+
+  <footer class="disc">
+    <div class="brand-foot">Kurryculum</div>
+    Estimates use the Mifflin–St Jeor equation and standard activity multipliers. They are general wellness guidance, not medical or dietary advice.
+    <strong>These statements have not been evaluated by the FDA.</strong> This tool is not intended to diagnose, treat, cure, or prevent any disease.
+    Consult your healthcare provider before changing your diet or starting supplements, especially if pregnant, nursing, or managing a medical condition.
+  </footer>
+</div>
+
+<script>
+// ---------- STATE ----------
+const state={sex:'male',hUnit:'cm',wUnit:'kg',goal:'maintain',cuisines:new Set(['South Asian'])};
+
+// ---------- SEGMENTED / CHIP HANDLERS ----------
+function seg(id,key,cb){document.querySelectorAll('#'+id+' button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');state[key]=b.dataset.v;if(cb)cb(b.dataset.v);}));}
+seg('sex','sex');
+seg('goal','goal');
+seg('hUnit','hUnit',v=>{document.getElementById('hCm').style.display=v==='cm'?'block':'none';document.getElementById('hFt').style.display=v==='ft'?'flex':'none';});
+seg('wUnit','wUnit',v=>{const w=document.getElementById('weight');w.value=v==='lb'?Math.round(w.value*2.2046):Math.round(w.value/2.2046);});
+// cuisine = multi-select
+document.querySelectorAll('#cuisine button').forEach(b=>b.addEventListener('click',()=>{
+  b.classList.toggle('active');const v=b.dataset.v;
+  if(state.cuisines.has(v))state.cuisines.delete(v);else state.cuisines.add(v);
+  if(state.cuisines.size===0){b.classList.add('active');state.cuisines.add(v);}
+}));
+
+// ---------- RECIPE DATABASE (curated, per-serving) ----------
+// goals: lose / muscle / energy / maintain   meal: breakfast/lunch/dinner/snack
+const RECIPES=[
+ // SOUTH ASIAN
+ {n:"Masala Oats & Egg",cu:"South Asian",m:"breakfast",k:320,p:18,c:38,f:10,g:["lose","energy","maintain"],i:"Rolled oats, egg, onion, tomato, turmeric, peas",d:"Simmer oats with spiced onion-tomato; fold in a beaten egg until set."},
+ {n:"Moong Dal Cheela",cu:"South Asian",m:"breakfast",k:280,p:16,c:34,f:8,g:["lose","maintain","energy"],i:"Soaked moong dal, ginger, green chilli, coriander",d:"Blend dal to batter; pan-fry thin savoury pancakes; serve with mint chutney."},
+ {n:"Tandoori Chicken Bowl",cu:"South Asian",m:"lunch",k:480,p:45,c:40,f:14,g:["muscle","maintain"],i:"Yogurt-marinated chicken, brown rice, cucumber, onion",d:"Grill marinated chicken; serve over rice with kachumber salad."},
+ {n:"Rajma & Brown Rice",cu:"South Asian",m:"lunch",k:520,p:22,c:82,f:8,g:["energy","maintain"],i:"Kidney beans, tomato-onion masala, brown rice",d:"Simmer beans in masala until thick; serve over brown rice."},
+ {n:"Palak Paneer + Roti",cu:"South Asian",m:"dinner",k:540,p:28,c:42,f:28,g:["muscle","maintain"],i:"Spinach, paneer, garlic, whole-wheat roti",d:"Blend cooked spinach; simmer with paneer cubes; serve with roti."},
+ {n:"Roasted Chana Snack",cu:"South Asian",m:"snack",k:180,p:10,c:24,f:5,g:["lose","energy"],i:"Roasted chickpeas, chaat masala, lemon",d:"Toss roasted chana with spice and a squeeze of lemon."},
+ // SOUTH INDIAN
+ {n:"Idli & Sambar",cu:"South Indian",m:"breakfast",k:290,p:12,c:52,f:4,g:["lose","maintain","energy"],i:"Steamed rice-lentil idli, vegetable sambar",d:"Steam fermented idli batter; serve with a lentil-and-vegetable sambar."},
+ {n:"Ven Pongal",cu:"South Indian",m:"breakfast",k:340,p:12,c:50,f:10,g:["energy","maintain"],i:"Rice, moong dal, pepper, cumin, cashew, light ghee",d:"Cook rice and moong dal soft; temper with pepper, cumin and a little ghee."},
+ {n:"Chettinad Chicken & Rice",cu:"South Indian",m:"lunch",k:520,p:42,c:48,f:16,g:["muscle","maintain"],i:"Pepper-roasted chicken, brown rice, curry leaf",d:"Cook chicken in roasted Chettinad spice; serve over rice."},
+ {n:"Sambar Rice & Veg",cu:"South Indian",m:"lunch",k:480,p:16,c:82,f:9,g:["energy","maintain","lose"],i:"Rice, toor dal, drumstick, tamarind, mixed veg",d:"Simmer dal with tamarind and vegetables; fold through rice."},
+ {n:"Kerala Fish Curry",cu:"South Indian",m:"dinner",k:420,p:38,c:18,f:20,g:["lose","muscle"],i:"Fish, coconut, kokum, curry leaf, chilli",d:"Simmer fish in a tangy coconut gravy; serve with a little rice."},
+ {n:"Masala Dosa",cu:"South Indian",m:"dinner",k:430,p:12,c:64,f:14,g:["energy","maintain"],i:"Fermented dosa crepe, spiced potato, sambar",d:"Crisp a thin dosa; fill with light potato masala; serve with sambar."},
+ {n:"Sundal Chickpea Snack",cu:"South Indian",m:"snack",k:180,p:9,c:26,f:5,g:["lose","energy"],i:"Steamed chickpeas, coconut, mustard, curry leaf",d:"Temper steamed chana with coconut and curry leaf."},
+ // BENGALI
+ {n:"Doi Chira (Yogurt Poha)",cu:"Bengali",m:"breakfast",k:300,p:10,c:52,f:6,g:["lose","energy","maintain"],i:"Flattened rice, yogurt, banana, light jaggery",d:"Soak flattened rice; mix with yogurt and fruit."},
+ {n:"Ghugni (Yellow Pea Curry)",cu:"Bengali",m:"breakfast",k:310,p:16,c:46,f:7,g:["lose","maintain","energy"],i:"Dried yellow peas, onion, ginger, cumin",d:"Simmer soaked peas in an onion-ginger masala."},
+ {n:"Macher Jhol & Rice",cu:"Bengali",m:"lunch",k:440,p:38,c:42,f:12,g:["muscle","lose","maintain"],i:"Rohu or tilapia, potato, tomato, panch phoron",d:"Simmer fish with potato in a light turmeric gravy; serve with rice."},
+ {n:"Bhuna Khichuri",cu:"Bengali",m:"lunch",k:500,p:18,c:78,f:10,g:["energy","maintain"],i:"Rice, roasted moong dal, vegetables, light ghee",d:"Roast moong dal; cook with rice and vegetables to a soft khichuri."},
+ {n:"Doi Maach (Yogurt Fish)",cu:"Bengali",m:"dinner",k:440,p:40,c:16,f:22,g:["muscle","lose"],i:"Fish, yogurt, ginger, green chilli",d:"Simmer fish in a spiced yogurt gravy."},
+ {n:"Bengali Chicken Jhol",cu:"Bengali",m:"dinner",k:460,p:42,c:30,f:18,g:["muscle","maintain"],i:"Chicken, potato, onion-ginger, garam masala",d:"Cook chicken with potato in a light Bengali jhol."},
+ {n:"Jhalmuri",cu:"Bengali",m:"snack",k:190,p:6,c:30,f:6,g:["lose","energy"],i:"Puffed rice, peanuts, mustard oil, chopped veg",d:"Toss puffed rice with peanuts, mustard oil and chopped vegetables."},
+ // GUJARATI
+ {n:"Dhokla",cu:"Gujarati",m:"breakfast",k:250,p:10,c:40,f:5,g:["lose","maintain","energy"],i:"Steamed fermented gram-flour cake, mustard temper",d:"Steam besan batter; temper with mustard and curry leaf."},
+ {n:"Methi Thepla & Yogurt",cu:"Gujarati",m:"breakfast",k:320,p:11,c:44,f:11,g:["maintain","energy"],i:"Fenugreek thepla flatbread, yogurt",d:"Griddle methi theplas; serve with yogurt."},
+ {n:"Gujarati Dal, Rice & Shaak",cu:"Gujarati",m:"lunch",k:480,p:16,c:80,f:10,g:["energy","maintain"],i:"Toor dal, rice, seasonal vegetable shaak",d:"Simmer sweet-sour toor dal; serve with rice and a vegetable shaak."},
+ {n:"Undhiyu & Rotli",cu:"Gujarati",m:"lunch",k:470,p:14,c:62,f:18,g:["energy","maintain"],i:"Mixed winter veg, beans, whole-wheat rotli",d:"Slow-cook spiced mixed vegetables; serve with rotli."},
+ {n:"Kadhi & Khichdi",cu:"Gujarati",m:"dinner",k:440,p:16,c:68,f:12,g:["energy","maintain","lose"],i:"Yogurt kadhi, soft moong-rice khichdi",d:"Cook a soft khichdi; serve with light yogurt kadhi."},
+ {n:"Sprouted Moong Shaak & Rotli",cu:"Gujarati",m:"dinner",k:420,p:20,c:58,f:11,g:["muscle","maintain","lose"],i:"Sprouted moong, tomato, whole-wheat rotli",d:"Saute sprouted moong in light masala; serve with rotli."},
+ {n:"Khakhra Crisp",cu:"Gujarati",m:"snack",k:170,p:6,c:28,f:4,g:["lose","energy"],i:"Roasted whole-wheat khakhra",d:"Roast thin khakhra until crisp; eat plain or with chutney."},
+ // WEST AFRICAN
+ {n:"Akara & Pap",cu:"West African",m:"breakfast",k:340,p:14,c:46,f:11,g:["energy","maintain"],i:"Black-eyed pea fritters, fermented corn pap",d:"Whip peeled bean paste; fry small fritters; serve with warm pap."},
+ {n:"Jollof Rice + Grilled Chicken",cu:"West African",m:"lunch",k:560,p:38,c:68,f:14,g:["muscle","maintain"],i:"Long-grain rice, pepper-tomato base, grilled chicken",d:"Cook rice in blended pepper stew; serve with lean grilled chicken."},
+ {n:"Egusi Soup w/ Spinach",cu:"West African",m:"dinner",k:480,p:30,c:20,f:30,g:["muscle","maintain"],i:"Ground melon seed, spinach, lean beef or fish",d:"Simmer egusi in pepper stock; stir in greens and protein."},
+ {n:"Grilled Tilapia & Plantain",cu:"West African",m:"dinner",k:460,p:40,c:42,f:12,g:["muscle","lose"],i:"Whole tilapia, ripe plantain, pepper sauce",d:"Grill spiced tilapia; pair with grilled (not fried) plantain."},
+ {n:"Boiled Yam & Garden-Egg Sauce",cu:"West African",m:"lunch",k:420,p:10,c:70,f:12,g:["energy","maintain"],i:"White yam, garden eggs, pepper, palm oil (light)",d:"Boil yam; serve with sautéed garden-egg pepper sauce."},
+ {n:"Kuli-Kuli Peanut Snack",cu:"West African",m:"snack",k:200,p:9,c:12,f:14,g:["muscle","energy"],i:"Roasted groundnut paste, cayenne",d:"Press defatted peanut paste, spice, and bake into crunchy sticks."},
+ // HISPANIC / LATIN
+ {n:"Huevos Rancheros",cu:"Hispanic/Latin",m:"breakfast",k:380,p:20,c:34,f:18,g:["maintain","muscle"],i:"Eggs, corn tortilla, black beans, salsa roja",d:"Top a warm tortilla with beans, fried egg, and salsa."},
+ {n:"Black Bean & Quinoa Bowl",cu:"Hispanic/Latin",m:"lunch",k:450,p:20,c:66,f:10,g:["energy","lose","maintain"],i:"Quinoa, black beans, corn, lime, cilantro",d:"Toss warm quinoa with beans, corn, and lime dressing."},
+ {n:"Pollo a la Plancha + Veg",cu:"Hispanic/Latin",m:"lunch",k:420,p:44,c:20,f:16,g:["muscle","lose"],i:"Griddled chicken breast, peppers, onion",d:"Sear seasoned chicken; serve with charred peppers and onions."},
+ {n:"Fish Veracruz",cu:"Hispanic/Latin",m:"dinner",k:400,p:38,c:22,f:16,g:["lose","muscle"],i:"White fish, tomato, olives, capers",d:"Poach fish in tomato-olive sauce until flaky."},
+ {n:"Chicken Fajita Lettuce Wraps",cu:"Hispanic/Latin",m:"dinner",k:360,p:34,c:18,f:16,g:["lose","muscle"],i:"Chicken, bell peppers, lettuce cups, lime",d:"Sauté fajita chicken and peppers; spoon into lettuce cups."},
+ {n:"Mango-Lime Greek Yogurt",cu:"Hispanic/Latin",m:"snack",k:190,p:14,c:26,f:3,g:["lose","energy"],i:"Greek yogurt, mango, lime, chilli",d:"Top yogurt with mango and a pinch of chilli-lime."},
+ // AMERICAN
+ {n:"Greek Yogurt Berry Parfait",cu:"American",m:"breakfast",k:300,p:22,c:40,f:6,g:["lose","energy","maintain"],i:"Greek yogurt, berries, granola, honey",d:"Layer yogurt, berries, and a sprinkle of granola."},
+ {n:"Veggie Egg-White Scramble",cu:"American",m:"breakfast",k:260,p:26,c:12,f:11,g:["lose","muscle"],i:"Egg whites, spinach, mushroom, feta",d:"Scramble whites with veg; finish with a little feta."},
+ {n:"Grilled Chicken Power Salad",cu:"American",m:"lunch",k:430,p:42,c:24,f:18,g:["lose","muscle"],i:"Chicken breast, greens, avocado, vinaigrette",d:"Top mixed greens with sliced chicken and avocado."},
+ {n:"Turkey Chili",cu:"American",m:"dinner",k:470,p:40,c:44,f:12,g:["muscle","maintain"],i:"Lean ground turkey, beans, tomato, spices",d:"Brown turkey; simmer with beans and tomato until thick."},
+ {n:"Salmon, Sweet Potato & Greens",cu:"American",m:"dinner",k:520,p:40,c:40,f:20,g:["muscle","energy"],i:"Salmon fillet, roasted sweet potato, broccoli",d:"Roast salmon and sweet potato; steam broccoli."},
+ {n:"Cottage Cheese & Almonds",cu:"American",m:"snack",k:220,p:22,c:10,f:10,g:["muscle","lose"],i:"Cottage cheese, almonds, cinnamon",d:"Top cottage cheese with almonds and cinnamon."},
+ // CARIBBEAN
+ {n:"Saltfish & Callaloo",cu:"Caribbean",m:"breakfast",k:380,p:26,c:40,f:12,g:["maintain","muscle"],i:"Saltfish, callaloo greens, ground provision",d:"Sauté flaked saltfish with callaloo; serve with boiled provision."},
+ {n:"Jerk Chicken + Rice & Peas",cu:"Caribbean",m:"lunch",k:560,p:40,c:66,f:14,g:["muscle","maintain","energy"],i:"Jerk-marinated chicken, rice, kidney peas, coconut",d:"Grill jerk chicken; serve with coconut rice and peas."},
+ {n:"Grilled Snapper & Steamed Veg",cu:"Caribbean",m:"dinner",k:400,p:42,c:18,f:16,g:["lose","muscle"],i:"Red snapper, okra, chocho, herbs",d:"Grill seasoned snapper; serve with steamed vegetables."},
+ {n:"Pelau w/ Pigeon Peas",cu:"Caribbean",m:"lunch",k:520,p:24,c:78,f:12,g:["energy","maintain"],i:"Caramelised chicken, rice, pigeon peas, coconut",d:"Brown chicken in sugar; add rice, peas, and coconut to cook."},
+ {n:"Stewed Lentil Peas & Rice",cu:"Caribbean",m:"dinner",k:460,p:18,c:80,f:7,g:["energy","maintain","lose"],i:"Brown lentils, rice, thyme, scallion",d:"Stew seasoned lentils; serve over rice."},
+ {n:"Roasted Breadfruit Chips",cu:"Caribbean",m:"snack",k:170,p:3,c:34,f:4,g:["energy"],i:"Breadfruit, light oil, sea salt",d:"Thinly slice and oven-roast breadfruit until crisp."},
+ // MEDITERRANEAN
+ {n:"Shakshuka",cu:"Mediterranean",m:"breakfast",k:340,p:20,c:24,f:18,g:["maintain","muscle"],i:"Eggs, tomato, pepper, onion, cumin",d:"Poach eggs in a spiced tomato-pepper sauce."},
+ {n:"Greek Souvlaki Bowl",cu:"Mediterranean",m:"lunch",k:470,p:44,c:36,f:16,g:["muscle","maintain"],i:"Chicken skewers, quinoa, cucumber, tzatziki",d:"Grill chicken skewers; serve over quinoa with tzatziki."},
+ {n:"Lentil & Feta Tabbouleh",cu:"Mediterranean",m:"lunch",k:400,p:18,c:52,f:12,g:["energy","lose","maintain"],i:"Lentils, bulgur, parsley, tomato, feta",d:"Toss cooked lentils and bulgur with herbs and feta."},
+ {n:"Baked Salmon w/ Farro",cu:"Mediterranean",m:"dinner",k:520,p:40,c:44,f:20,g:["muscle","energy"],i:"Salmon, farro, zucchini, lemon, olive oil",d:"Bake salmon with lemon; serve over farro and roast veg."},
+ {n:"Falafel & Hummus Plate",cu:"Mediterranean",m:"dinner",k:480,p:18,c:56,f:20,g:["energy","maintain"],i:"Falafel, hummus, salad, pita",d:"Bake falafel; plate with hummus, salad, and pita."},
+ {n:"Olives, Walnuts & Labneh",cu:"Mediterranean",m:"snack",k:210,p:8,c:8,f:17,g:["energy","muscle"],i:"Labneh, walnuts, olives, za'atar",d:"Spoon labneh; top with walnuts, olives, and za'atar."},
+ // EAST ASIAN
+ {n:"Tofu Veggie Congee",cu:"East Asian",m:"breakfast",k:300,p:14,c:48,f:6,g:["energy","lose","maintain"],i:"Rice porridge, silken tofu, scallion, ginger",d:"Simmer rice to porridge; top with tofu, ginger, and scallion."},
+ {n:"Edamame & Egg Scramble",cu:"East Asian",m:"breakfast",k:290,p:24,c:14,f:14,g:["muscle","lose"],i:"Eggs, edamame, sesame oil, scallion",d:"Scramble eggs with edamame and a drop of sesame oil."},
+ {n:"Chicken Teriyaki Donburi",cu:"East Asian",m:"lunch",k:540,p:40,c:66,f:12,g:["muscle","energy","maintain"],i:"Chicken, rice, teriyaki glaze, broccoli",d:"Glaze grilled chicken; serve over rice with broccoli."},
+ {n:"Miso Salmon & Soba",cu:"East Asian",m:"dinner",k:500,p:38,c:50,f:16,g:["muscle","energy"],i:"Salmon, miso glaze, soba noodles, greens",d:"Broil miso salmon; serve with soba and steamed greens."},
+ {n:"Stir-Fried Tofu & Bok Choy",cu:"East Asian",m:"dinner",k:360,p:22,c:28,f:18,g:["lose","maintain"],i:"Firm tofu, bok choy, garlic, soy, ginger",d:"Stir-fry pressed tofu and bok choy in garlic-soy sauce."},
+ {n:"Onigiri Rice Snack",cu:"East Asian",m:"snack",k:200,p:5,c:40,f:3,g:["energy"],i:"Rice, nori, sesame, light filling",d:"Shape seasoned rice; wrap in nori."}
+];
+
+const MEALS=[{k:"breakfast",label:"🌞 Breakfast",pct:.25},{k:"lunch",label:"☀️ Lunch",pct:.35},{k:"dinner",label:"🌒 Dinner",pct:.30},{k:"snack",label:"🍎 Snacks",pct:.10}];
+
+// ---------- SUPPLEMENT MAPPING ----------
+const SHOP="https://www.kurryculum.com/shop";
+const SUPPS={
+ b12:{n:"Vitamin B-12",d:"Cellular energy & metabolism — essential for vegetarian South Asian diets.",u:SHOP},
+ chakra:{n:"7 Chakra Ayurvedic Complex",d:"Anti-inflammatory turmeric & shilajit, plus ashwagandha for stress.",u:SHOP},
+ suga:{n:"Sugaverve",d:"15+ ingredients for healthy blood-sugar support.",u:SHOP},
+ beet:{n:"Beet Root + Black Pepper",d:"Circulation & athletic performance with enhanced absorption.",u:SHOP},
+ krill:{n:"Krill Oil 500mg",d:"EPA, DHA & Omega 3-6-9 — burpless, Antarctic sourced.",u:"https://www.amazon.com/dp/B0DN2RTWVL?tag=kurryculum20-20"},
+ collagen:{n:"Collagen Peptides",d:"Grass-fed Type I & III for joints, skin, hair & recovery.",u:"https://www.amazon.com/dp/B0FPY6ZLYY?tag=kurryculum20-20"},
+ bone:{n:"BoneVite+",d:"Glucosamine, chondroitin & MSM — pharmacist recommended.",u:"https://www.amazon.com/dp/B0DV4385Z1?tag=kurryculum20-20"}
+};
+function recommendSupps(goal,cuisines){
+ const picks=[];
+ if(goal==="muscle"){picks.push("collagen","krill");}
+ if(goal==="lose"){picks.push("suga");}
+ if(goal==="energy"){picks.push("beet","b12");}
+ if(goal==="maintain"){picks.push("chakra");}
+ if((cuisines.has("South Asian")||cuisines.has("South Indian")||cuisines.has("Bengali")||cuisines.has("Gujarati"))&&!picks.includes("b12"))picks.push("b12");
+ if(picks.length<3&&!picks.includes("chakra"))picks.push("chakra");
+ // dedupe + cap 3
+ return [...new Set(picks)].slice(0,3);
+}
+
+// ---------- CALCULATE ----------
+function getWeightKg(){let w=parseFloat(document.getElementById('weight').value)||0;return state.wUnit==='lb'?w/2.2046:w;}
+function getHeightCm(){if(state.hUnit==='cm')return parseFloat(document.getElementById('cm').value)||0;
+ const ft=parseFloat(document.getElementById('ft').value)||0,inch=parseFloat(document.getElementById('in').value)||0;return (ft*12+inch)*2.54;}
+
+const MACRO_SPLIT={maintain:[.30,.40,.30],lose:[.40,.30,.30],muscle:[.30,.45,.25],energy:[.25,.50,.25]};
+const GOAL_TEXT={maintain:"Maintenance calories to hold your current weight.",lose:"A ~500 kcal deficit for steady, sustainable fat loss (~0.5 kg/week).",muscle:"A modest ~300 kcal surplus with higher protein to build lean muscle.",energy:"Maintenance calories weighted toward complex carbs for steady energy."};
+
+document.getElementById('calc').addEventListener('click',()=>{
+ const kg=getWeightKg(),cm=getHeightCm(),age=parseFloat(document.getElementById('age').value)||0,act=parseFloat(document.getElementById('activity').value);
+ if(!kg||!cm||!age){alert("Please fill in age, height and weight.");return;}
+ let bmr=10*kg+6.25*cm-5*age+(state.sex==='male'?5:-161);
+ const tdee=bmr*act;
+ let adj=0;if(state.goal==='lose')adj=-500;if(state.goal==='muscle')adj=300;
+ let target=tdee+adj;
+ const floor=state.sex==='male'?1500:1200;if(target<floor)target=floor;
+ bmr=Math.round(bmr);const tdeeR=Math.round(tdee),targetR=Math.round(target);
+
+ const [pp,cp,fp]=MACRO_SPLIT[state.goal];
+ const pg=Math.round(target*pp/4),cg=Math.round(target*cp/4),fg=Math.round(target*fp/9);
+
+ document.getElementById('targetKcal').textContent=targetR.toLocaleString();
+ document.getElementById('bmr').textContent=bmr.toLocaleString();
+ document.getElementById('tdee').textContent=tdeeR.toLocaleString();
+ document.getElementById('adj').textContent=(adj>0?'+':'')+adj+' kcal';
+ document.getElementById('goalNote').textContent=GOAL_TEXT[state.goal];
+ document.getElementById('pg').textContent=pg+'g';
+ document.getElementById('cg').textContent=cg+'g';
+ document.getElementById('fg').textContent=fg+'g';
+
+ // meal bars
+ const mb=document.getElementById('mealBars');mb.innerHTML='';
+ MEALS.forEach(meal=>{const kc=Math.round(targetR*meal.pct);
+  mb.insertAdjacentHTML('beforeend',`<div class="meal-bar"><span>${meal.label}</span><span class="track"><span class="fill" style="width:${meal.pct*100*2.6}%"></span></span><span class="kc">${kc} kcal</span></div>`);});
+
+ document.getElementById('results').classList.add('show');
+
+ renderRecipes(targetR);
+ renderSupps();
+ document.getElementById('handoff').style.display='grid';
+ document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+// ---------- RENDER RECIPES ----------
+function renderRecipes(target){
+ const wrap=document.getElementById('mealGroups');wrap.innerHTML='';
+ const cuisines=state.cuisines,goal=state.goal;
+ MEALS.forEach(meal=>{
+  const budget=Math.round(target*meal.pct);
+  const hi=budget*1.25, lo=meal.k==='snack'?0:budget*0.55;
+  let matches=RECIPES.filter(r=>r.m===meal.k && cuisines.has(r.cu) && r.g.includes(goal) && r.k<=hi && r.k>=lo);
+  // fallback: ignore goal tag if too few
+  if(matches.length<2){matches=RECIPES.filter(r=>r.m===meal.k && cuisines.has(r.cu) && r.k<=hi);}
+  // fallback: ignore cuisine if still empty
+  if(matches.length===0){matches=RECIPES.filter(r=>r.m===meal.k && r.g.includes(goal) && r.k<=hi).slice(0,3);}
+  matches.sort((a,b)=>Math.abs(a.k-budget)-Math.abs(b.k-budget));
+  matches=matches.slice(0,3);
+
+  const group=document.createElement('div');group.className='meal-group';
+  group.innerHTML=`<div class="label">${meal.label}<span class="budget">≈ ${budget} kcal budget</span></div>`;
+  const cards=document.createElement('div');cards.className='cards';
+  if(matches.length===0){cards.innerHTML='<div class="empty">No matching recipe yet for this slot — try selecting more cuisines.</div>';}
+  matches.forEach(r=>{cards.insertAdjacentHTML('beforeend',`
+   <div class="rcard">
+     <span class="cuisine">${r.cu}</span>
+     <h4>${r.n}</h4>
+     <div class="kcal">${r.k} <small>kcal</small></div>
+     <div class="mac"><span>P ${r.p}g</span><span>C ${r.c}g</span><span>F ${r.f}g</span></div>
+     <div class="ing"><strong>Ingredients:</strong> ${r.i}</div>
+     <details><summary>How to make it ↓</summary><div class="method">${r.d}</div></details>
+   </div>`);});
+  group.appendChild(cards);wrap.appendChild(group);
+ });
+ document.getElementById('recipesSection').classList.add('show');
+}
+
+// ---------- RENDER SUPPLEMENTS ----------
+function renderSupps(){
+ const picks=recommendSupps(state.goal,state.cuisines);
+ const goalLabel={maintain:"maintenance",lose:"weight-loss",muscle:"muscle-building",energy:"energy"}[state.goal];
+ document.getElementById('suppTitle').textContent=`Supplements that pair with your ${goalLabel} plan`;
+ document.getElementById('suppLead').textContent="Pharmacist-formulated picks to complement the recipes above. Always confirm interactions with your provider if you take medication.";
+ const c=document.getElementById('suppCards');c.innerHTML='';
+ picks.forEach(key=>{const s=SUPPS[key];c.insertAdjacentHTML('beforeend',`
+  <div class="scard"><h4>${s.n}</h4><p>${s.d}</p><a href="${s.u}">View product →</a></div>`);});
+ document.getElementById('suppSection').classList.add('show');
+ reportHeight();
+}
+
+// ---------- IFRAME AUTO-RESIZE (posts height to a Webflow parent embed) ----------
+function reportHeight(){
+ try{const h=document.documentElement.scrollHeight;
+   if(window.parent&&window.parent!==window)window.parent.postMessage({kcHeight:h},'*');}catch(e){}
+}
+window.addEventListener('load',reportHeight);
+window.addEventListener('resize',reportHeight);
+document.addEventListener('click',()=>setTimeout(reportHeight,400)); // recalc after details toggle/results
+</script>
+</body>
+</html>
