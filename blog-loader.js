@@ -1,7 +1,7 @@
 (function(){
   if(!window.location.pathname.includes('blog')) return;
   
-  var COMMIT = 'db2d232';
+  var COMMIT = 'main';
   var param = new URLSearchParams(window.location.search).get('article');
   
   // If article param exists, load the articles file
