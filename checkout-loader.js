@@ -1,6 +1,6 @@
 (function(){
   if(!window.location.pathname.includes('checkout')) return;
-  var COMMIT = 'ed37294';
+  var COMMIT = 'main';
   var URL = 'https://cdn.jsdelivr.net/gh/kurryculum/kurryculum-api@' + COMMIT + '/09-checkout-full-stripe.html';
   if(document.getElementById('co-loaded')) return;
   fetch(URL).then(function(r){return r.text();}).then(function(html){
