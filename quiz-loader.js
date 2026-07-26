@@ -1,6 +1,6 @@
 (function(){
   if(!window.location.pathname.includes('supplement-quiz')) return;
-  var COMMIT = 'ed37294';
+  var COMMIT = 'main';
   var URL = 'https://cdn.jsdelivr.net/gh/kurryculum/kurryculum-api@' + COMMIT + '/KURRYCULUM-QUIZ-LIGHT.html';
   if(document.getElementById('qz-loaded')) return;
   fetch(URL).then(function(r){return r.text();}).then(function(html){
