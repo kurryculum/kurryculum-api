@@ -1,7 +1,7 @@
 (function(){
   if(!window.location.pathname.includes('recipes-calculator') && !window.location.pathname.includes('calc')) return;
   var COMMIT = 'main';
-  var URL = 'https://cdn.jsdelivr.net/gh/kurryculum/kurryculum-api@' + COMMIT + '/KURRYCULUM-CALC-LIGHT.html';
+  var URL = 'https://kurryculum-api-djm8.vercel.app/KURRYCULUM-CALC-LIGHT.html';
   if(document.getElementById('nc-loaded')) return;
   fetch(URL).then(function(r){return r.text();}).then(function(html){
     if(document.getElementById('nc-loaded')) return;
