@@ -1,0 +1,60 @@
+<!-- ============================================================
+     PayPal button — paste into the product/PDP embed.
+     Set data-sku to the product this page sells (must match a
+     key in create-order.js CATALOG: "ashwagandha", "magnesium", ...).
+
+     The client-id below is your PUBLIC Client ID and is safe in
+     front-end code. Your SECRET never appears here — it lives only
+     in Vercel env vars.
+     ============================================================ -->
+
+<div id="paypal-button-container" data-sku="ashwagandha"></div>
+
+<!-- Use your SANDBOX client-id while testing, then swap to LIVE -->
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+
+<script>
+  (function () {
+    var API = "https://kurryculum-api-djm8.vercel.app/api/paypal";
+    var container = document.getElementById("paypal-button-container");
+    var sku = container.getAttribute("data-sku");
+
+    paypal.Buttons({
+      style: { layout: "vertical", shape: "rect", label: "paypal" },
+
+      createOrder: function () {
+        return fetch(API + "/create-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sku: sku, quantity: 1 }),
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (!d.id) throw new Error(d.error || "create-order failed");
+            return d.id;
+          });
+      },
+
+      onApprove: function (data) {
+        return fetch(API + "/capture-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ orderID: data.orderID }),
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (d.status === "COMPLETED") {
+              window.location.href = "/order";       // same thank-you page as Stripe
+            } else {
+              alert("Payment could not be completed. Please try again.");
+            }
+          });
+      },
+
+      onError: function (err) {
+        console.error(err);
+        alert("Something went wrong with PayPal. Please try again.");
+      },
+    }).render("#paypal-button-container");
+  })();
+</script>
